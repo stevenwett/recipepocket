@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import Activity from './Activity'
 import RecipeList from '../recipes/RecipeList'
 import RecentRecipes from '../recipes/RecentRecipes'
-import CreateRecipe from '../recipes/CreateRecipe'
 import { Container, Row, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 
 class Dashboard extends Component {
@@ -40,17 +39,21 @@ class Dashboard extends Component {
 					<Col sm="12" className="mb-4">
 						<section>
 							<h1>your recipe pocket</h1>
-							<Form>
-									<FormGroup>
-										<Label for="exampleSearch">Search</Label>
-										<Input
-											type="search"
-											name="search"
-											id="searchRecipes"
-											placeholder="search your recipes"
-										/>
-									</FormGroup>
-								</Form>
+							<Row>
+								<Col sm="12" lg="6">
+									<Form>
+										<FormGroup>
+											<Label for="exampleSearch">Search</Label>
+											<Input
+												type="search"
+												name="search"
+												id="searchRecipes"
+												placeholder="search your recipes"
+											/>
+										</FormGroup>
+									</Form>
+								</Col>
+							</Row>
 							<RecipeList />
 						</section>
 					</Col>
