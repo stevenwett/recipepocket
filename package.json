@@ -13,11 +13,27 @@
     "react-scripts": "3.4.1",
     "reactstrap": "^8.5.1"
   },
+  "devDependencies": {
+    "mkdirp": "^0.5.5",
+    "node-sass": "^4.13.0",
+    "nodemon": "1.19.0",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^2.6.3",
+    "postcss-cli": "^6.1.2",
+    "autoprefixer": "^9.7.6"
+  },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start":"react-scripts start",
+    "build":"react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "watch": "npm-run-all --parallel watch:*",
+    "clean": "rimraf ../{css/app*}",
+    "css:make-dir": "mkdirp public/css -p",
+    "css:compile": "node-sass -o ../css/ --output-style compressed --source-map true src/scss/app.scss public/css/app.css",
+    "css:prefix": "postcss public/css/app.css -m -u autoprefixer -o public/css/app.css",
+    "build:css": "npm-run-all --sequential css:make-dir css:compile css:prefix",
+    "watch:css": "nodemon --watch src/scss --ext scss --exec \"npm-run-all --parallel build:css\""
   },
   "eslintConfig": {
     "extends": "react-app"

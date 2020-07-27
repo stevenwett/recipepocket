@@ -7,10 +7,10 @@ const SignedOutLinks = () => {
 	return (
 		<Nav className="justify-content-end">
 			<NavItem>
-				<NavLink to="/">Sign Up</NavLink>
+				<NavLink className="nav-link" to="/">Sign Up</NavLink>
 			</NavItem>
 			<NavItem>
-				<NavLink to="/">Log In</NavLink>
+				<NavLink className="nav-link" to="/">Log In</NavLink>
 			</NavItem>
 		</Nav>
 	)

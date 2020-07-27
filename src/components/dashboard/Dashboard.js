@@ -2,25 +2,26 @@ import React, { Component } from 'react'
 import Activity from './Activity'
 import RecipeList from '../recipes/RecipeList'
 import RecentRecipes from '../recipes/RecentRecipes'
+import SharedRecipeList from '../recipes/SharedRecipeList'
 import { Container, Row, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 
 class Dashboard extends Component {
 	render() {
 		return (
 			<Container className="dashboard">
-				<Row>
-					<Col sm="12" className="mb-2">
-						<p className="h1">happy cooking!</p>
+				<Row className="my-4">
+					<Col sm="12" className="mb-3">
+						<p className="h1 greeting">Happy cooking!</p>
 					</Col>
-					<Col sm="12" lg="8" className="mb-3">
+					<Col sm="12" lg="8">
 						<section>
-							<h1 className="sr-only">recent recipes</h1>
+							<h1 className="sr-only">Recent recipes</h1>
 							<RecentRecipes />
 						</section>
 					</Col>
-					<Col sm="12" lg="4" className="mb-4">
+					<Col sm="12" lg="4">
 						<section>
-							<h1>add a recipe</h1>
+							<h2>Add a recipe</h2>
 								<Form>
 									<FormGroup>
 										<Label for="exampleSearch" className="sr-only">enter the recipe page url</Label>
@@ -33,17 +34,19 @@ class Dashboard extends Component {
 									</FormGroup>
 								</Form>
 								<p>&mdash; OR &mdash;</p>
-							<Button color="primary" size="lg">add your own recipe</Button>
+							<Button outline color="light">add your own recipe</Button>
 						</section>
 					</Col>
-					<Col sm="12" className="mb-4">
+				</Row>
+				<Row className="my-4">
+					<Col sm="12">
 						<section>
-							<h1>your recipe pocket</h1>
-							<Row>
+							<h1>Your recipes</h1>
+							<Row className="my-3">
 								<Col sm="12" lg="6">
 									<Form>
 										<FormGroup>
-											<Label for="exampleSearch">Search</Label>
+											<Label for="searchRecipes" className="sr-only">Search your recipes</Label>
 											<Input
 												type="search"
 												name="search"
@@ -59,18 +62,34 @@ class Dashboard extends Component {
 					</Col>
 				</Row>
 				<section>
-					<Row>
-						<Col sm="12" className="col-12">
-							<h1>family recipes</h1>
+					<Row className="my-4">
+						<Col sm="12">
+							<h1>Family recipes</h1>
+							<Row className="my-3">
+								<Col sm="12" lg="6">
+									<Form>
+										<FormGroup>
+											<Label for="searchSharedRecipes" className="sr-only">Search shared recipes</Label>
+											<Input
+												type="search"
+												name="search"
+												id="searchSharedRecipes"
+												placeholder="search your shared recipes"
+											/>
+										</FormGroup>
+									</Form>
+								</Col>
+							</Row>
 						</Col>
-						<Col sm="12" lg="8" className="mb-3">
+						<Col sm="12" lg="8">
 							<section>
 								<h2 className="sr-only">shared recipes</h2>
+								<SharedRecipeList />
 							</section>
 						</Col>
-						<Col sm="12" lg="4" className="mb-3">
+						<Col sm="12" lg="4">
 							<section>
-								<h2>recent activity</h2>
+								<h2>Recent activity</h2>
 								<Activity />
 							</section>
 						</Col>

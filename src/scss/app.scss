@@ -1,0 +1,112 @@
+// App
+
+@import url('https://fonts.googleapis.com/css2?family=Arima+Madurai:wght@900&family=Signika:wght@300;600&display=swap');
+
+/* Variables */
+/* - Colors */
+
+$white:     #fff;
+$gray-100:  #f8f9fa;
+$gray-200:  #e9ecef;
+$gray-300:  #dee2e6;
+$gray-400:  #ced4da;
+$gray-500:  #adb5bd;
+$gray-600:  #6c757d;
+$gray-700:  #495057;
+$gray-800:  #343a40;
+$gray-900:  #212529;
+$black:     #000;
+
+$grays: ();
+$grays: map-merge(
+  (
+    "100": $gray-100,
+    "200": $gray-200,
+    "300": $gray-300,
+    "400": $gray-400,
+    "500": $gray-500,
+    "600": $gray-600,
+    "700": $gray-700,
+    "800": $gray-800,
+    "900": $gray-900
+  ),
+  $grays
+);
+
+$blue:      #007bff;
+$indigo:    #6610f2;
+$purple:    #6f42c1;
+$pink:      #e83e8c;
+$red:       #dc3545;
+$orange:    #fd7e14;
+$yellow:    #ffc107;
+$green:     #28a745;
+$teal:      #20c997;
+$cyan:      #17a2b8;
+
+$colors: ();
+$colors: map-merge(
+  (
+    "blue":       $blue,
+    "indigo":     $indigo,
+    "purple":     $purple,
+    "pink":       $pink,
+    "red":        $red,
+    "orange":     $orange,
+    "yellow":     $yellow,
+    "green":      $green,
+    "teal":       $teal,
+    "cyan":       $cyan,
+    "white":      $white,
+    "gray":       $gray-600,
+    "gray-dark":  $gray-800
+  ),
+  $colors
+);
+
+$primary:   $blue;
+$secondary: $gray-600;
+$success:   $green;
+$info:      $cyan;
+$warning:   $yellow;
+$danger:    $red;
+$light:     $gray-100;
+$dark:      $gray-800;
+
+$border-radius: 12px;
+
+$font-family-sans-serif: 'Signika', sans-serif;
+$font-family-monospace:  'Signika', sans-serif;
+$font-family-base:       'Signika', sans-serif;
+$headings-font-family:   'Arima Madurai', sans-serif;
+
+$font-size-base:        1rem;
+$h1-font-size:          $font-size-base * 2;
+$h2-font-size:          $font-size-base * 1.5;
+$input-btn-font-family: $font-family-base;
+
+$body-bg: $dark;
+
+$body-color: $gray-100;
+
+$input-bg:                $dark;
+$input-color:             $white;
+$input-placeholder-color: $gray-500;
+$input-border-color:      $white;
+
+$card-color:        $dark;
+$card-border-color: darken( $dark, 5% );
+
+$font-weight-light:  300;
+$font-weight-normal: $font-weight-light;
+$font-weight-bold:   600;
+$font-weight-bolder: 900;
+
+/* Bootstrap */
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+/* Overrides */
+@import 'mixins';
+@import 'global';
+@import 'nav';
+@import 'dashboard';

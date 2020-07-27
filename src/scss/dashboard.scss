@@ -1,0 +1,59 @@
+// Dashboard
+
+.greeting {
+	font-weight: normal;
+	font-size: 2.5rem;
+	font-weight: 900;
+}
+
+.recent-recipe-list {
+	article {
+		border-radius: $border-radius;
+		overflow: hidden;
+	}
+}
+
+.recent-recipe {
+	min-height: 70px;
+	background-color: $gray-200;
+	color: $dark;
+
+	h2 {
+		margin: 0;
+		font-size: 1.2rem;
+	}
+
+	.preview {
+		background-color: $gray-600;
+	}
+
+	.text {
+		@include vertical-center-parent;
+		padding: 1rem 1.25rem;
+	}
+
+	.text-inner {
+		@include vertical-center-child;
+	}
+}
+
+.recipe-summary {
+	h2 {
+		font-size: 1.5rem;
+	}
+
+	.card {
+		margin-bottom: 30px;
+	}
+
+	.card-footer {
+		border: 0;
+	
+		p {
+			margin: 0;
+			font-size: 0.75rem;
+			font-weight: $font-weight-bold;
+			color: $gray-600;
+		}
+	}
+}

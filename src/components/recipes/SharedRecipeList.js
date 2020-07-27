@@ -1,10 +1,10 @@
 import React from 'react'
 import { Card, CardBody, CardImg, CardTitle, CardText, CardFooter, Col, Row } from 'reactstrap';
 
-const RecipeList = () => {
+const SharedRecipeList = () => {
 	return (
 		<Row className="recipe-list">
-			<Col sm="12" md="6" lg="4">
+			<Col sm="12" md="6">
 				<article className="recipe-summary">
 					<Card>
 						<CardImg top width="100%" src="https://via.placeholder.com/400x300" alt="" />
@@ -15,12 +15,12 @@ const RecipeList = () => {
 							<CardText>Recipe summary text</CardText>
 						</CardBody>
 						<CardFooter className="text-muted">
-							<p>Saved on July 26</p>
+							<p>Added on July 26 by Steven</p>
 						</CardFooter>
 					</Card>
 				</article>
 			</Col>
-			<Col sm="12" md="6" lg="4">
+			<Col sm="12" md="6">
 				<article className="recipe-summary">
 					<Card>
 						<CardImg top width="100%" src="https://via.placeholder.com/400x300" alt="" />
@@ -35,7 +35,7 @@ const RecipeList = () => {
 					</Card>
 				</article>
 			</Col>
-			<Col sm="12" md="6" lg="4">
+			<Col sm="12" md="6">
 				<article className="recipe-summary">
 					<Card>
 						<CardImg top width="100%" src="https://via.placeholder.com/400x300" alt="" />
@@ -50,7 +50,7 @@ const RecipeList = () => {
 					</Card>
 				</article>
 			</Col>
-			<Col sm="12" md="6" lg="4">
+			<Col sm="12" md="6">
 				<article className="recipe-summary">
 					<Card>
 						<CardImg top width="100%" src="https://via.placeholder.com/400x300" alt="" />
@@ -69,4 +69,4 @@ const RecipeList = () => {
 	) 
 }
 
-export default RecipeList;
+export default SharedRecipeList;
