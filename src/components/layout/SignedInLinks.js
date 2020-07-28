@@ -6,13 +6,13 @@ const SignedInLinks = () => {
 	return (
 		<Nav className="justify-content-end">
 			<NavItem>
-				<NavLink className="nav-link" to="/">+ Add Recipe</NavLink>
+				<NavLink className="nav-link" to="/">+ Add recipe</NavLink>
 			</NavItem>
 			<NavItem>
-				<NavLink className="nav-link" to="/">My Recipes</NavLink>
+				<NavLink className="nav-link" to="/">My recipes</NavLink>
 			</NavItem>
 			<NavItem>
-				<NavLink className="nav-link" to="/">Log Out</NavLink>
+				<NavLink className="nav-link" to="/">Log out</NavLink>
 			</NavItem>
 			<NavItem>
 				<NavLink to="/">
@@ -23,6 +23,6 @@ const SignedInLinks = () => {
 			</NavItem>
 		</Nav>
 	)
-} 
+}
 
 export default SignedInLinks;

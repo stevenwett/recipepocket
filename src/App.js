@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import NavigationBar from './components/layout/NavigationBar'
 import Dashboard from './components/dashboard/Dashboard'
+import RecipeDetails from './components/recipes/RecipeDetails'
+import SignIn from './components/auth/SignIn'
+import SignUp from './components/auth/SignUp'
 
 class App extends Component {
   render() {
@@ -9,7 +12,12 @@ class App extends Component {
       <BrowserRouter>
         <div className="App">
           <NavigationBar />
-          <Dashboard />
+          <Switch>
+            <Route exact path='/' component={Dashboard} />
+            <Route path='/recipe/:id' component={RecipeDetails} />
+            <Route path='/signin' component={SignIn} />
+            <Route path='/signup' component={SignUp} />
+          </Switch>
         </div>
       </BrowserRouter>
     );

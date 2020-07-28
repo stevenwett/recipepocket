@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import SignedInLinks from './SignedInLinks'
 import SignedOutLinks from './SignedOutLinks'
 import { Navbar, NavbarBrand, Container } from 'reactstrap';
@@ -15,6 +14,6 @@ const NavigationBar = () => {
 			</Container>
 		</Navbar>
 	)
-} 
+}
 
 export default NavigationBar;

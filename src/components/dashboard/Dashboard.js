@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
+import { Container, Row, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import Activity from './Activity'
 import RecipeList from '../recipes/RecipeList'
 import RecentRecipes from '../recipes/RecentRecipes'
 import SharedRecipeList from '../recipes/SharedRecipeList'
-import { Container, Row, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 
 class Dashboard extends Component {
 	render() {
