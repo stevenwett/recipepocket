@@ -1,22 +1,9 @@
 import React from 'react'
-import { Col, Row } from 'reactstrap';
-import RecipeSummary from './RecipeSummary'
+import { Row } from 'reactstrap';
 
 const SharedRecipeList = () => {
 	return (
 		<Row className="recipe-list">
-			<Col sm="12" md="6">
-				<RecipeSummary />
-			</Col>
-			<Col sm="12" md="6">
-				<RecipeSummary />
-			</Col>
-			<Col sm="12" md="6">
-				<RecipeSummary />
-			</Col>
-			<Col sm="12" md="6">
-				<RecipeSummary />
-			</Col>
 		</Row>
 	)
 }

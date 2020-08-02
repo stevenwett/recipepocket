@@ -6,7 +6,7 @@ const SignedInLinks = () => {
 	return (
 		<Nav className="justify-content-end">
 			<NavItem>
-				<NavLink className="nav-link" to="/">+ Add recipe</NavLink>
+				<NavLink className="nav-link" to="/add-recipe">+ Add recipe</NavLink>
 			</NavItem>
 			<NavItem>
 				<NavLink className="nav-link" to="/">My recipes</NavLink>

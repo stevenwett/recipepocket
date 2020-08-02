@@ -1,22 +1,15 @@
 import React from 'react'
-import { Col, Row } from 'reactstrap';
+import { Row } from 'reactstrap';
 import RecipeSummary from './RecipeSummary'
 
-const RecipeList = () => {
+const RecipeList = ({recipes}) => {
   return (
     <Row className="recipe-list">
-      <Col sm="12" md="6" lg="4">
-        <RecipeSummary />
-      </Col>
-      <Col sm="12" md="6" lg="4">
-        <RecipeSummary />
-      </Col>
-      <Col sm="12" md="6" lg="4">
-        <RecipeSummary />
-      </Col>
-      <Col sm="12" md="6" lg="4">
-        <RecipeSummary />
-      </Col>
+      { recipes && recipes.map(recipe => {
+        return (
+          <RecipeSummary recipe={recipe} key={recipe.id}/>
+        )
+      })}
     </Row>
   )
 }

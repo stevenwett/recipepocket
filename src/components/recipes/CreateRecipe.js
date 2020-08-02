@@ -1,13 +1,93 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import { createRecipe } from '../../store/actions/recipeActions'
+import { Form, Container, Row, Col, Input, Label, FormGroup, Button } from 'reactstrap';
 
 class CreateRecipe extends Component {
-	render() {
-		return (
-			<div>
-				create recipe
-			</div>
-		)
-	}
+  state = {
+    title: '',
+    excerpt: ''
+  }
+  handleChange = (e) => {
+    this.setState({
+      [e.target.id]: e.target.value
+    })
+  }
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.props.createRecipe(this.state)
+    this.props.history.push('/');
+  }
+  render() {
+    return (
+      <Container className="user-auth user-sign-in">
+        <Row className="justify-content-center">
+          <Col xs="12" sm="12" md="10" lg="8">
+            <article>
+              <h1>Create a recipe</h1>
+              <Form className="mt-3" onSubmit={this.handleSubmit}>
+                <FormGroup>
+                  <Label for="title">Recipe title</Label>
+                  <Input type="text" name="title" id="title" onChange={this.handleChange} />
+                </FormGroup>
+                <FormGroup>
+                  <Label for="briefSummary">Brief summary</Label>
+                  <Input type="textarea" name="briefSummary" id="briefSummary" onChange={this.handleChange} />
+                </FormGroup>
+                <FormGroup>
+                  <Label for="author">Author name</Label>
+                  <Input type="text" name="author" id="author" onChange={this.handleChange} />
+                </FormGroup>
+                <FormGroup>
+                  <Label for="source">Source</Label>
+                  <Input type="text" name="source" id="source" onChange={this.handleChange} />
+                </FormGroup>
+                <FormGroup>
+                  <Label for="photo">Photo</Label>
+                  <Input type="file" name="photo" id="photo" onChange={this.handleChange} />
+                </FormGroup>
+                <FormGroup>
+                  <Label for="photoSubtitle">Photo subtitle</Label>
+                  <Input type="text" name="photoSubtitle" id="photoSubtitle" onChange={this.handleChange} />
+                </FormGroup>
+                <FormGroup>
+                  <Label for="yield">Yield</Label>
+                  <Input type="text" name="yield" id="yield" onChange={this.handleChange} />
+                </FormGroup>
+                <FormGroup>
+                  <Row>
+                    <Col sm="6">
+                      <Label for="timeNumber">Number</Label>
+                      <Input type="number" name="number" id="timeNumber" onChange={this.handleChange} />
+                    </Col>
+                    <Col sm="6">
+                      <Label for="timeUnit">Units</Label>
+                      <Input type="select" name="timeUnit" id="timeUnit" onChange={this.handleChange}>
+                        <option>minutes</option>
+                        <option>hours</option>
+                        <option>days</option>
+                      </Input>
+                    </Col>
+                  </Row>
+                </FormGroup>
+                <FormGroup>
+                  <Label for="fullSummary">Full summary</Label>
+                  <Input type="textarea" name="fullSummary" id="fullSummary" onChange={this.handleChange} />
+                </FormGroup>
+                <Button className="my-3">Add to your recipes</Button>
+              </Form>
+            </article>
+          </Col>
+        </Row>
+      </Container>
+    )
+  }
 }
 
-export default CreateRecipe;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    createRecipe: (recipe) => dispatch(createRecipe(recipe))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(CreateRecipe)

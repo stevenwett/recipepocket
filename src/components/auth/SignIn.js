@@ -19,7 +19,7 @@ class SignIn extends Component {
     return (
       <Container className="user-auth user-sign-in">
         <Row className="justify-content-center">
-          <Col xs="12" sm="12" md="10" lg="8">
+          <Col sm="12" md="10" lg="8">
             <article>
               <h1>Sign in</h1>
               <Form className="mt-3" onSubmit={this.handleSubmit}>
