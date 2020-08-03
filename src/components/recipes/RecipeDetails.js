@@ -16,6 +16,7 @@ const RecipeDetails = (props) => {
               <p className="introText">{ recipe.excerpt }</p>
               <p className="author">by author name</p>
               <p className="source">from oringinal source: </p>
+              <p className="owner">Added by {recipe.ownerFirstName} {recipe.ownerLastName}</p>
               <figure>
                 <picture>
                   <img src="https://via.placeholder.com/800x400" alt="" />

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { signIn } from '../../store/actions/authActions';
 import { Form, Container, Row, Col, Input, Button } from 'reactstrap';
 
 class SignIn extends Component {
@@ -13,9 +15,11 @@ class SignIn extends Component {
   }
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state);
+    // console.log(this.state);
+    this.props.signIn(this.state)
   }
   render() {
+    const { authError, auth } = this.props;
     return (
       <Container className="user-auth user-sign-in">
         <Row className="justify-content-center">
@@ -31,6 +35,9 @@ class SignIn extends Component {
                 </label>
                 <Button className="my-3">Log in</Button>
               </Form>
+              <div className="authentication-error">
+                { authError ? <p className="text-red">{ authError }</p> : null }
+              </div>
             </article>
           </Col>
         </Row>
@@ -39,4 +46,17 @@ class SignIn extends Component {
   }
 }
 
-export default SignIn
+const mapStateToProps = (state) => {
+  return {
+    authError: state.auth.authError,
+    auth: state.firebase.auth
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signIn: (credentials) => dispatch(signIn(credentials))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn)

@@ -1,7 +1,10 @@
 .navbar {
-	a {
+	a,
+	.nav-link {
 		color: $white;
 		font-weight: $font-weight-bold;
 		font-family: $font-family-base;
+		border: 0;
+		background: none;
 	}
 }
