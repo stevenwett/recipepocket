@@ -5,9 +5,9 @@ import { Navbar, NavbarBrand, Container } from 'reactstrap';
 import { connect } from 'react-redux'
 
 const NavigationBar = (props) => {
-  const { auth } = props;
-  // console.log(auth);
-  const links = auth.uid ? <SignedInLinks /> : <SignedOutLinks />;
+  console.log(props);
+  const { auth, profile } = props;
+  const links = auth.uid ? <SignedInLinks profile={profile} /> : <SignedOutLinks />;
 	return (
 		<Navbar dark>
 			<h1 className="sr-only">recipepocket navigation</h1>
@@ -21,7 +21,8 @@ const NavigationBar = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    auth: state.firebase.auth
+    auth: state.firebase.auth,
+    profile: state.firebase.profile
   }
 }
 

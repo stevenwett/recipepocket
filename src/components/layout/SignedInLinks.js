@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { signOut } from '../../store/actions/authActions'
 
 const SignedInLinks = (props) => {
+  const { profile } = props;
 	return (
 		<Nav className="justify-content-end">
 			<NavItem>
@@ -19,7 +20,7 @@ const SignedInLinks = (props) => {
 			<NavItem>
 				<NavLink to="/">
 					<Button outline color="light">
-						SW
+						{ profile.initials }
 					</Button>
 				</NavLink>
 			</NavItem>

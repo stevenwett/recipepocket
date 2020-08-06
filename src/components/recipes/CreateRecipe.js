@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { createRecipe } from '../../store/actions/recipeActions'
 import { Form, Container, Row, Col, Input, Label, FormGroup, Button } from 'reactstrap';
+import { Redirect } from 'react-router-dom';
 
 class CreateRecipe extends Component {
   state = {
@@ -15,10 +16,11 @@ class CreateRecipe extends Component {
   }
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.createRecipe(this.state)
-    this.props.history.push('/');
+    this.props.createRecipe(this.state);
   }
   render() {
+    const { auth } = this.props;
+    if ( !auth.uid ) return <Redirect to='/signin' />
     return (
       <Container className="user-auth user-sign-in">
         <Row className="justify-content-center">
@@ -31,8 +33,8 @@ class CreateRecipe extends Component {
                   <Input type="text" name="title" id="title" onChange={this.handleChange} />
                 </FormGroup>
                 <FormGroup>
-                  <Label for="briefSummary">Brief summary</Label>
-                  <Input type="textarea" name="briefSummary" id="briefSummary" onChange={this.handleChange} />
+                  <Label for="excerpt">Brief summary</Label>
+                  <Input type="textarea" name="excerpt" id="excerpt" onChange={this.handleChange} />
                 </FormGroup>
                 <FormGroup>
                   <Label for="author">Author name</Label>
@@ -84,10 +86,16 @@ class CreateRecipe extends Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    auth: state.firebase.auth
+  }
+}
+
 const mapDispatchToProps = (dispatch) => {
   return {
     createRecipe: (recipe) => dispatch(createRecipe(recipe))
   }
 }
 
-export default connect(null, mapDispatchToProps)(CreateRecipe)
+export default connect(mapStateToProps, mapDispatchToProps)(CreateRecipe)

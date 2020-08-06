@@ -1,5 +1,6 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import moment from 'moment';
+import { Link } from 'react-router-dom';
 import { Col, Card, CardBody, CardImg, CardTitle, CardText, CardFooter } from 'reactstrap';
 
 const RecipeSummary = ({recipe}) => {
@@ -16,7 +17,7 @@ const RecipeSummary = ({recipe}) => {
               <CardText>{recipe.excerpt}</CardText>
             </CardBody>
             <CardFooter className="text-muted">
-              <p>Saved by {recipe.ownerFirstName }</p>
+              <p>Saved on { moment(recipe.createdAt.toDate()).calendar() }</p>
             </CardFooter>
           </Card>
         </article>

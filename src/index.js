@@ -22,16 +22,20 @@ const store = createStore(
   rootReducer,
   compose(
     applyMiddleware(thunk.withExtraArgument({ getFirestore, getFirebase })),
-    reduxFirestore(firebaseConfig, { attachAuthIsReady: true })
+    reduxFirestore(firebase, firebaseConfig, { attachAuthIsReady: true })
   )
 );
 
+const rrfConfig = {
+  userProfile: 'users',
+  useFirestoreForProfile: true
+}
+
 const rrfProps = {
   firebase,
-  config: firebaseConfig,
+  config: rrfConfig,
   dispatch: store.dispatch,
   createFirestoreInstance,
-  userProfile: 'users', // where profiles are stored in database
   presence: 'presence', // where list of online users is stored in database
   sessions: 'sessions'
 };
