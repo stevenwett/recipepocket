@@ -1,10 +1,21 @@
 import React from 'react'
+import moment from 'moment';
 
-const Activity = () => {
+const Activity = (props) => {
+  const { activity } = props;
 	return (
-		<ul>
-			<li>Someone just joined your <em>shared family recipes</em></li>
-		</ul>
+		<section>
+      <h2>Recent activity</h2>
+      <ul className="activity">
+        { activity && activity.map(item => {
+          return (
+            <li key={item.id}>
+              <strong>{item.user}</strong> {item.content} &ndash; { moment(item.time.toDate()).calendar() }
+            </li>
+          )
+        })}
+  		</ul>
+    </section>
 	)
 }
 

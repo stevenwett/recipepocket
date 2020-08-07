@@ -8,21 +8,23 @@ import SharedRecipeList from '../recipes/SharedRecipeList'
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
+import { Redirect } from 'react-router-dom';
 
 class Dashboard extends Component {
-  handleChange = (e) => {
-    this.setState({
-      [e.target.id]: e.target.value
-    })
-  }
-  handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(this.state);
-  }
+  // handleChange = (e) => {
+  //   this.setState({
+  //     [e.target.id]: e.target.value
+  //   })
+  // }
+  // handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   console.log(this.state);
+  // }
   render() {
     // console.log(this.props)
 
-    const { recipes } = this.props;
+    const { recipes, auth, activity } = this.props;
+    if (!auth.uid) return <Redirect to='/signin' />
 
     return (
       <Container className="dashboard">
@@ -95,10 +97,7 @@ class Dashboard extends Component {
               </section>
             </Col>
             <Col sm="12" lg="4">
-              <section>
-                <h2>Recent activity</h2>
-                <Activity />
-              </section>
+              <Activity activity={activity} />
             </Col>
           </Row>
         </section>
@@ -109,13 +108,16 @@ class Dashboard extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    recipes: state.firestore.ordered.recipes
+    recipes: state.firestore.ordered.recipes,
+    auth: state.firebase.auth,
+    activity: state.firestore.ordered.activity
   }
 }
 
 export default compose(
   connect(mapStateToProps),
   firestoreConnect([
-    { collection: 'recipes' }
+    { collection: 'recipes' },
+    { collection: 'activity', limit: 3 }
   ])
 )(Dashboard);
