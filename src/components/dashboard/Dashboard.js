@@ -41,13 +41,6 @@ class Dashboard extends Component {
           <Col sm="12" lg="4">
             <section>
               <h2>Add a recipe</h2>
-                <Form onSubmit={this.handleSubmit}>
-                  <FormGroup>
-                    <Label for="exampleSearch" className="sr-only">enter the recipe page url</Label>
-                    <Input type="text" name="recipeUrl" id="recipeUrl" placeholder="enter the recipe page url" onChange={this.handleChange} />
-                  </FormGroup>
-                </Form>
-                <p>&mdash; OR &mdash;</p>
               <Link className="btn btn-outline-light" to="/add-recipe">add your own recipe</Link>
             </section>
           </Col>
@@ -56,16 +49,6 @@ class Dashboard extends Component {
           <Col sm="12">
             <section>
               <h1>Your recipes</h1>
-              <Row className="my-3">
-                <Col sm="12" lg="6">
-                  <Form onSubmit={this.handleSubmit}>
-                    <FormGroup>
-                      <Label for="searchRecipes" className="sr-only">Search your recipes</Label>
-                      <Input type="search" name="search" id="searchRecipes" placeholder="search your recipes" onChange={this.handleChange} />
-                    </FormGroup>
-                  </Form>
-                </Col>
-              </Row>
               <RecipeList recipes={recipes} />
             </section>
           </Col>
@@ -74,21 +57,6 @@ class Dashboard extends Component {
           <Row className="my-4">
             <Col sm="12">
               <h1>Family recipes</h1>
-              <Row className="my-3">
-                <Col sm="12" lg="6">
-                  <Form>
-                    <FormGroup>
-                      <Label for="searchSharedRecipes" className="sr-only">Search shared recipes</Label>
-                      <Input
-                        type="search"
-                        name="search"
-                        id="searchSharedRecipes"
-                        placeholder="search your shared recipes"
-                      />
-                    </FormGroup>
-                  </Form>
-                </Col>
-              </Row>
             </Col>
             <Col sm="12" lg="8">
               <section>
