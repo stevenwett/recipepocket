@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { signIn } from '../../store/actions/authActions';
 import { Form, Container, Row, Col, Input, Button } from 'reactstrap';
+import { Redirect } from 'react-router-dom';
 
 class SignIn extends Component {
   state = {
@@ -15,11 +16,12 @@ class SignIn extends Component {
   }
   handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(this.state);
-    this.props.signIn(this.state)
+    this.props.signIn(this.state);
   }
   render() {
     const { authError, auth } = this.props;
+    if (auth.uid) return <Redirect to='/' />
+
     return (
       <Container className="user-auth user-sign-in">
         <Row className="justify-content-center">

@@ -9,7 +9,10 @@ export const createRecipe = (recipe) => {
       ownerFirstName: profile.firstName,
       ownerLastName: profile.lastName,
       ownerId: ownerId,
-      createdAt: new Date()
+      groupId: false,
+      createdAt: new Date(),
+      lastViewed: new Date(),
+      disabled: false
     }).then(() => {
       dispatch({ type: 'CREATE_RECIPE', recipe });
     }).catch((error) => {

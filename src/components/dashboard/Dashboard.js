@@ -1,13 +1,13 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import { Container, Row, Col, Form, FormGroup, Label, Input } from 'reactstrap';
-import Activity from './Activity'
-import RecipeList from '../recipes/RecipeList'
-import RecentRecipes from '../recipes/RecentRecipes'
-import SharedRecipeList from '../recipes/SharedRecipeList'
-import { connect } from 'react-redux'
-import { firestoreConnect } from 'react-redux-firebase'
-import { compose } from 'redux'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { Container, Row, Col } from 'reactstrap';
+import Activity from './Activity';
+import RecipeList from '../recipes/RecipeList';
+import RecentRecipes from '../recipes/RecentRecipes';
+import SharedRecipeList from '../recipes/SharedRecipeList';
+import { connect } from 'react-redux';
+import { firestoreConnect } from 'react-redux-firebase';
+import { compose } from 'redux';
 import { Redirect } from 'react-router-dom';
 
 class Dashboard extends Component {
@@ -21,10 +21,8 @@ class Dashboard extends Component {
   //   console.log(this.state);
   // }
   render() {
-    // console.log(this.props)
-
     const { recipes, auth, activity } = this.props;
-    if (!auth.uid) return <Redirect to='/signin' />
+    if (!auth.uid) return <Redirect to='/learn' />
 
     return (
       <Container className="dashboard">
@@ -49,6 +47,7 @@ class Dashboard extends Component {
           <Col sm="12">
             <section>
               <h1>Your recipes</h1>
+              <p>Search</p>
               <RecipeList recipes={recipes} />
             </section>
           </Col>
@@ -61,6 +60,7 @@ class Dashboard extends Component {
             <Col sm="12" lg="8">
               <section>
                 <h2 className="sr-only">shared recipes</h2>
+                <p>Search</p>
                 <SharedRecipeList />
               </section>
             </Col>
@@ -85,7 +85,7 @@ const mapStateToProps = (state) => {
 export default compose(
   connect(mapStateToProps),
   firestoreConnect([
-    { collection: 'recipes' },
-    { collection: 'activity', limit: 3 }
+    { collection: 'recipes', orderBy: ['createdAt', 'desc'] },
+    { collection: 'activity', limit: 10, orderBy: ['time', 'desc'] }
   ])
 )(Dashboard);
