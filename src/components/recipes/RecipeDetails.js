@@ -8,10 +8,11 @@ const RecipeDetails = (props) => {
   const { recipe, profile } = props;
   if (recipe) {
     return (
-      <Container className="recipe-details">
-        <Row className="my-4">
-          <Col xs="12" sm="12">
-            <article>
+      <Container className="view recipe-details">
+        <article>
+          <Row>
+            <Col xs="12" sm="12">
+
               <h1>{ recipe.title }</h1>
               <p className="excerpt">{ recipe.excerpt }</p>
               <p className="author">Original recipe by { recipe.author }</p>
@@ -23,6 +24,10 @@ const RecipeDetails = (props) => {
                 </picture>
                 <figcaption>photo by { recipe.photoSubtitle }</figcaption>
               </figure>
+            </Col>
+          </Row>
+          <Row>
+            <Col xs="12" sm="12">
               <div className="overview">
                 <p className="yield">feeds { recipe.yield }</p>
                 <p className="time">takes about { recipe.timeNumber } { recipe.timeUnit }</p>
@@ -32,18 +37,26 @@ const RecipeDetails = (props) => {
               <div className="has-cooked-wrapper">
                 <p>Mark as cooked</p>
               </div>
+            </Col>
+          </Row>
+          <Row>
+            <Col xs="12" sm="12">
               <h2>Ingredients</h2>
               <ul className="ingredients">
                 <li>ingedient 1</li>
                 <li>ingredient 2</li>
               </ul>
+            </Col>
+          </Row>
+          <Row>
+            <Col xs="12" sm="12">
               <h2>Preparation</h2>
               <ol className="preparation">
                 <li><strong>Step 1</strong> do this first</li>
               </ol>
-            </article>
-          </Col>
-        </Row>
+            </Col>
+          </Row>
+        </article>
       </Container>
     )
   } else {

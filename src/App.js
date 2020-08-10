@@ -6,7 +6,7 @@ import RecipeDetails from './components/recipes/RecipeDetails';
 import SignIn from './components/auth/SignIn';
 import SignUp from './components/auth/SignUp';
 import MyAccount from './components/auth/MyAccount';
-import CreateRecipe from './components/recipes/CreateRecipe';
+import AddRecipe from './components/recipes/AddRecipe';
 import Learn from './components/Learn';
 
 class App extends Component {
@@ -22,7 +22,7 @@ class App extends Component {
             <Route path='/account' component={MyAccount} />
             <Route path='/signin' component={SignIn} />
             <Route path='/signup' component={SignUp} />
-            <Route path='/add-recipe' component={CreateRecipe} />
+            <Route path='/add-recipe' component={AddRecipe} />
           </Switch>
         </div>
       </BrowserRouter>

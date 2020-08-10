@@ -4,7 +4,7 @@ import { createRecipe } from '../../store/actions/recipeActions'
 import { Form, Container, Row, Col, Input, Label, FormGroup, Button } from 'reactstrap';
 import { Redirect } from 'react-router-dom';
 
-class CreateRecipe extends Component {
+class AddRecipe extends Component {
   state = {
     title: '',
     excerpt: ''
@@ -22,7 +22,7 @@ class CreateRecipe extends Component {
     const { auth } = this.props;
     if ( !auth.uid ) return <Redirect to='/signin' />
     return (
-      <Container className="user-auth user-sign-in">
+      <Container className="view add-recipe">
         <Row className="justify-content-center">
           <Col xs="12" sm="12" md="10" lg="8">
             <article>
@@ -98,4 +98,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateRecipe)
+export default connect(mapStateToProps, mapDispatchToProps)(AddRecipe)
