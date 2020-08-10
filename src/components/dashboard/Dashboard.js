@@ -25,9 +25,9 @@ class Dashboard extends Component {
     if (!auth.uid) return <Redirect to='/learn' />
 
     return (
-      <Container className="dashboard">
-        <Row className="my-4">
-          <Col sm="12" className="mb-3">
+      <Container className="view dashboard">
+        <Row>
+          <Col sm="12">
             <p className="h1 greeting">Happy cooking!</p>
           </Col>
           <Col sm="12" lg="8">
@@ -43,7 +43,7 @@ class Dashboard extends Component {
             </section>
           </Col>
         </Row>
-        <Row className="my-4">
+        <Row>
           <Col sm="12">
             <section>
               <h1>Your recipes</h1>
@@ -53,7 +53,7 @@ class Dashboard extends Component {
           </Col>
         </Row>
         <section>
-          <Row className="my-4">
+          <Row>
             <Col sm="12">
               <h1>Family recipes</h1>
             </Col>

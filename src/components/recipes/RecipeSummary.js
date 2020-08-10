@@ -14,10 +14,14 @@ const RecipeSummary = ({recipe}) => {
               <CardTitle>
                 <h2>{recipe.title}</h2>
               </CardTitle>
-              <CardText>{recipe.excerpt}</CardText>
+              <CardText>
+                <div className="excerpt">{recipe.excerpt}</div>
+                <div className="author">{recipe.author}</div>
+              </CardText>
             </CardBody>
             <CardFooter className="text-muted">
-              <p>Saved on { moment(recipe.createdAt.toDate()).calendar() }</p>
+              <p>Saved { moment(recipe.createdAt.toDate()).calendar() }</p>
+              <p>Saved { moment(recipe.createdAt.toDate()).calendar() }</p>
             </CardFooter>
           </Card>
         </article>

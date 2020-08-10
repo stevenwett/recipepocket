@@ -1,5 +1,32 @@
 // Dashboard
 
+.view {
+	padding-top: 3rem;
+
+	& > .row {
+		margin-bottom: 2rem;
+		padding-bottom: 2rem;
+		border-bottom: 1px solid $gray-200;
+	}
+}
+
+.my-account {
+	ul {
+		font-size: none;
+		padding: 0;
+		margin: 0;
+		border-top: 1px dashed $gray-600;
+	}
+
+	li {
+		border-bottom: 1px dashed $gray-600;
+	}
+
+	a {
+		padding: 1rem;
+	}
+}
+
 .greeting {
 	font-weight: normal;
 	font-size: 2.5rem;
@@ -13,9 +40,18 @@
 	}
 }
 
+.recipe-list {
+	a {
+		&:hover,
+		&:focus {
+			text-decoration: none;
+		}
+	}
+}
+
 .recent-recipe {
 	min-height: 70px;
-	background-color: $gray-200;
+	background-color: $gray-100;
 	color: $dark;
 
 	h2 {
@@ -44,16 +80,43 @@
 
 	.card {
 		margin-bottom: 30px;
+		background-color: $gray-100;
+	}
+
+	.card-body {
+		padding: 0;
+	}
+
+	.card-title {
+		padding: 1rem;
+		padding-bottom: 0.5rem;
+		margin-bottom: 0;
+
+		h2 {
+			margin: 0;
+			color: darken( $blue, 15% );
+		}
+	}
+
+	.excerpt {
+		padding: 0 1rem;
+	}
+
+	.author {
+		padding: 0.9rem 1rem;
+		text-transform: uppercase;
+		font-size: 0.8rem;
+		font-weight: $font-weight-bolder;
+		color: $blue;
 	}
 
 	.card-footer {
 		border: 0;
-	
+
 		p {
 			margin: 0;
 			font-size: 0.75rem;
 			font-weight: $font-weight-bold;
-			color: $gray-600;
 		}
 	}
 }

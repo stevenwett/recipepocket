@@ -9,10 +9,10 @@ const NavigationBar = (props) => {
   const { auth, profile } = props;
   const links = auth.uid ? <SignedInLinks profile={profile} /> : <SignedOutLinks />;
 	return (
-		<Navbar dark>
+		<Navbar>
 			<h1 className="sr-only">recipepocket navigation</h1>
 			<Container>
-				<NavbarBrand href="/">recipepocket</NavbarBrand>
+				<div className="app-name">recipepocket</div>
 				{ links }
 			</Container>
 		</Navbar>

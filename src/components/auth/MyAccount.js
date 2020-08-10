@@ -9,13 +9,11 @@ class MyAccount extends Component {
     const { auth, signOut, profile } = this.props;
     if (!auth.uid) return <Redirect to='/learn' />
     return (
-      <Container className="my-account">
-        <Row className="mb-4">
+      <Container className="view my-account">
+        <Row>
           <Col>
             <h1>My account</h1>
-            <ul>
-              <li><strong>Update your details</strong></li>
-            </ul>
+            <p>Email (disabled), First name, last name, password</p>
           </Col>
         </Row>
         <Row>
@@ -25,6 +23,13 @@ class MyAccount extends Component {
               <li>Recipe Group 1</li>
               <li>Recipe Group 2</li>
               <li>Recipe Group 3</li>
+            </ul>
+            <h2>General</h2>
+            <ul>
+              <li><strong>Units</strong></li>
+              <li><strong>App Theme</strong></li>
+              <li className="disabled"><strong>Language</strong></li>
+              <li><strong>Time format</strong></li>
             </ul>
             <h2>About</h2>
             <ul>

@@ -7,4 +7,11 @@
 		border: 0;
 		background: none;
 	}
+
+	.app-name {
+		color: $gray-600;
+		font-weight: $font-weight-bold;
+		font-family: $font-family-base;
+		font-size: 1.25rem;
+	}
 }
