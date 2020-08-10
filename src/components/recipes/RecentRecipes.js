@@ -5,7 +5,7 @@ import { Row, Col } from 'reactstrap';
 const RecentRecipes = () => {
   return (
     <Row className="recent-recipe-list no-gutters">
-      <Col xs="6" sm="6" className="mb-3 pr-3">
+      <Col xs="12" sm="6" className="mb-3 pr-3">
         <Link to="/recipe/1">
           <article>
             <Row className="recent-recipe no-gutters rounded">
@@ -21,7 +21,7 @@ const RecentRecipes = () => {
           </article>
         </Link>
       </Col>
-      <Col xs="6" sm="6" className="mb-3 pr-3">
+      <Col xs="12" sm="6" className="mb-3 pr-3">
         <Link to="/recipe/1">
           <article>
             <Row className="recent-recipe no-gutters rounded">
@@ -37,7 +37,7 @@ const RecentRecipes = () => {
           </article>
         </Link>
       </Col>
-      <Col xs="6" sm="6" className="mb-3 pr-3">
+      <Col xs="12" sm="6" className="mb-3 pr-3">
         <Link to="/recipe/1">
           <article>
             <Row className="recent-recipe no-gutters rounded">
@@ -53,7 +53,7 @@ const RecentRecipes = () => {
           </article>
         </Link>
       </Col>
-      <Col xs="6" sm="6" className="mb-3 pr-3">
+      <Col xs="12" sm="6" className="mb-3 pr-3">
         <Link to="/recipe/1">
           <article>
             <Row className="recent-recipe no-gutters rounded">
@@ -69,7 +69,7 @@ const RecentRecipes = () => {
           </article>
         </Link>
       </Col>
-      <Col xs="6" sm="6" className="mb-3 pr-3">
+      <Col xs="12" sm="6" className="mb-3 pr-3">
         <Link to="/recipe/1">
           <article>
             <Row className="recent-recipe no-gutters rounded">
@@ -85,7 +85,7 @@ const RecentRecipes = () => {
           </article>
         </Link>
       </Col>
-      <Col xs="6" sm="6" className="mb-3 pr-3">
+      <Col xs="12" sm="6" className="mb-3 pr-3">
         <Link to="/recipe/1">
           <article>
             <Row className="recent-recipe no-gutters rounded">

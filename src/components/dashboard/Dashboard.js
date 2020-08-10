@@ -37,7 +37,7 @@ class Dashboard extends Component {
             </section>
           </Col>
           <Col sm="12" lg="4">
-            <section>
+            <section className="dashboard-add-recipe">
               <h2>Add a recipe</h2>
               <Link className="btn btn-outline-light" to="/add-recipe">add your own recipe</Link>
             </section>
@@ -55,14 +55,10 @@ class Dashboard extends Component {
         <section>
           <Row>
             <Col sm="12">
-              <h1>Family recipes</h1>
+              <h1>Shared sets</h1>
             </Col>
             <Col sm="12" lg="8">
-              <section>
-                <h2 className="sr-only">shared recipes</h2>
-                <p>Search</p>
-                <SharedRecipeList />
-              </section>
+              <p>Here we'll list the shared sets and also a few of the shared recipes</p>
             </Col>
             <Col sm="12" lg="4">
               <Activity activity={activity} />
