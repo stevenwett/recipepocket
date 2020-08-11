@@ -35,16 +35,16 @@ class MyAccount extends Component {
                     </label>
                   </div>
                   <label htmlFor="firstName">First name
-                    <Input type="text" id="firstName" onChange={this.handleChange}/>
+                    <Input type="text" id="firstName" placeholder={profile.firstName} onChange={this.handleChange}/>
                   </label>
                   <label htmlFor="lastName">Last name
-                    <Input type="text" id="lastName" onChange={this.handleChange}/>
+                    <Input type="text" id="lastName" placeholder={profile.lastName} onChange={this.handleChange}/>
                   </label>
                   <label htmlFor="password">Password
                     <Input type="password" id="password" onChange={this.handleChange}/>
                   </label>
                   <div>
-                    <Button disabled>update my details</Button>
+                    <Button>update my details</Button>
                   </div>
                 </Form>
                 <div className="authentication-error">
