@@ -4,7 +4,7 @@ import { Container, Row, Col } from 'reactstrap';
 import Activity from './Activity';
 import RecipeList from '../recipes/RecipeList';
 import RecentRecipes from '../recipes/RecentRecipes';
-import SharedRecipeList from '../recipes/SharedRecipeList';
+// import SharedRecipeList from '../recipes/SharedRecipeList';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';

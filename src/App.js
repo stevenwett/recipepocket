@@ -7,7 +7,7 @@ import SignIn from './components/auth/SignIn';
 import SignUp from './components/auth/SignUp';
 import MyAccount from './components/auth/MyAccount';
 import AddRecipe from './components/recipes/AddRecipe';
-import Learn from './components/Learn';
+import Welcome from './components/Welcome';
 
 class App extends Component {
   render() {
@@ -18,8 +18,11 @@ class App extends Component {
           <Switch>
             <Route exact path='/' component={Dashboard} />
             <Route path='/recipe/:id' component={RecipeDetails} />
-            <Route path='/learn' component={Learn} />
-            <Route path='/account' component={MyAccount} />
+            <Route path='/welcome' component={Welcome} />
+            <Route exact path='/account' component={MyAccount} />
+            <Route path='/account/:id' component={RecipeDetails} />
+            <Route exact path='/shared-set' component={RecipeDetails} />
+            <Route path='/shared-set/:id' component={RecipeDetails} />
             <Route path='/signin' component={SignIn} />
             <Route path='/signup' component={SignUp} />
             <Route path='/add-recipe' component={AddRecipe} />

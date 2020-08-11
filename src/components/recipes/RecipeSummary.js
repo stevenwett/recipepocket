@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
-import { Col, Card, CardBody, CardImg, CardTitle, CardText, CardFooter } from 'reactstrap';
+import { Col, Card, CardBody, CardImg, CardTitle, CardFooter } from 'reactstrap';
 
 const RecipeSummary = ({recipe}) => {
   return (
@@ -14,10 +14,10 @@ const RecipeSummary = ({recipe}) => {
               <CardTitle>
                 <h2>{recipe.title}</h2>
               </CardTitle>
-              <CardText>
+              <div className="card-text">
                 <div className="excerpt">{recipe.excerpt}</div>
                 <div className="author">{recipe.author}</div>
-              </CardText>
+              </div>
             </CardBody>
             <CardFooter className="text-muted">
               <p>Saved { moment(recipe.createdAt.toDate()).calendar() }</p>

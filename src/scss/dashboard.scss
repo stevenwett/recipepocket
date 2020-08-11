@@ -2,26 +2,75 @@
 
 .view {
 	padding-top: 3rem;
+	margin-bottom: 2rem;
 
 	& > .row {
 		margin-bottom: 2rem;
 	}
 }
 
+.view-card {
+	max-width: 600px;
+}
+
 .my-account {
 	ul {
 		font-size: none;
 		padding: 0;
-		margin: 0;
-		border-top: 1px dashed $gray-600;
+		margin-bottom: 2.5rem;
+		border-top: 1px dashed $gray-300;
+
+		&:last-child {
+			margin-bottom: 1rem;
+		}
 	}
 
 	li {
-		border-bottom: 1px dashed $gray-600;
+		border-bottom: 1px dashed $gray-300;
+	}
+
+	a,
+	.settings-item {
+		display: block;
+		padding: 1rem 0;
+		font-weight: $font-weight-bold;
+		color: $primary;
+
+		p {
+			color: $dark;
+			font-weight: $font-weight-normal;
+			margin: 0;
+			margin-top: 0.15rem;
+		}
 	}
 
 	a {
-		padding: 1rem;
+		&:hover,
+		&:focus {
+			text-decoration: none;
+			color: darken( $primary, 10% );
+		}
+	}
+
+	button.settings-item {
+		margin: 0;
+		border: 0;
+		background: none;
+		font-weight: $font-weight-bold;
+		color: $primary;
+		display: block;
+		font-size: 1rem;
+		width: 100%;
+		text-align: left;
+
+		&:hover,
+		&:focus {
+			color: darken( $primary, 10% );
+		}
+	}
+
+	form {
+		margin-bottom: 2.5rem;
 	}
 }
 
@@ -55,7 +104,7 @@
 
 .recent-recipe {
 	min-height: 70px;
-	background-color: $gray-100;
+	background-color: $white;
 	color: $dark;
 
 	h2 {
@@ -84,22 +133,19 @@
 
 	.card {
 		margin-bottom: 30px;
-		background-color: $gray-100;
+		background-color: $white;
 	}
 
 	.card-body {
-		padding: 0;
+		padding: 1rem 0;
 	}
 
 	.card-title {
-		padding: 1rem;
-		// padding-bottom: 0.5rem;
-		padding-bottom: 0;
+		padding: 0 1rem;
 		margin-bottom: 0;
 
 		h2 {
-			margin: 0;
-			color: darken( $blue, 15% );
+			margin-bottom: 0.5rem;
 		}
 	}
 
@@ -109,7 +155,7 @@
 
 	.author {
 		padding: 0.5rem 1rem;
-		padding-bottom: 0.75rem;
+		padding-bottom: 0;
 		text-transform: uppercase;
 		font-size: 0.8rem;
 		font-weight: $font-weight-bolder;
@@ -124,5 +170,10 @@
 			font-size: 0.75rem;
 			font-weight: $font-weight-bold;
 		}
+	}
+}
+.activity {
+	li {
+		margin-bottom: 0.5rem;
 	}
 }

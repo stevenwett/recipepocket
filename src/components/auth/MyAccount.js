@@ -1,55 +1,96 @@
 import React, { Component } from 'react';
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row, Col, CardBody, Button, Form, Input } from 'reactstrap';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { signOut } from '../../store/actions/authActions';
 
 class MyAccount extends Component {
+  state = {
+    email: '',
+    password: ''
+  }
+  handleChange = (e) => {
+    this.setState({
+      [e.target.id]: e.target.value
+    })
+  }
+  handleSubmit = (e) => {
+    e.preventDefault();
+  }
   render() {
     const { auth, signOut, profile } = this.props;
-    if (!auth.uid) return <Redirect to='/learn' />
+    if (!auth.uid) return <Redirect to='/welcome' />
     return (
-      <Container className="view my-account">
-        <Row>
-          <Col>
-            <h1>My account</h1>
-            <p>Email (disabled), First name, last name, password</p>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <h2>Shared recipe groups</h2>
-            <ul>
-              <li>Recipe Group 1</li>
-              <li>Recipe Group 2</li>
-              <li>Recipe Group 3</li>
-            </ul>
-            <h2>General</h2>
-            <ul>
-              <li><strong>Units</strong></li>
-              <li><strong>App Theme</strong></li>
-              <li className="disabled"><strong>Language</strong></li>
-              <li><strong>Time format</strong></li>
-            </ul>
-            <h2>About</h2>
-            <ul>
-              <li>
-                <strong>Version</strong>
-                <p>1.0</p>
-              </li>
-              <li><strong>Terms and Conditions</strong></li>
-              <li><strong>Privacy Policy</strong></li>
-              <li><strong>Support</strong></li>
-            </ul>
-            <h2>Other</h2>
-            <ul>
-              <li>
-                <button onClick={signOut}>Log out</button>
-                <p>You are logged in as {profile.firstName} {profile.lastName}</p>
-              </li>
-            </ul>
-          </Col>
-        </Row>
+      <Container className="view view-card my-account">
+        <article className="card">
+          <CardBody>
+            <Row>
+              <Col>
+                <h1>My account</h1>
+                <h2>Account details</h2>
+                <Form onSubmit={this.handleSubmit}>
+                  <div>
+                    <label htmlFor="email">Email
+                      <Input disabled type="email" id="email" value={auth.email} />
+                    </label>
+                  </div>
+                  <label htmlFor="firstName">First name
+                    <Input type="text" id="firstName" onChange={this.handleChange}/>
+                  </label>
+                  <label htmlFor="lastName">Last name
+                    <Input type="text" id="lastName" onChange={this.handleChange}/>
+                  </label>
+                  <label htmlFor="password">Password
+                    <Input type="password" id="password" onChange={this.handleChange}/>
+                  </label>
+                  <div>
+                    <Button disabled>update my details</Button>
+                  </div>
+                </Form>
+                <div className="authentication-error">
+                </div>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <h2>Shared set of recipes</h2>
+                <ul>
+                  <li><Link to="/shared-set/1">Recipe group 1</Link></li>
+                  <li><Link to="/shared-set/2">Recipe group 2</Link></li>
+                  <li><Link to="/shared-set/3">Recipe group 3</Link></li>
+                  <li><Link to="/shared-set">Create shared set</Link></li>
+                  <li><Link to="/shared-set/join">Join a shared set</Link></li>
+                </ul>
+                <h2>General</h2>
+                <ul>
+                  <li><Link to="/account/units">Units</Link></li>
+                  <li><Link to="/account/theme">App theme</Link></li>
+                </ul>
+                <h2>About</h2>
+                <ul>
+                  <li>
+                    <div className="settings-item">
+                      Version
+                      <p>1.0</p>
+                    </div>
+                  </li>
+                  <li><Link to="/account/terms-conditions">Terms and conditions</Link></li>
+                  <li><Link to="/account/privacy-policy">Privacy policy</Link></li>
+                  <li><Link to="/account/support">Support</Link></li>
+                </ul>
+                <h2>Other</h2>
+                <ul>
+                  <li>
+                    <button className="settings-item" onClick={signOut}>
+                      Log Out
+                      <p>You are logged in as {profile.firstName} {profile.lastName}</p>
+                    </button>
+                  </li>
+                </ul>
+              </Col>
+            </Row>
+          </CardBody>
+        </article>
       </Container>
     )
   }
