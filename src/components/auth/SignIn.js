@@ -37,7 +37,7 @@ class SignIn extends Component {
                     <label className="d-block my-2" htmlFor="password">Password
                       <Input className="mt-1" type="password" id="password" onChange={this.handleChange}/>
                     </label>
-                    <Button className="my-3">Log in</Button>
+                    <Button className="my-3">log in</Button>
                   </Form>
                   <div className="authentication-error">
                     { authError ? <p className="text-red">{ authError }</p> : null }

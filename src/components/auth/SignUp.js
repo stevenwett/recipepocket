@@ -45,7 +45,7 @@ class SignUp extends Component {
                 <label className="d-block my-2" htmlFor="confirmPassword">Confirm password
                   <Input className="mt-1" type="password" id="confirmPassword" onChange={this.handleChange}/>
                 </label>
-                <Button className="my-3">Create account</Button>
+                <Button className="my-3">create account</Button>
               </Form>
               <div className="authentication-error">
                 { authError ? <p className="text-red">{ authError }</p> : null }
