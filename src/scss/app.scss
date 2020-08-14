@@ -58,6 +58,11 @@ $colors: map-merge(
   $colors
 );
 
+$font-weight-light:  300;
+$font-weight-normal: $font-weight-light;
+$font-weight-bold:   600;
+$font-weight-bolder: 900;
+
 $border-radius: 8px;
 
 $font-family-sans-serif: 'Signika', sans-serif;
@@ -70,6 +75,9 @@ $h1-font-size:          $font-size-base * 2;
 $h2-font-size:          $font-size-base * 1.5;
 $input-btn-font-family: $font-family-base;
 
+$btn-font-weight:        $font-weight-bold;
+$input-btn-border-width: 2px;
+
 $body-bg: $dark;
 
 $body-color: $white;
@@ -81,11 +89,6 @@ $input-border-color:      $white;
 
 $card-color:        $dark;
 $card-border-color: darken( $dark, 5% );
-
-$font-weight-light:  300;
-$font-weight-normal: $font-weight-light;
-$font-weight-bold:   600;
-$font-weight-bolder: 900;
 
 $text-muted: $gray-500;
 

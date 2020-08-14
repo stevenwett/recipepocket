@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import NavigationBar from './components/layout/NavigationBar';
-import Dashboard from './components/dashboard/Dashboard';
-import RecipeDetails from './components/recipes/RecipeDetails';
+import NavigationBar from './components/navigation/NavigationBar';
+
+import Welcome from './components/Welcome';
+import Home from './components/home/Home';
+import Recipes from './components/recipes/Recipes';
 import CreateRecipe from './components/recipes/CreateRecipe';
-import SignIn from './components/auth/SignIn';
-import SignUp from './components/auth/SignUp';
-import MyAccount from './components/auth/MyAccount';
+import RecipeDetails from './components/recipes/RecipeDetails';
+import MyAccount from './components/account/MyAccount';
+import SignIn from './components/account/SignIn';
+import SignUp from './components/account/SignUp';
 import CreateGroup from './components/groups/CreateGroup';
 import GroupDetails from './components/groups/GroupDetails';
-import Welcome from './components/Welcome';
 
 class App extends Component {
   render() {
@@ -18,8 +20,11 @@ class App extends Component {
         <div className="App">
           <NavigationBar />
           <Switch>
-            <Route exact path='/' component={Dashboard} />
-            <Route path='/welcome' component={Welcome} />
+            <Route exact path='/' component={Welcome} />
+            <Route path='/home' component={Home} />
+            <Route exact path='/recipes' component={Recipes} />
+            <Route exact path='/recipes/add' component={CreateRecipe} />
+            <Route path='/recipes/:id' component={RecipeDetails} />
             <Route exact path='/account' component={MyAccount} />
             <Route path='/account/:id' component={RecipeDetails} />
             <Route exact path='/group' component={CreateGroup} />
@@ -27,8 +32,6 @@ class App extends Component {
             <Route path='/group/:id' component={GroupDetails} />
             <Route path='/signin' component={SignIn} />
             <Route path='/signup' component={SignUp} />
-            <Route exact path='/recipe' component={CreateRecipe} />
-            <Route path='/recipe/:id' component={RecipeDetails} />
           </Switch>
         </div>
       </BrowserRouter>

@@ -1,28 +1,19 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { firestoreConnect } from 'react-redux-firebase';
+import { Redirect, Link } from 'react-router-dom';
 import { Container, Row, Col } from 'reactstrap';
+
 import Activity from './Activity';
 import RecipeList from '../recipes/RecipeList';
 import RecentRecipes from '../recipes/RecentRecipes';
-// import SharedRecipeList from '../recipes/SharedRecipeList';
-import { connect } from 'react-redux';
-import { firestoreConnect } from 'react-redux-firebase';
-import { compose } from 'redux';
-import { Redirect } from 'react-router-dom';
 
-class Dashboard extends Component {
-  // handleChange = (e) => {
-  //   this.setState({
-  //     [e.target.id]: e.target.value
-  //   })
-  // }
-  // handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   console.log(this.state);
-  // }
+
+class Home extends Component {
   render() {
     const { recipes, auth, activity } = this.props;
-    if (!auth.uid) return <Redirect to='/learn' />
+    if (!auth.uid) return <Redirect to='/' />
 
     return (
       <Container className="view dashboard">
@@ -84,4 +75,4 @@ export default compose(
     { collection: 'recipes', orderBy: ['createdAt', 'desc'] },
     { collection: 'activity', limit: 10, orderBy: ['time', 'desc'] }
   ])
-)(Dashboard);
+)(Home);

@@ -22,7 +22,7 @@ class MyAccount extends Component {
   }
   render() {
     const { auth, signOut, profile, groups } = this.props;
-    if (!auth.uid) return <Redirect to='/welcome' />
+    if (!auth.uid) return <Redirect to='/' />
     return (
       <Container className="view view-card my-account">
         <article className="card">
