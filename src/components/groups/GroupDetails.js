@@ -1,8 +1,9 @@
 import React from 'react'
+import moment from 'moment';
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
-import { Col, Row, Container, CardBody, CardImg } from 'reactstrap';
+import { Col, Row, Container } from 'reactstrap';
 
 const GroupDetails = (props) => {
   const { group, profile } = props;
@@ -13,6 +14,7 @@ const GroupDetails = (props) => {
           <Row>
             <Col>
               <h1>Shared Recipe Group: {group.name}</h1>
+              <p>Created { moment(group.createdAt.toDate()).calendar() }</p>
             </Col>
           </Row>
         </article>

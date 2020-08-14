@@ -7,11 +7,14 @@ export const createGroup = (group) => {
     firestore.collection('groups').add({
       ...group,
       ownerId: ownerId,
+      ownerFirstName: profile.firstName,
+      ownerLastName: profile.lastName,
       users: [
         ownerId
       ],
       recipes: [],
       createdAt: new Date(),
+      lastViewed: new Date(),
       disabled: false
     }).then(() => {
       dispatch({ type: 'CREATE_GROUP', group });

@@ -38,7 +38,7 @@
 		display: block;
 		padding: 1rem 0;
 		font-weight: $font-weight-bold;
-		color: $primary;
+		color: $gray-600;
 
 		p {
 			color: $dark;
@@ -49,6 +49,8 @@
 	}
 
 	a {
+		color: $primary;
+
 		&:hover,
 		&:focus {
 			text-decoration: none;
