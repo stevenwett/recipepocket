@@ -4,7 +4,7 @@ import { createRecipe } from '../../store/actions/recipeActions'
 import { Form, Container, Row, Col, Input, Label, FormGroup, Button, CardBody } from 'reactstrap';
 import { Redirect } from 'react-router-dom';
 
-class AddRecipe extends Component {
+class CreateRecipe extends Component {
   state = {
     title: '',
     excerpt: ''
@@ -100,4 +100,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddRecipe)
+export default connect(mapStateToProps, mapDispatchToProps)(CreateRecipe)

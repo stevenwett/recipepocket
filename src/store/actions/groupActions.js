@@ -1,22 +1,22 @@
-export const createRecipe = (recipe) => {
+export const createGroup = (group) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     // make async call to database
     const firestore = getFirestore();
     const profile = getState().firebase.profile;
     const ownerId = getState().firebase.auth.uid;
-    firestore.collection('recipes').add({
-      ...recipe,
-      ownerFirstName: profile.firstName,
-      ownerLastName: profile.lastName,
+    firestore.collection('groups').add({
+      ...group,
       ownerId: ownerId,
-      groups: [],
+      users: [
+        ownerId
+      ],
+      recipes: [],
       createdAt: new Date(),
-      lastViewed: new Date(),
       disabled: false
     }).then(() => {
-      dispatch({ type: 'CREATE_RECIPE', recipe });
+      dispatch({ type: 'CREATE_GROUP', group });
     }).catch((error) => {
-      dispatch({ type: 'CREATE_RECIPE_ERROR', error });
+      dispatch({ type: 'CREATE_GROUP_ERROR', error });
     })
   }
 };

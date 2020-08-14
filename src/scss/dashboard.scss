@@ -14,8 +14,12 @@
 }
 
 .my-account {
+	label,
+	input {
+		width: 100%;
+	}
+
 	ul {
-		font-size: none;
 		padding: 0;
 		margin-bottom: 2.5rem;
 		border-top: 1px dashed $gray-300;
@@ -49,6 +53,24 @@
 		&:focus {
 			text-decoration: none;
 			color: darken( $primary, 10% );
+		}
+	}
+
+	ul.group-list {
+		border-top: 0;
+		margin-bottom: 1.5rem;
+
+		li {
+			border-bottom: 0;
+			margin-bottom: 0.5rem;
+		}
+
+		a {
+			border: 1px solid $primary;
+			border-radius: $border-radius;
+			text-align: left;
+			padding: 0.5rem 1rem;
+			font-weight: $font-weight-bold;
 		}
 	}
 

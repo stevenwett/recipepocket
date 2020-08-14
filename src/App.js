@@ -3,10 +3,12 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import NavigationBar from './components/layout/NavigationBar';
 import Dashboard from './components/dashboard/Dashboard';
 import RecipeDetails from './components/recipes/RecipeDetails';
+import CreateRecipe from './components/recipes/CreateRecipe';
 import SignIn from './components/auth/SignIn';
 import SignUp from './components/auth/SignUp';
 import MyAccount from './components/auth/MyAccount';
-import AddRecipe from './components/recipes/AddRecipe';
+import CreateGroup from './components/groups/CreateGroup';
+import GroupDetails from './components/groups/GroupDetails';
 import Welcome from './components/Welcome';
 
 class App extends Component {
@@ -17,15 +19,16 @@ class App extends Component {
           <NavigationBar />
           <Switch>
             <Route exact path='/' component={Dashboard} />
-            <Route path='/recipe/:id' component={RecipeDetails} />
             <Route path='/welcome' component={Welcome} />
             <Route exact path='/account' component={MyAccount} />
             <Route path='/account/:id' component={RecipeDetails} />
-            <Route exact path='/shared-set' component={RecipeDetails} />
-            <Route path='/shared-set/:id' component={RecipeDetails} />
+            <Route exact path='/group' component={CreateGroup} />
+            <Route exact path='/group/join' component={CreateGroup} />
+            <Route path='/group/:id' component={GroupDetails} />
             <Route path='/signin' component={SignIn} />
             <Route path='/signup' component={SignUp} />
-            <Route path='/add-recipe' component={AddRecipe} />
+            <Route exact path='/recipe' component={CreateRecipe} />
+            <Route path='/recipe/:id' component={RecipeDetails} />
           </Switch>
         </div>
       </BrowserRouter>

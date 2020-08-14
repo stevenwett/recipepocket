@@ -10,7 +10,7 @@ const SignedInLinks = (props) => {
         <NavLink className="nav-link" to="/">dashboard</NavLink>
       </NavItem>
       <NavItem>
-        <NavLink className="nav-link" to="/add-recipe">+ add recipe</NavLink>
+        <NavLink className="nav-link" to="/recipe">+ add recipe</NavLink>
       </NavItem>
       <NavItem>
         <NavLink to="/account">

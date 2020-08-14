@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, CardBody, Button, Form, Input } from 'reactstrap';
+import { Container, Row, Col, CardBody, Button, Form, Input, FormGroup } from 'reactstrap';
 import { connect } from 'react-redux';
+import { firestoreConnect } from 'react-redux-firebase';
+import { compose } from 'redux';
 import { Redirect, Link } from 'react-router-dom';
 import { signOut } from '../../store/actions/authActions';
+import GroupList from '../groups/GroupList';
 
 class MyAccount extends Component {
   state = {
@@ -18,7 +21,7 @@ class MyAccount extends Component {
     e.preventDefault();
   }
   render() {
-    const { auth, signOut, profile } = this.props;
+    const { auth, signOut, profile, groups } = this.props;
     if (!auth.uid) return <Redirect to='/welcome' />
     return (
       <Container className="view view-card my-account">
@@ -29,20 +32,30 @@ class MyAccount extends Component {
                 <h1>My account</h1>
                 <h2>Account details</h2>
                 <Form onSubmit={this.handleSubmit}>
-                  <div>
-                    <label htmlFor="email">Email
-                      <Input disabled type="email" id="email" value={auth.email} />
-                    </label>
-                  </div>
-                  <label htmlFor="firstName">First name
-                    <Input type="text" id="firstName" placeholder={profile.firstName} onChange={this.handleChange}/>
-                  </label>
-                  <label htmlFor="lastName">Last name
-                    <Input type="text" id="lastName" placeholder={profile.lastName} onChange={this.handleChange}/>
-                  </label>
-                  <label htmlFor="password">Password
-                    <Input type="password" id="password" onChange={this.handleChange}/>
-                  </label>
+                  <Row>
+                    <Col>
+                      <label htmlFor="firstName">First name
+                        <Input type="text" id="firstName" placeholder={profile.firstName} onChange={this.handleChange}/>
+                      </label>
+                    </Col>
+                    <Col>
+                      <label htmlFor="lastName">Last name
+                        <Input type="text" id="lastName" placeholder={profile.lastName} onChange={this.handleChange}/>
+                      </label>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col>
+                      <label htmlFor="email">Email
+                        <Input type="email" id="email" placeholder={auth.email} />
+                      </label>
+                    </Col>
+                    <Col>
+                      <label htmlFor="password">Password
+                        <Input type="password" id="password" onChange={this.handleChange}/>
+                      </label>
+                    </Col>
+                  </Row>
                   <div>
                     <Button>update my details</Button>
                   </div>
@@ -53,13 +66,15 @@ class MyAccount extends Component {
             </Row>
             <Row>
               <Col>
-                <h2>Shared set of recipes</h2>
-                <ul>
-                  <li><Link to="/shared-set/1">Recipe group 1</Link></li>
-                  <li><Link to="/shared-set/2">Recipe group 2</Link></li>
-                  <li><Link to="/shared-set/3">Recipe group 3</Link></li>
-                  <li><Link to="/shared-set">Create shared set</Link></li>
-                  <li><Link to="/shared-set/join">Join a shared set</Link></li>
+                <h2>Shared recipes</h2>
+                <GroupList groups={groups} />
+                <ul className="group-actions">
+                  <li>
+                    <Link to="/group">Create a shared group
+                      <p>Share recipes with family and friends</p>
+                    </Link>
+                  </li>
+                  <li><Link to="/group/join">Join a shared group</Link></li>
                 </ul>
                 <h2>General</h2>
                 <ul>
@@ -99,7 +114,8 @@ class MyAccount extends Component {
 const mapStateToProps = (state) => {
   return {
     auth: state.firebase.auth,
-    profile: state.firebase.profile
+    profile: state.firebase.profile,
+    groups: state.firestore.ordered.groups
   }
 }
 
@@ -109,4 +125,9 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MyAccount);
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  firestoreConnect([
+    { collection: 'groups', orderBy: ['createdAt', 'desc'] },
+  ])
+)(MyAccount);
