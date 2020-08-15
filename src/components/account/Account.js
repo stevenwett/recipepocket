@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
-import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { firestoreConnect } from 'react-redux-firebase';
 import { Redirect, Link } from 'react-router-dom';
 import { Container, Row, Col, CardBody, Button, Form, Input, FormGroup } from 'reactstrap';
 
 import { signOut } from '../../store/actions/authActions';
-import GroupList from '../groups/GroupList';
 
 class Account extends Component {
   state = {
@@ -30,8 +27,7 @@ class Account extends Component {
           <CardBody>
             <Row>
               <Col>
-                <h1>My account</h1>
-                <h2>Account details</h2>
+                <h1 className="greeting">Account</h1>
                 <Form onSubmit={this.handleSubmit}>
                   <Row>
                     <Col>
@@ -67,16 +63,6 @@ class Account extends Component {
             </Row>
             <Row>
               <Col>
-                <h2>Shared recipes</h2>
-                <GroupList groups={groups} />
-                <ul className="group-actions">
-                  <li>
-                    <Link to="/group">Create a shared group
-                      <p>Share recipes with family and friends</p>
-                    </Link>
-                  </li>
-                  <li><Link to="/group/join">Join a shared group</Link></li>
-                </ul>
                 <h2>General</h2>
                 <ul>
                   <li><Link to="/account/units">Units</Link></li>
@@ -115,8 +101,7 @@ class Account extends Component {
 const mapStateToProps = (state) => {
   return {
     auth: state.firebase.auth,
-    profile: state.firebase.profile,
-    groups: state.firestore.ordered.groups
+    profile: state.firebase.profile
   }
 }
 
@@ -126,9 +111,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
-  firestoreConnect([
-    { collection: 'groups', orderBy: ['createdAt', 'desc'] },
-  ])
-)(Account);
+export default connect(mapStateToProps, mapDispatchToProps)(Account);

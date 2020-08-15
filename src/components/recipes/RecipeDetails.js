@@ -24,12 +24,6 @@ const RecipeDetails = (props) => {
                 <p className="author">Original recipe by { recipe.author }</p>
                 <p className="source">from oringinal source: { recipe.source } </p>
                 <p className="owner">Added by { recipe.ownerFirstName } { recipe.ownerLastName }</p>
-                <figure>
-                  <picture>
-                    <img src={ recipe.photo } alt={ recipe.alt } />
-                  </picture>
-                  <figcaption>photo by { recipe.photoSubtitle }</figcaption>
-                </figure>
               </Col>
             </Row>
             <Row>
@@ -39,7 +33,6 @@ const RecipeDetails = (props) => {
                   <p className="time">takes about { recipe.timeNumber } { recipe.timeUnit }</p>
                   <p className="summaryText">{ recipe.summaryText }</p>
                 </div>
-                <p>Added by</p>
               </Col>
             </Row>
             <Row>

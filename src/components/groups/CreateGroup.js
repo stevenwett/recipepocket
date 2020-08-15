@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { Form, Container, Row, Col, Input, Label, FormGroup, Button, CardBody } from 'reactstrap';
 
 import { createGroup } from '../../store/actions/groupActions'
@@ -28,6 +28,7 @@ class CreateGroup extends Component {
             <Row className="justify-content-center">
               <Col>
                 <h1>Create a Shared Set</h1>
+                <Link to="/groups">Cancel</Link>
                 <Form className="mt-3" onSubmit={this.handleSubmit}>
                   <FormGroup>
                     <Label for="title">Name</Label>

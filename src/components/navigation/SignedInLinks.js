@@ -9,6 +9,7 @@ const SignedInLinks = (props) => {
       <ButtonGroup>
         <NavLink role="button" className="btn btn-outline-light" to="/home">Home</NavLink>
         <NavLink role="button" className="btn btn-outline-light" to="/recipes">Recipes</NavLink>
+        <NavLink role="button" className="btn btn-outline-light" to="/groups">Groups</NavLink>
         <NavLink role="button" className="btn btn-outline-light" to="/account">Account</NavLink>
       </ButtonGroup>
     </div>

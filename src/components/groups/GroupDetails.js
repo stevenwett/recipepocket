@@ -10,14 +10,20 @@ const GroupDetails = (props) => {
   if (group) {
     return (
       <Container className="view group-details">
-        <article>
-          <Row>
-            <Col>
-              <h1>Shared Recipe Group: {group.name}</h1>
-              <p>Created { moment(group.createdAt.toDate()).calendar() }</p>
-            </Col>
-          </Row>
-        </article>
+        <Row>
+          <Col md="12" lg="12">
+            <h1 className="greeting">{group.name}</h1>
+          </Col>
+          <Col md="10" lg="8">
+            <p>Created { moment(group.createdAt.toDate()).calendar() }</p>
+          </Col>
+          <Col md="12" lg="4">
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+          </Col>
+        </Row>
       </Container>
     )
   } else {
