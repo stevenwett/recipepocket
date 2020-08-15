@@ -7,7 +7,6 @@ import { Container, Row, Col } from 'reactstrap';
 
 import RecipeList from '../recipes/RecipeList';
 
-
 class Recipes extends Component {
   render() {
     const { auth, recipes } = this.props;
@@ -17,7 +16,7 @@ class Recipes extends Component {
         <Row>
           <Col>
             <h2>Add a recipe</h2>
-            <Link className="btn btn-outline-light" to="/add-recipe">add your own recipe</Link>
+            <Link className="btn btn-outline-light" to="/recipes/add">add your own recipe</Link>
           </Col>
         </Row>
         <Row>

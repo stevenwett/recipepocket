@@ -78,7 +78,7 @@ $input-btn-font-family: $font-family-base;
 $btn-font-weight:        $font-weight-bold;
 $input-btn-border-width: 2px;
 
-$body-bg: $dark;
+$body-bg: $gray-800;
 
 $body-color: $white;
 
@@ -97,6 +97,9 @@ $transition-base: all .1s ease-in-out;
 $spacer: 1rem;
 
 $headings-margin-bottom: $spacer * (0.8);
+
+$navbar-dark-color: $gray-700;
+$navbar-padding-y: 1rem;
 
 @import 'meyer-hard-reset';
 

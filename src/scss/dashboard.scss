@@ -138,6 +138,9 @@
 
 	.preview {
 		background-color: $gray-600;
+		background-image: url(/images/peach-cobbler-photo.jpg);
+		background-size: cover;
+		background-position: center;
 	}
 
 	.text {
@@ -174,6 +177,7 @@
 	}
 
 	.excerpt {
+		font-weight: $font-weight-normal;
 		padding: 0 1rem;
 	}
 

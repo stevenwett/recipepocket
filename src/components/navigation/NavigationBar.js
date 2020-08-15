@@ -1,8 +1,9 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { Navbar, Container } from 'reactstrap';
+
 import SignedInLinks from './SignedInLinks'
 import SignedOutLinks from './SignedOutLinks'
-import { Navbar, Container } from 'reactstrap';
-import { connect } from 'react-redux'
 
 const NavigationBar = (props) => {
   console.log(props);

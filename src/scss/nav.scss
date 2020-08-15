@@ -1,8 +1,10 @@
 .navbar {
+	background-color: $gray-700;
+
 	.app-name {
-		color: $gray-600;
+		color: $gray-500;
 		font-weight: $font-weight-bold;
 		font-family: $font-family-base;
-		font-size: 1.25rem;
+		font-size: 1.5rem;
 	}
 }

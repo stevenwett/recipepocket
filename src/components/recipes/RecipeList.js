@@ -1,5 +1,6 @@
 import React from 'react'
 import { Row } from 'reactstrap';
+
 import RecipeSummary from './RecipeSummary'
 
 const RecipeList = ({recipes}) => {

@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, CardBody, Button, Form, Input, FormGroup } from 'reactstrap';
+import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
-import { compose } from 'redux';
 import { Redirect, Link } from 'react-router-dom';
+import { Container, Row, Col, CardBody, Button, Form, Input, FormGroup } from 'reactstrap';
+
 import { signOut } from '../../store/actions/authActions';
 import GroupList from '../groups/GroupList';
 
-class MyAccount extends Component {
+class Account extends Component {
   state = {
     email: '',
     password: ''
@@ -130,4 +131,4 @@ export default compose(
   firestoreConnect([
     { collection: 'groups', orderBy: ['createdAt', 'desc'] },
   ])
-)(MyAccount);
+)(Account);

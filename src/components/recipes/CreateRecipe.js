@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { createRecipe } from '../../store/actions/recipeActions'
-import { Form, Container, Row, Col, Input, Label, FormGroup, Button, CardBody } from 'reactstrap';
 import { Redirect } from 'react-router-dom';
+import { Form, Container, Row, Col, Input, Label, FormGroup, Button, CardBody } from 'reactstrap';
+
+import { createRecipe } from '../../store/actions/recipeActions'
 
 class CreateRecipe extends Component {
   state = {
@@ -10,6 +11,7 @@ class CreateRecipe extends Component {
     excerpt: ''
   }
   handleChange = (e) => {
+    console.log(e.target.value);
     this.setState({
       [e.target.id]: e.target.value
     })
@@ -59,18 +61,6 @@ class CreateRecipe extends Component {
                   </FormGroup>
                   <FormGroup>
                     <Row>
-                      <Col sm="6">
-                        <Label for="timeNumber">Number</Label>
-                        <Input type="number" name="number" id="timeNumber" onChange={this.handleChange} />
-                      </Col>
-                      <Col sm="6">
-                        <Label for="timeUnit">Units</Label>
-                        <Input type="select" name="timeUnit" id="timeUnit" onChange={this.handleChange}>
-                          <option>minutes</option>
-                          <option>hours</option>
-                          <option>days</option>
-                        </Input>
-                      </Col>
                     </Row>
                   </FormGroup>
                   <FormGroup>

@@ -1,21 +1,25 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom';
+import { firestoreConnect } from 'react-redux-firebase'
 import { Col, Row, Container, CardBody, CardImg } from 'reactstrap';
 
+import { updateRecipe } from '../../store/actions/recipeActions'
+
 const RecipeDetails = (props) => {
-  const { recipe, profile } = props;
+  const { recipe, profile, recipeId } = props;
   if (recipe) {
     return (
       <Container className="view view-card recipe-details">
         <article className="card">
-          <CardImg top width="100%" src={recipe.img} alt={recipe.imgAlt} />
+          <CardImg top width="100%" src="/images/peach-cobbler-photo.jpg" alt={recipe.imgAlt} />
           <CardBody>
             <Row>
               <Col xs="12" sm="12">
 
                 <h1>{ recipe.title }</h1>
+                <Link to={'/recipes/' + recipeId + '/edit'}>Edit</Link>
                 <p className="excerpt">{ recipe.excerpt }</p>
                 <p className="author">Original recipe by { recipe.author }</p>
                 <p className="source">from oringinal source: { recipe.source } </p>
@@ -36,17 +40,12 @@ const RecipeDetails = (props) => {
                   <p className="summaryText">{ recipe.summaryText }</p>
                 </div>
                 <p>Added by</p>
-                <div className="has-cooked-wrapper">
-                  <p>Mark as cooked</p>
-                </div>
               </Col>
             </Row>
             <Row>
               <Col xs="12" sm="12">
                 <h2>Ingredients</h2>
                 <ul className="ingredients">
-                  <li>ingedient 1</li>
-                  <li>ingredient 2</li>
                 </ul>
               </Col>
             </Row>
@@ -54,7 +53,6 @@ const RecipeDetails = (props) => {
               <Col xs="12" sm="12">
                 <h2>Preparation</h2>
                 <ol className="preparation">
-                  <li><strong>Step 1</strong> do this first</li>
                 </ol>
               </Col>
             </Row>
@@ -80,13 +78,21 @@ const mapStateToProps = (state, ownProps) => {
   const recipes = state.firestore.data.recipes;
   const recipe = recipes ? recipes[id] : null
   return {
+    recipeId: id,
     recipe: recipe,
-    profile: state.firebase.profile
+    profile: state.firebase.profile,
+    auth: state.firebase.auth
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateRecipe: (recipe) => dispatch(updateRecipe(recipe))
   }
 }
 
 export default compose(
-  connect(mapStateToProps),
+  connect(mapStateToProps, mapDispatchToProps),
   firestoreConnect([
     { collection: 'recipes' }
   ])

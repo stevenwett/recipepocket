@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { createGroup } from '../../store/actions/groupActions'
-import { Form, Container, Row, Col, Input, Label, FormGroup, Button, CardBody } from 'reactstrap';
 import { Redirect } from 'react-router-dom';
+import { Form, Container, Row, Col, Input, Label, FormGroup, Button, CardBody } from 'reactstrap';
+
+import { createGroup } from '../../store/actions/groupActions'
 
 class CreateGroup extends Component {
   state = {

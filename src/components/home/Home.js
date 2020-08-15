@@ -30,7 +30,7 @@ class Home extends Component {
           <Col sm="12" lg="4">
             <section className="dashboard-add-recipe">
               <h2>Add a recipe</h2>
-              <Link className="btn btn-outline-light" to="/add-recipe">add your own recipe</Link>
+              <Link className="btn btn-outline-light" to="/recipes/add">add your own recipe</Link>
             </section>
           </Col>
         </Row>

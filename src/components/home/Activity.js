@@ -10,7 +10,7 @@ const Activity = (props) => {
         { activity && activity.map(item => {
           return (
             <li key={item.id}>
-              <strong>{item.user}</strong> {item.content} &ndash; { moment(item.time.toDate()).calendar() }
+              <strong>{item.user}</strong> {item.content} &ndash;<br />{ moment(item.time.toDate()).calendar() }
             </li>
           )
         })}

@@ -1,15 +1,18 @@
 import React from 'react';
-import moment from 'moment';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 import { Col, Card, CardBody, CardImg, CardTitle, CardFooter } from 'reactstrap';
 
 const RecipeSummary = ({recipe}) => {
+  const isNewRecipe = recipe.lastViewed > recipe.createdAt;
+  // const newRecipeDate = 'Created ' + moment(recipe.lastViewed.toDate()).calendar();
+  // const recipeDate = 'Viewed ' + moment(recipe.createdAt.toDate()).calendar();
   return (
     <Col sm="12" md="6" lg="4">
-      <Link to={'/recipe/' + recipe.id}>
+      <Link to={'/recipes/' + recipe.id}>
         <article className="recipe-summary">
           <Card>
-            <CardImg top width="100%" src={recipe.img} alt={recipe.imgAlt} />
+            <CardImg top width="100%" src="/images/peach-cobbler-photo.jpg" alt={recipe.imgAlt} />
             <CardBody>
               <CardTitle>
                 <h2>{recipe.title}</h2>
@@ -20,8 +23,7 @@ const RecipeSummary = ({recipe}) => {
               </div>
             </CardBody>
             <CardFooter className="text-muted">
-              <p>Saved { moment(recipe.createdAt.toDate()).calendar() }</p>
-              <p>Saved { moment(recipe.createdAt.toDate()).calendar() }</p>
+              <p>{'Created ' + moment(recipe.createdAt.toDate()).calendar()}</p>
             </CardFooter>
           </Card>
         </article>
