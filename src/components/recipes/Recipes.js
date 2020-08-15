@@ -14,7 +14,11 @@ class Recipes extends Component {
     return (
       <Container className="view">
         <Row>
-          <Col>
+          <Col md="10" lg="8">
+            <h1>Recipes</h1>
+            <p>Here is a complete list of recipes that you have saved or added.</p>
+          </Col>
+          <Col md="12" lg="4">
             <h2>Add a recipe</h2>
             <Link className="btn btn-outline-light" to="/recipes/add">add your own recipe</Link>
           </Col>
@@ -22,6 +26,12 @@ class Recipes extends Component {
         <Row>
           <Col>
             <RecipeList recipes={recipes} />
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <h2>Add a recipe</h2>
+            <Link className="btn btn-outline-light" to="/recipes/add">add your own recipe</Link>
           </Col>
         </Row>
       </Container>
