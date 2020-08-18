@@ -52,6 +52,10 @@
 		}
 	}
 
+	label.settings-item {
+		margin-bottom: 0;
+	}
+
 	a {
 		color: $primary;
 
@@ -187,7 +191,7 @@
 
 	.author {
 		padding: 0.5rem 1rem;
-		padding-bottom: 0;
+		padding-top: 0.25rem;
 		text-transform: uppercase;
 		font-size: 0.8rem;
 		font-weight: $font-weight-bolder;

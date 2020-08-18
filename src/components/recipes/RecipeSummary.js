@@ -5,8 +5,6 @@ import { Col, Card, CardBody, CardImg, CardTitle, CardFooter } from 'reactstrap'
 
 const RecipeSummary = ({recipe}) => {
   const isNewRecipe = recipe.lastViewed > recipe.createdAt;
-  // const newRecipeDate = 'Created ' + moment(recipe.lastViewed.toDate()).calendar();
-  // const recipeDate = 'Viewed ' + moment(recipe.createdAt.toDate()).calendar();
   return (
     <Col sm="12" md="6" lg="4">
       <Link to={'/recipes/' + recipe.id}>
@@ -18,8 +16,8 @@ const RecipeSummary = ({recipe}) => {
                 <h2>{recipe.title}</h2>
               </CardTitle>
               <div className="card-text">
-                <div className="excerpt">{recipe.excerpt}</div>
                 <div className="author">{recipe.author}</div>
+                <div className="excerpt">{recipe.excerpt}</div>
               </div>
             </CardBody>
             <CardFooter className="text-muted">

@@ -20,7 +20,7 @@ class SignIn extends Component {
   }
   render() {
     const { authError, auth } = this.props;
-    if (auth.uid) return <Redirect to='/' />
+    if (auth.uid) return <Redirect to='/home' />
 
     return (
       <Container className="view view-card user-auth user-sign-in">

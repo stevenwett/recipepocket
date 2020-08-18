@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
-import { Container, Row, Col, CardBody, Button, Form, Input, FormGroup } from 'reactstrap';
+import { Label, CustomInput, Container, Row, Col, CardBody, Button, Form, Input, FormGroup } from 'reactstrap';
 
 import { signOut } from '../../store/actions/authActions';
 
@@ -14,6 +14,13 @@ class Account extends Component {
     this.setState({
       [e.target.id]: e.target.value
     })
+  }
+  handleSwitch = (e) => {
+    e.target.checked ? (
+      console.log('Dark theme')
+    ) : (
+      console.log('Light theme')
+    )
   }
   handleSubmit = (e) => {
     e.preventDefault();
@@ -65,8 +72,15 @@ class Account extends Component {
               <Col>
                 <h2>General</h2>
                 <ul>
-                  <li><Link to="/account/units">Units</Link></li>
-                  <li><Link to="/account/theme">App theme</Link></li>
+                  {/*<li><Link to="/account/units">Units</Link></li>*/}
+                  <li>
+                    <FormGroup>
+                      <Label className="settings-item" for="appThemeSwitch">App theme</Label>
+                      <div>
+                        <CustomInput type="switch" id="appThemeSwitch" name="appTheme" label="Light theme" onChange={this.handleSwitch} />
+                      </div>
+                    </FormGroup>
+                  </li>
                 </ul>
                 <h2>About</h2>
                 <ul>

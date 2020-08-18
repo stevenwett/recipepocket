@@ -1,6 +1,10 @@
 .navbar {
 	background-color: $gray-700;
 
+	a {
+		color: $white;
+	}
+
 	.app-name {
 		color: $gray-500;
 		font-weight: $font-weight-bold;

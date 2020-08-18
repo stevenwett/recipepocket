@@ -42,9 +42,9 @@ class SignUp extends Component {
                 <label className="d-block my-2" htmlFor="password">Password
                   <Input className="mt-1" type="password" id="password" onChange={this.handleChange}/>
                 </label>
-                <label className="d-block my-2" htmlFor="confirmPassword">Confirm password
+                {/*<label className="d-block my-2" htmlFor="confirmPassword">Confirm password
                   <Input className="mt-1" type="password" id="confirmPassword" onChange={this.handleChange}/>
-                </label>
+                </label>*/}
                 <Button className="my-3">create account</Button>
               </Form>
               <div className="authentication-error">
