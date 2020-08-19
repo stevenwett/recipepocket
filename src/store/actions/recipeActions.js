@@ -25,8 +25,6 @@ export const updateRecipe = (recipe) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     // make async call to database
     const firestore = getFirestore();
-    const profile = getState().firebase.profile;
-    const ownerId = getState().firebase.auth.uid;
     firestore.collection('recipes').doc(recipe.id).update({
       ...recipe,
       lastModified: new Date()

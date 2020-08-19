@@ -5,7 +5,7 @@ import { ButtonGroup } from 'reactstrap';
 const SignedInLinks = (props) => {
   const { profile } = props;
   return (
-    <div>
+    <div className="nav-group">
       <ButtonGroup>
         <NavLink role="button" className="btn btn-outline-light" to="/home">Home</NavLink>
         <NavLink role="button" className="btn btn-outline-light" to="/recipes">Recipes</NavLink>

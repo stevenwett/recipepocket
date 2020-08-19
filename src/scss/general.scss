@@ -1,8 +1,32 @@
-// Dashboard
+// Global
+
+h1,
+.h1 {
+	font-weight: 900;
+}
+
+h2,
+.h2 {
+	font-weight: 900;
+}
+
+p {
+	font-weight: 200;
+}
+
+li {
+	line-height: 1.3;
+}
+
+a {
+	font-weight: $font-weight-bold;
+}
 
 .view {
+	position: relative;
 	padding-top: 3rem;
 	margin-bottom: 2rem;
+	padding-bottom: 5rem;
 
 	& > .row {
 		margin-bottom: 2rem;
@@ -11,6 +35,14 @@
 
 .view-card {
 	max-width: 600px;
+}
+
+.recipe-details .card {
+	z-index: 1;
+
+	@include media-breakpoint-down(sm) {
+		margin-top: 2.75rem;
+	}
 }
 
 .my-account {

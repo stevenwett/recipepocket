@@ -1,5 +1,9 @@
 .navbar {
-	background-color: $gray-700;
+	background-color: lighten( $gray-800, 2% );
+
+	@include media-breakpoint-down(sm) {
+		background-color: $dark;
+	}
 
 	a {
 		color: $white;
@@ -10,5 +14,140 @@
 		font-weight: $font-weight-bold;
 		font-family: $font-family-base;
 		font-size: 1.5rem;
+	}
+
+	.nav-group {
+		@include media-breakpoint-down(md) {
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			width: 100%;
+			z-index: 2;
+			border-top: 1px solid $gray-600;
+
+			.btn-group {
+				width: 100%;
+				background: $dark;
+			}
+
+			.btn {
+				border: 0;
+				border-radius: 0;
+				padding-top: 2rem;
+				padding-bottom: 2rem;
+				font-size: 1rem;
+
+				&.active {
+					background-color: initial;
+					color: lighten( $primary, 15% );
+
+					&:hover,
+					&:active {
+						color: lighten( $primary, 15% );
+					}
+				}
+
+				&:hover,
+				&:active {
+					background-color: initial;
+					color: $white;
+				}
+			}
+		}
+
+		@include media-breakpoint-down(sm) {
+			.btn {
+				border: 0;
+				border-radius: 0;
+				padding-top: 1.5rem;
+				padding-bottom: 1.5rem;
+			}
+		}
+	}
+}
+
+.side-navigation {
+	position: absolute;
+	right: 1rem;
+
+	ul {
+		margin: 0;
+	}
+
+	li {
+		height: 80px;
+		width: 80px;
+	}
+
+	a,
+	button {
+		appearance: none;
+		display: inline-block;
+		height: 80px;
+		width: 80px;
+		background-color: $gray-600;
+		border-radius: 100%;
+		border: 0;
+		transition: $transition-base;
+
+		&:hover,
+		&:focus {
+			background-color: $gray-500;
+		}
+	}
+
+	@include media-breakpoint-up(md) {
+		top: 4rem;
+		width: 80px;
+
+		ul {
+			position: relative;
+			width: 80px;
+		}
+
+		li {
+			position: absolute;
+			margin-bottom: 0.75rem;
+			z-index: 0;
+			top: 0;
+			right: 0;
+			left: 96px;
+			bottom: 0;
+
+			&:nth-child(1) {
+				animation: 1s sidebar-nav-reveal;
+			}
+
+			&:nth-child(2) {
+				top: calc(80px + 0.75rem);
+				animation: 1s sidebar-nav-reveal;
+			}
+
+			&:nth-child(3) {
+				top: calc(160px + 1.5rem);
+				animation-delay: 0.5s;
+				animation: 1s sidebar-nav-reveal;
+			}
+		}
+	}
+
+	@include media-breakpoint-down(sm) {
+		top: 0;
+
+		li {
+			display: inline-block;
+			margin-right: 0.5rem;
+		}
+	}
+}
+
+@keyframes sidebar-nav-reveal {
+	0% {
+		left: 0;
+	}
+
+	100% {
+		left: 96px;
 	}
 }
