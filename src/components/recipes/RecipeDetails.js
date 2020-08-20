@@ -1,31 +1,43 @@
 import React, { Component } from 'react';
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { firestoreConnect } from 'react-redux-firebase'
 import { Col, Row, Container, CardBody, CardImg } from 'reactstrap';
 
 import { updateRecipe } from '../../store/actions/recipeActions'
 
 class RecipeDetails extends Component {
-  handleClick = (e, action = "") => {
+  handleClick = (e) => {
     e.preventDefault();
-    switch(action) {
+    const value = e.target.value;
+    switch(value) {
       case "delete":
-        break;
+
+      case "delete":
+        this.props.updateRecipe(this.props.recipeId, { disabled: true });
       case "favorite":
         break;
       default:
-        console.log(action);
+        return false;
+        // console.log(action);
+    }
+  }
+  componentDidMount() {
+    const { recipeId } = this.props;
+    if (recipeId) {
+      this.props.updateRecipe(recipeId);
     }
   }
   render() {
-    const { recipe, profile, recipeId } = this.props;
+    const { auth, recipe, profile, recipeId } = this.props;
+    if ( !auth.uid ) return <Redirect to='/signin' />
     if (recipe) {
+      if ( recipe.disabled ) return <Redirect to='/recipes' />
       return (
         <Container className="view view-card recipe-details">
           <article className="card">
-            <CardImg top width="100%" src="/images/peach-cobbler-photo.jpg" alt={recipe.imgAlt} />
+            <CardImg top width="100%" src="/images/peach-cobbler-photo.jpg" alt="" />
             <CardBody>
               <Row>
                 <Col xs="12" sm="12">
@@ -65,10 +77,11 @@ class RecipeDetails extends Component {
           </article>
           <nav className="side-navigation">
             <ul>
-              <li><Link to="/recipes"><span className="sr-only">Back</span></Link></li>
+              <li><Link to="/recipes" title="Back to recipes"><span className="sr-only">Back</span></Link></li>
               {/*<li><button>Share</button></li>*/}
-              <li><button onClick={(e) => {this.handleClick(e, "favorite")}}><span className="sr-only">Favorite</span></button></li>
-              <li><button onClick={(e) => {this.handleClick(e, "delete")}}><span className="sr-only">Delete</span></button></li>
+              <li><Link to={'/recipes/' + recipeId + '/edit'}><span className="sr-only">Edit</span></Link></li>
+              <li><button onClick={this.handleClick} value="favorite" title="Mark as favorite"></button></li>
+              <li><button onClick={this.handleClick} value="delete" title="Delete recipe"></button></li>
             </ul>
           </nav>
         </Container>
@@ -101,7 +114,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateRecipe: (recipe) => dispatch(updateRecipe(recipe))
+    updateRecipe: (recipeId, recipe = null) => dispatch(updateRecipe(recipeId, recipe))
   }
 }
 

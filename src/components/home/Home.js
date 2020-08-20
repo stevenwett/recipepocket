@@ -7,7 +7,7 @@ import { Container, Row, Col } from 'reactstrap';
 
 import Activity from './Activity';
 import RecipeList from '../recipes/RecipeList';
-import RecentRecipes from '../recipes/RecentRecipes';
+import RecentRecipeList from '../recipes/RecentRecipeList';
 
 
 class Home extends Component {
@@ -24,7 +24,7 @@ class Home extends Component {
           <Col sm="12" lg="8">
             <section>
               <h1 className="sr-only">Recent recipes</h1>
-              <RecentRecipes />
+              <RecentRecipeList recipes={recipes} />
             </section>
           </Col>
           <Col sm="12" lg="4">
@@ -43,36 +43,25 @@ class Home extends Component {
             </section>
           </Col>
         </Row>
-        <section>
-          <Row>
-            <Col sm="12">
-              <h1>Shared sets</h1>
-            </Col>
-            <Col sm="12" lg="8">
-              <p>Here we'll list the shared sets and also a few of the shared recipes</p>
-            </Col>
-            <Col sm="12" lg="4">
-              <Activity activity={activity} />
-            </Col>
-          </Row>
-        </section>
       </Container>
     )
   }
 }
 
 const mapStateToProps = (state) => {
+  console.log(state.firestore);
   return {
     recipes: state.firestore.ordered.recipes,
-    auth: state.firebase.auth,
-    activity: state.firestore.ordered.activity
+    auth: state.firebase.auth
   }
 }
 
 export default compose(
   connect(mapStateToProps),
   firestoreConnect([
-    { collection: 'recipes', orderBy: ['createdAt', 'desc'] },
-    { collection: 'activity', limit: 10, orderBy: ['time', 'desc'] }
+    {
+      collection: 'recipes',
+      orderBy: ['createdAt', 'desc']
+    }
   ])
 )(Home);

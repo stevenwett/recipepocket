@@ -21,6 +21,7 @@ class CreateRecipe extends Component {
     this.props.createRecipe(this.state);
   }
   render() {
+    console.log(this.props);
     const { auth } = this.props;
     if ( !auth.uid ) return <Redirect to='/signin' />
     return (
@@ -67,7 +68,7 @@ class CreateRecipe extends Component {
                     <Label for="fullSummary">Full summary</Label>
                     <Input type="textarea" name="fullSummary" id="fullSummary" onChange={this.handleChange} />
                   </FormGroup>
-                  <Button>Add to your recipes</Button>
+                  <Button>add to your recipes</Button>
                 </Form>
               </Col>
             </Row>

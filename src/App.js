@@ -6,7 +6,6 @@ import Welcome from './components/Welcome';
 import Home from './components/home/Home';
 import Recipes from './components/recipes/Recipes';
 import CreateRecipe from './components/recipes/CreateRecipe';
-import EditRecipe from './components/recipes/EditRecipe';
 import RecipeDetails from './components/recipes/RecipeDetails';
 import Account from './components/account/Account';
 import AccountSetting from './components/account/AccountSetting';
@@ -28,7 +27,7 @@ class App extends Component {
             <Route exact path='/recipes' component={Recipes} />
             <Route exact path='/recipes/add' component={CreateRecipe} />
             <Route exact path='/recipes/:id' component={RecipeDetails} />
-            <Route path='/recipes/:id/edit' component={EditRecipe} />
+            <Route path='/recipes/:id/edit' component={CreateRecipe} />
             <Route exact path='/account' component={Account} />
             <Route path='/account/:id' component={AccountSetting} />
             {/*<Route exact path='/groups' component={Groups} />

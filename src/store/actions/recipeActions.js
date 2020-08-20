@@ -21,18 +21,20 @@ export const createRecipe = (recipe) => {
   }
 };
 
-export const updateRecipe = (recipe) => {
+export const updateRecipe = (recipeId, recipe = null) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     // make async call to database
     const firestore = getFirestore();
-    firestore.collection('recipes').doc(recipe.id).update({
-      ...recipe,
-      lastModified: new Date()
-    }).then(() => {
-      dispatch({ type: 'UDPATE_RECIPE', recipe });
-    }).catch((error) => {
-      dispatch({ type: 'UPDATE_RECIPE_ERROR', error });
-    })
+    if (recipeId ) {
+      firestore.collection('recipes').doc(recipeId).update({
+        ...recipe,
+        lastModified: new Date()
+      }).then(() => {
+        dispatch({ type: 'UDPATE_RECIPE', recipeId });
+      }).catch((error) => {
+        dispatch({ type: 'UPDATE_RECIPE_ERROR', error });
+      })
+    }
   }
 };
 

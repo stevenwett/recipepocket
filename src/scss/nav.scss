@@ -129,6 +129,12 @@
 				animation-delay: 0.5s;
 				animation: 1s sidebar-nav-reveal;
 			}
+
+			&:nth-child(4) {
+				top: calc(240px + 2.25rem);
+				animation-delay: 0.5s;
+				animation: 1s sidebar-nav-reveal;
+			}
 		}
 	}
 

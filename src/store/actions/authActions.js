@@ -1,5 +1,5 @@
 export const signIn = (credentials) => {
-  return (dispatch, getState,  { getFirebase }) => {
+  return (dispatch, getState, { getFirebase }) => {
     const firebase = getFirebase();
 
     firebase.auth().signInWithEmailAndPassword(
@@ -35,7 +35,7 @@ export const signUp = (newUser) => {
       return firestore.collection('users').doc(response.user.uid).set({
         firstName: newUser.firstName,
         lastName: newUser.lastName,
-        initials: newUser.firstName[0] + newUser.lastName[0]
+        theme: 'light'
       })
     }).then(() => {
       dispatch({ type: 'SIGNUP_SUCCESS' });
