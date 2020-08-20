@@ -47,7 +47,7 @@ export default compose(
   firestoreConnect([
     {
       collection: 'recipes',
-      orderBy: ['createdAt', 'desc']
+      orderBy: ['title', 'asc']
     }
   ])
 )(Recipes);
