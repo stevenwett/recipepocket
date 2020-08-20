@@ -43,7 +43,6 @@ class RecipeDetails extends Component {
                 <Col xs="12" sm="12">
 
                   <h1>{ recipe.title }</h1>
-                  <Link to={'/recipes/' + recipeId + '/edit'}>Edit</Link>
                   <p className="excerpt">{ recipe.excerpt }</p>
                   <p className="author">Original recipe by { recipe.author }</p>
                   <p className="source">from oringinal source: { recipe.source } </p>

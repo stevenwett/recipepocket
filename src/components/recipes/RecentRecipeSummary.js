@@ -5,7 +5,7 @@ import { Col, Row } from 'reactstrap';
 
 const RecentRecipeSummary = ({recipe}) => {
   return (
-    <Col xs="12" sm="6" className="mb-3 pr-3">
+    <Col xs="12" sm="12" md="6" className="mb-3 pr-3">
       <Link to={'/recipes/' + recipe.id}>
         <article>
           <Row className="recent-recipe no-gutters rounded">

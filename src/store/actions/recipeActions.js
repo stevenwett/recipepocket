@@ -12,6 +12,8 @@ export const createRecipe = (recipe) => {
       groups: [],
       createdAt: new Date(),
       lastModified: new Date(),
+      lastViewed: new Date(),
+      timesViewed: 0,
       disabled: false
     }).then(() => {
       dispatch({ type: 'CREATE_RECIPE', recipe });
@@ -22,13 +24,13 @@ export const createRecipe = (recipe) => {
 };
 
 export const updateRecipe = (recipeId, recipe = null) => {
-  return (dispatch, getState, { getFirebase, getFirestore }) => {
+  return (dispatch, getState, { getFirestore }) => {
     // make async call to database
     const firestore = getFirestore();
     if (recipeId ) {
       firestore.collection('recipes').doc(recipeId).update({
         ...recipe,
-        lastModified: new Date()
+        lastViewed: new Date()
       }).then(() => {
         dispatch({ type: 'UDPATE_RECIPE', recipeId });
       }).catch((error) => {

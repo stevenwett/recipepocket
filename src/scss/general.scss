@@ -31,18 +31,21 @@ a {
 	& > .row {
 		margin-bottom: 2rem;
 	}
+
+	&.recipe-details {
+		.card {
+			z-index: 1;
+		}
+
+		@include media-breakpoint-down(sm) {
+			padding-top: 4rem;
+			margin-top: 1rem;
+		}
+	}
 }
 
 .view-card {
 	max-width: 600px;
-}
-
-.recipe-details .card {
-	z-index: 1;
-
-	@include media-breakpoint-down(sm) {
-		margin-top: 2.75rem;
-	}
 }
 
 .my-account {
@@ -170,6 +173,7 @@ a {
 	min-height: 70px;
 	background-color: $white;
 	color: $dark;
+	overflow: hidden;
 
 	h2 {
 		margin: 0;

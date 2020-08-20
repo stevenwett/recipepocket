@@ -3,6 +3,8 @@
 
 	@include media-breakpoint-down(sm) {
 		background-color: $dark;
+		padding: 0;
+		padding-top: 1rem;
 	}
 
 	a {
@@ -115,35 +117,49 @@
 			left: 96px;
 			bottom: 0;
 
-			&:nth-child(1) {
-				animation: 1s sidebar-nav-reveal;
-			}
+			// &:nth-child(1) {
+			// 	animation: 1s sidebar-nav-reveal;
+			// }
 
 			&:nth-child(2) {
 				top: calc(80px + 0.75rem);
-				animation: 1s sidebar-nav-reveal;
+				// animation: 1s sidebar-nav-reveal;
 			}
 
 			&:nth-child(3) {
 				top: calc(160px + 1.5rem);
-				animation-delay: 0.5s;
-				animation: 1s sidebar-nav-reveal;
+				// animation-delay: 0.5s;
+				// animation: 1s sidebar-nav-reveal;
 			}
 
 			&:nth-child(4) {
 				top: calc(240px + 2.25rem);
-				animation-delay: 0.5s;
-				animation: 1s sidebar-nav-reveal;
+				// animation-delay: 0.5s;
+				// animation: 1s sidebar-nav-reveal;
 			}
 		}
 	}
 
 	@include media-breakpoint-down(sm) {
 		top: 0;
+		right: initial;
+		left: 1rem;
+
+		a,
+		button {
+			width: 50px;
+			height: 50px;
+		}
+
+		ul {
+			height: 50px;
+		}
 
 		li {
 			display: inline-block;
 			margin-right: 0.5rem;
+			width: 50px;
+			height: 50px;
 		}
 	}
 }
