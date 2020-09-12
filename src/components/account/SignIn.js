@@ -39,7 +39,7 @@ class SignIn extends Component {
                     </label>
                     <Row>
                       <Col>
-                        <Input type="submit" className="btn btn-primary" role="button">Sign In</Input>
+                        <Input type="submit" className="btn btn-primary" role="button" value="Sign In" />
                       </Col>
                       <Col>
                         <Link to="/" className="btn btn-secondary">Cancel</Link>

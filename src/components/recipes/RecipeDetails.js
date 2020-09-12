@@ -8,20 +8,6 @@ import { Col, Row, Container, CardBody, CardImg } from 'reactstrap';
 import { updateRecipe } from '../../store/actions/recipeActions'
 
 class RecipeDetails extends Component {
-  handleClick = (e) => {
-    e.preventDefault();
-    const value = e.target.value;
-    switch(value) {
-      case "delete":
-        this.props.updateRecipe(this.props.recipeId, { disabled: true });
-        break;
-      case "favorite":
-        break;
-      default:
-        return false;
-        // console.log(action);
-    }
-  }
   componentDidMount() {
     const { recipeId } = this.props;
     if (recipeId) {
@@ -35,53 +21,63 @@ class RecipeDetails extends Component {
       if ( recipe.disabled ) return <Redirect to='/recipes' />
       return (
         <Container className="view view-card recipe-details">
+          <Link to="/recipes" className="btn btn-outline-primary">All Recipes</Link>
+          <Link to={"/recipes/" + recipeId + "/edit"} className="btn btn-outline-primary">Edit</Link>
           <article className="card">
-            <CardImg top width="100%" src="/images/peach-cobbler-photo.jpg" alt="" />
+            <div className="recipe-image">
+              <CardImg top width="100%" src="/images/peach-cobbler-photo.jpg" alt="" />
+              <div className="recipe-image-caption">Image caption</div>
+            </div>
             <CardBody>
-              <Row>
-                <Col xs="12" sm="12">
-
-                  <h1>{ recipe.title }</h1>
-                  <p className="excerpt">{ recipe.excerpt }</p>
-                  <p className="author">Original recipe by { recipe.author }</p>
-                  <p className="source">from oringinal source: { recipe.source } </p>
-                  <p className="owner">Added by { recipe.ownerFirstName } { recipe.ownerLastName }</p>
-                </Col>
-              </Row>
-              <Row>
-                <Col xs="12" sm="12">
-                  <div className="overview">
-                    <p className="yield">feeds { recipe.yield }</p>
-                    <p className="time">takes about { recipe.timeNumber } { recipe.timeUnit }</p>
-                    <p className="summaryText">{ recipe.summaryText }</p>
-                  </div>
-                </Col>
-              </Row>
-              <Row>
-                <Col xs="12" sm="12">
-                  <h2>Ingredients</h2>
-                  <ul className="ingredients">
-                  </ul>
-                </Col>
-              </Row>
-              <Row>
-                <Col xs="12" sm="12">
-                  <h2>Preparation</h2>
-                  <ol className="preparation">
-                  </ol>
-                </Col>
-              </Row>
+              <div className="recipe-intro">
+                <Row>
+                  <Col>
+                    <h1>{ recipe.title }</h1>
+                    <p className="author">{ recipe.author }</p>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col xs="12" sm="12">
+                    <div className="overview">
+                      <table>
+                        <tr>
+                          <td>YIELD</td>
+                          <td>{ recipe.yield }</td>
+                        </tr>
+                        <tr>
+                          <td>TIME</td>
+                          <td>{ recipe.time }</td>
+                        </tr>
+                      </table>
+                      <p className="summaryText">{ recipe.summaryText }</p>
+                    </div>
+                  </Col>
+                </Row>
+              </div>
+              <section className="recipe-ingredients">
+                <Row>
+                  <Col xs="12" sm="12">
+                    <h2>Ingredients</h2>
+                    <ul className="ingredients">
+                    </ul>
+                  </Col>
+                </Row>
+              </section>
+              <section className="recipe-preparation">
+                <Row>
+                  <Col xs="12" sm="12">
+                    <h2>Preparation</h2>
+                    <ol className="preparation">
+                    </ol>
+                  </Col>
+                </Row>
+              </section>
+              <section className="recipe-tips">
+                <h3>Tips</h3>
+                {recipe.tips}
+              </section>
             </CardBody>
           </article>
-          <nav className="side-navigation">
-            <ul>
-              <li><Link to="/recipes" title="Back to recipes"><span className="sr-only">Back</span></Link></li>
-              {/*<li><button>Share</button></li>*/}
-              <li><Link to={'/recipes/' + recipeId + '/edit'}><span className="sr-only">Edit</span></Link></li>
-              <li><button onClick={this.handleClick} value="favorite" title="Mark as favorite"></button></li>
-              <li><button onClick={this.handleClick} value="delete" title="Delete recipe"></button></li>
-            </ul>
-          </nav>
         </Container>
       )
     } else {

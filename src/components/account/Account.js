@@ -30,6 +30,7 @@ class Account extends Component {
     if (!auth.uid) return <Redirect to='/' />
     return (
       <Container className="view view-card my-account">
+        <Link to="/recipes" className="btn-outline-primary">All Recipes</Link>
         <article className="card">
           <CardBody>
             <Row>
@@ -61,7 +62,7 @@ class Account extends Component {
                     </Col>
                   </Row>
                   <div>
-                    <Button>update my details</Button>
+                    <Input type="submit" role="button" className="btn-outline-primary" value="Update My Details"/>
                   </div>
                 </Form>
                 <div className="authentication-error">
@@ -70,18 +71,6 @@ class Account extends Component {
             </Row>
             <Row>
               <Col>
-                <h2>General</h2>
-                <ul>
-                  {/*<li><Link to="/account/units">Units</Link></li>*/}
-                  <li>
-                    <FormGroup>
-                      <Label className="settings-item" for="appThemeSwitch">App theme</Label>
-                      <div>
-                        <CustomInput type="switch" id="appThemeSwitch" name="appTheme" label="Light theme" onChange={this.handleSwitch} />
-                      </div>
-                    </FormGroup>
-                  </li>
-                </ul>
                 <h2>About</h2>
                 <ul>
                   <li>
@@ -92,7 +81,6 @@ class Account extends Component {
                   </li>
                   <li><Link to="/account/terms-conditions">Terms and conditions</Link></li>
                   <li><Link to="/account/privacy-policy">Privacy policy</Link></li>
-                  <li><Link to="/account/support">Support</Link></li>
                 </ul>
                 <h2>Other</h2>
                 <ul>
