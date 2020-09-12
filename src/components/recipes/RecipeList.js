@@ -11,6 +11,8 @@ const RecipeList = ({recipes}) => {
           return (
             <RecipeSummary recipe={recipe} key={recipe.id}/>
           )
+        } else {
+          return false;
         }
       })}
     </Row>

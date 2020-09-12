@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { signIn } from '../../store/actions/authActions';
-import { Form, Container, Row, Col, Input, Button, CardBody } from 'reactstrap';
-import { Redirect } from 'react-router-dom';
+import { Form, Container, Row, Col, Input, CardBody } from 'reactstrap';
+import { Link, Redirect } from 'react-router-dom';
 
 class SignIn extends Component {
   state = {
@@ -37,7 +37,14 @@ class SignIn extends Component {
                     <label className="d-block my-2" htmlFor="password">Password
                       <Input className="mt-1" type="password" id="password" onChange={this.handleChange}/>
                     </label>
-                    <Button className="my-3">log in</Button>
+                    <Row>
+                      <Col>
+                        <Input type="submit" className="btn btn-primary" role="button">Sign In</Input>
+                      </Col>
+                      <Col>
+                        <Link to="/" className="btn btn-secondary">Cancel</Link>
+                      </Col>
+                    </Row>
                   </Form>
                   <div className="authentication-error">
                     { authError ? <p className="text-red">{ authError }</p> : null }

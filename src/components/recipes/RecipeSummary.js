@@ -4,7 +4,7 @@ import moment from 'moment';
 import { Col, Card, CardBody, CardImg, CardTitle, CardFooter } from 'reactstrap';
 
 const RecipeSummary = ({recipe}) => {
-  const isNewRecipe = recipe.lastViewed > recipe.createdAt;
+  // const isNewRecipe = recipe.lastViewed > recipe.createdAt;
   return (
     <Col sm="12" md="6" lg="4">
       <Link to={'/recipes/' + recipe.id}>

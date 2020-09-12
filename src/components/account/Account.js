@@ -26,7 +26,7 @@ class Account extends Component {
     e.preventDefault();
   }
   render() {
-    const { auth, signOut, profile, groups } = this.props;
+    const { auth, signOut, profile } = this.props;
     if (!auth.uid) return <Redirect to='/' />
     return (
       <Container className="view view-card my-account">

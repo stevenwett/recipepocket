@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import moment from 'moment';
 import { Col, Row } from 'reactstrap';
 
 const RecentRecipeSummary = ({recipe}) => {

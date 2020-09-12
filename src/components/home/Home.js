@@ -5,40 +5,39 @@ import { firestoreConnect } from 'react-redux-firebase';
 import { Redirect, Link } from 'react-router-dom';
 import { Container, Row, Col } from 'reactstrap';
 
-import Activity from './Activity';
+// import Activity from './Activity';
 import RecipeList from '../recipes/RecipeList';
 import RecentRecipeList from '../recipes/RecentRecipeList';
 
 
 class Home extends Component {
   render() {
-    const { recipes, auth, activity } = this.props;
+    const { recipes, auth } = this.props;
     if (!auth.uid) return <Redirect to='/' />
+
+    let recipeCount = '';
+    if ( recipes && 0 < recipes.length ) {
+      if ( 1 === recipes.length ) {
+        recipeCount = recipes.length + ' recipe';
+      }
+      recipeCount = recipes.length + ' recipes';
+    }
 
     return (
       <Container className="view dashboard">
         <Row>
-          <Col sm="12">
+          <Col sm="12" md="6">
             <p className="h1 greeting">Happy cooking!</p>
           </Col>
-          <Col sm="12" lg="8">
-            <section>
-              <h1 className="sr-only">Recent recipes</h1>
-              <RecentRecipeList recipes={recipes} />
-            </section>
-          </Col>
-          <Col sm="12" lg="4">
-            <section className="dashboard-add-recipe">
-              <h2>Add a recipe</h2>
-              <Link className="btn btn-outline-light" to="/recipes/add">add your own recipe</Link>
-            </section>
+          <Col sm="12" md="6">
+            <Link to="/recipes/add" className="btn btn-outline-primary">Add a Recipe</Link>
           </Col>
         </Row>
         <Row>
           <Col sm="12">
-            <section>
-              <h1>Your recipes</h1>
-              <p>Search</p>
+            <section className="home-recipe-list">
+              <h1>Saved Recipes</h1>
+              <p>{recipeCount}</p>
               <RecipeList recipes={recipes} />
             </section>
           </Col>

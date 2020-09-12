@@ -13,9 +13,8 @@ class RecipeDetails extends Component {
     const value = e.target.value;
     switch(value) {
       case "delete":
-
-      case "delete":
         this.props.updateRecipe(this.props.recipeId, { disabled: true });
+        break;
       case "favorite":
         break;
       default:
@@ -30,7 +29,7 @@ class RecipeDetails extends Component {
     }
   }
   render() {
-    const { auth, recipe, profile, recipeId } = this.props;
+    const { auth, recipe, recipeId } = this.props;
     if ( !auth.uid ) return <Redirect to='/signin' />
     if (recipe) {
       if ( recipe.disabled ) return <Redirect to='/recipes' />
