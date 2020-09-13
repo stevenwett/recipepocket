@@ -21,8 +21,10 @@ class RecipeDetails extends Component {
       if ( recipe.disabled ) return <Redirect to='/recipes' />
       return (
         <Container className="view view-card recipe-details">
-          <Link to="/home" className="btn btn-outline-secondary btn-card-cancel">All Recipes</Link>
-          <Link to={"/recipes/" + recipeId + "/edit"} className="btn btn-outline-secondary btn-recipe-edit">Edit</Link>
+          <div className="text-right">
+            <Link to="/home" className="btn btn-outline-secondary btn-card-cancel">All Recipes</Link>
+            <Link to={"/recipes/" + recipeId + "/edit"} className="btn btn-outline-secondary btn-recipe-edit">Edit</Link>
+          </div>
           <article className="card">
             <div className="recipe-image">
               <CardImg top width="100%" src="/images/peach-cobbler-photo.jpg" alt="" />
@@ -33,30 +35,36 @@ class RecipeDetails extends Component {
                 <Row>
                   <Col>
                     <h1>{ recipe.title }</h1>
-                    <p className="author">{ recipe.author }</p>
+                    { recipe.author && <p className="author">{ recipe.author }</p> }
                   </Col>
                 </Row>
                 <Row>
-                  <Col xs="12" sm="12">
+                  <Col>
                     <div className="overview">
-                      <table>
-                        <tr>
-                          <td>YIELD</td>
-                          <td>{ recipe.yield }</td>
-                        </tr>
-                        <tr>
-                          <td>TIME</td>
-                          <td>{ recipe.time }</td>
-                        </tr>
-                      </table>
-                      <p className="summaryText">{ recipe.summaryText }</p>
+                      <h2 className="sr-only">Overview</h2>
+                      <Row>
+                        <Col lg={4}>
+                          <h3>YIELD</h3>
+                        </Col>
+                        <Col lg={8}>
+                        </Col>
+                      </Row>
+                      <Row>
+                        <Col lg={4}>
+                          <h3>TIME</h3>
+                        </Col>
+                        <Col lg={8}>
+                        </Col>
+                      </Row>
+                      { recipe.description && <p className="description">{ recipe.description }</p>
+                    }
                     </div>
                   </Col>
                 </Row>
               </div>
               <section className="recipe-ingredients">
                 <Row>
-                  <Col xs="12" sm="12">
+                  <Col>
                     <h2>Ingredients</h2>
                     <ul className="ingredients">
                     </ul>
@@ -65,7 +73,7 @@ class RecipeDetails extends Component {
               </section>
               <section className="recipe-preparation">
                 <Row>
-                  <Col xs="12" sm="12">
+                  <Col>
                     <h2>Preparation</h2>
                     <ol className="preparation">
                     </ol>

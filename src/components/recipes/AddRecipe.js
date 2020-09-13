@@ -25,7 +25,9 @@ class AddRecipe extends Component {
     if ( !auth.uid ) return <Redirect to='/signin' />
     return (
       <Container className="view view-card add-recipe">
-        <Link to="/recipes" className="btn btn-outline-primary btn-card-cancel">Cancel</Link>
+        <div>
+          <Link to="/recipes" className="btn btn-outline-primary btn-card-cancel">Cancel</Link>
+        </div>
         <article className="card">
           <CardBody>
             <Row className="justify-content-center">
