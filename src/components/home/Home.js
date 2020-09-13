@@ -7,8 +7,6 @@ import { Container, Row, Col } from 'reactstrap';
 
 // import Activity from './Activity';
 import RecipeList from '../recipes/RecipeList';
-import RecentRecipeList from '../recipes/RecentRecipeList';
-
 
 class Home extends Component {
   render() {
@@ -24,20 +22,22 @@ class Home extends Component {
     }
 
     return (
-      <Container className="view dashboard">
+      <Container className="view home">
         <Row>
-          <Col sm="12" md="6">
-            <p className="h1 greeting">Happy cooking!</p>
-          </Col>
-          <Col sm="12" md="6">
-            <Link to="/recipes/add" className="btn btn-outline-primary">Add a Recipe</Link>
-          </Col>
+            <Col sm="12" md="6">
+              <p className="h1 greeting">Happy cooking!</p>
+            </Col>
+            <Col sm="12" md="6" className="text-right">
+              <Link to="/recipes/add" className="btn btn-outline-primary btn-add-recipe">Add a Recipe</Link>
+            </Col>
         </Row>
         <Row>
           <Col sm="12">
             <section className="home-recipe-list">
-              <h1>Saved Recipes</h1>
-              <p>{recipeCount}</p>
+              <div className="home-recipe-list-intro">
+                <h1>Saved Recipes</h1>
+                <p>{recipeCount} saved</p>
+              </div>
               <RecipeList recipes={recipes} />
             </section>
           </Col>

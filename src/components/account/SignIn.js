@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { signIn } from '../../store/actions/authActions';
-import { Form, Container, Row, Col, Input, CardBody } from 'reactstrap';
+import { Form, Container, Row, Col, Input, CardBody, FormGroup, Label, Button } from 'reactstrap';
 import { Link, Redirect } from 'react-router-dom';
 
 class SignIn extends Component {
@@ -31,18 +31,20 @@ class SignIn extends Component {
                 <article>
                   <h1>Sign in</h1>
                   <Form className="mt-3" onSubmit={this.handleSubmit}>
-                    <label className="d-block my-2" htmlFor="email">Email
-                      <Input className="mt-1" type="email" id="email" onChange={this.handleChange}/>
-                    </label>
-                    <label className="d-block my-2" htmlFor="password">Password
-                      <Input className="mt-1" type="password" id="password" onChange={this.handleChange}/>
-                    </label>
+                    <FormGroup>
+                      <Label for="email">Email</Label>
+                      <Input type="email" id="email" onChange={this.handleChange}/>
+                    </FormGroup>
+                    <FormGroup>
+                      <Label for="password">Password</Label>
+                      <Input type="password" id="password" onChange={this.handleChange}/>
+                    </FormGroup>
                     <Row>
-                      <Col>
-                        <Input type="submit" className="btn btn-primary" role="button" value="Sign In" />
+                      <Col md={6}>
+                        <Button color="primary" block>Sign In</Button>
                       </Col>
-                      <Col>
-                        <Link to="/" className="btn btn-secondary">Cancel</Link>
+                      <Col md={6}>
+                        <Link to="/" className="btn btn-outline-secondary">Cancel</Link>
                       </Col>
                     </Row>
                   </Form>

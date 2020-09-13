@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 const SignedInLinks = (props) => {
   return (
     <div className="nav-group">
-      <NavLink role="button" className="btn btn-outline-light" to="/account">Account</NavLink>
+      <NavLink role="button" className="btn btn-outline-secondary nav-account" to="/account">Account</NavLink>
     </div>
   )
 }

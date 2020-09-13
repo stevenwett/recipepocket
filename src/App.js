@@ -40,8 +40,8 @@ class App extends Component {
           </main>
           <footer className="footer">
             <Container>
-              <Row>
-                <Col><p>© { moment().year() } Steven Wett</p></Col>
+              <Row className="no-gutters">
+                <Col>&copy; { moment().year() } Steven Wett</Col>
               </Row>
             </Container>
           </footer>

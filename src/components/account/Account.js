@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
-import { Label, CustomInput, Container, Row, Col, CardBody, Button, Form, Input, FormGroup } from 'reactstrap';
+import { Label, Container, Row, Col, CardBody, Button, Form, Input, FormGroup } from 'reactstrap';
 
 import { signOut } from '../../store/actions/authActions';
 
@@ -29,41 +29,41 @@ class Account extends Component {
     const { auth, signOut, profile } = this.props;
     if (!auth.uid) return <Redirect to='/' />
     return (
-      <Container className="view view-card my-account">
-        <Link to="/recipes" className="btn-outline-primary">All Recipes</Link>
+      <Container className="view view-card account">
+        <Link to="/home" className="btn btn-outline-secondary">All Recipes</Link>
         <article className="card">
           <CardBody>
             <Row>
               <Col>
-                <h1 className="greeting">Account</h1>
+                <h1>Account</h1>
                 <Form onSubmit={this.handleSubmit}>
                   <Row>
-                    <Col>
-                      <label htmlFor="firstName">First name
+                    <Col md={6}>
+                      <FormGroup>
+                        <Label for="firstName">First name</Label>
                         <Input type="text" id="firstName" placeholder={profile.firstName} onChange={this.handleChange}/>
-                      </label>
+                      </FormGroup>
                     </Col>
-                    <Col>
-                      <label htmlFor="lastName">Last name
+                    <Col md={6}>
+                      <FormGroup>
+                        <Label for="lastName">Last name</Label>
                         <Input type="text" id="lastName" placeholder={profile.lastName} onChange={this.handleChange}/>
-                      </label>
+                      </FormGroup>
                     </Col>
-                  </Row>
-                  <Row>
-                    <Col>
-                      <label htmlFor="email">Email
+                    <Col md={6}>
+                      <FormGroup>
+                        <Label for="email">Email</Label>
                         <Input type="email" id="email" placeholder={auth.email} />
-                      </label>
+                      </FormGroup>
                     </Col>
-                    <Col>
-                      <label htmlFor="password">Password
+                    <Col md={6}>
+                      <FormGroup>
+                        <Label for="password">Password</Label>
                         <Input type="password" id="password" onChange={this.handleChange}/>
-                      </label>
+                      </FormGroup>
                     </Col>
                   </Row>
-                  <div>
-                    <Input type="submit" role="button" className="btn-outline-primary" value="Update My Details"/>
-                  </div>
+                  <Button outline block disabled>Update My Details</Button>
                 </Form>
                 <div className="authentication-error">
                 </div>
@@ -79,16 +79,16 @@ class Account extends Component {
                       <p>1.0</p>
                     </div>
                   </li>
-                  <li><Link to="/account/terms-conditions">Terms and conditions</Link></li>
-                  <li><Link to="/account/privacy-policy">Privacy policy</Link></li>
+                  <li><Link className="settings-item" to="/account/terms-conditions">Terms and conditions</Link></li>
+                  <li><Link className="settings-item" to="/account/privacy-policy">Privacy policy</Link></li>
                 </ul>
                 <h2>Other</h2>
                 <ul>
                   <li>
-                    <button className="settings-item" onClick={signOut}>
+                    <div role="button" className="settings-item" onClick={signOut}>
                       Log Out
                       <p>You are logged in as {profile.firstName} {profile.lastName}</p>
-                    </button>
+                    </div>
                   </li>
                 </ul>
               </Col>

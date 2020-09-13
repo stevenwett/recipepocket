@@ -20,8 +20,8 @@ const RecipeSummary = ({recipe}) => {
                 <div className="excerpt">{recipe.excerpt}</div>
               </div>
             </CardBody>
-            <CardFooter className="text-muted">
-              <p>{'Created ' + moment(recipe.createdAt.toDate()).calendar()}</p>
+            <CardFooter>
+              {'Created ' + moment(recipe.createdAt.toDate()).calendar()}
             </CardFooter>
           </Card>
         </article>

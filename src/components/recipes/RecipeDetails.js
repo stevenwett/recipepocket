@@ -21,8 +21,8 @@ class RecipeDetails extends Component {
       if ( recipe.disabled ) return <Redirect to='/recipes' />
       return (
         <Container className="view view-card recipe-details">
-          <Link to="/recipes" className="btn btn-outline-primary">All Recipes</Link>
-          <Link to={"/recipes/" + recipeId + "/edit"} className="btn btn-outline-primary">Edit</Link>
+          <Link to="/home" className="btn btn-outline-secondary btn-card-cancel">All Recipes</Link>
+          <Link to={"/recipes/" + recipeId + "/edit"} className="btn btn-outline-secondary btn-recipe-edit">Edit</Link>
           <article className="card">
             <div className="recipe-image">
               <CardImg top width="100%" src="/images/peach-cobbler-photo.jpg" alt="" />

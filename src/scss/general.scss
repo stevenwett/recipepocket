@@ -2,12 +2,21 @@
 
 h1,
 .h1 {
-	font-weight: 900;
+	font-weight: $font-weight-bolder;
 }
 
 h2,
 .h2 {
-	font-weight: 900;
+	font-weight: $font-weight-bolder;
+	color: $gray-700;
+}
+
+h3,
+.h3 {
+	font-family: $font-family-base;
+	font-weight: $font-weight-bolder;
+	color: $blue;
+	text-transform: uppercase;
 }
 
 p {
@@ -22,19 +31,70 @@ a {
 	font-weight: $font-weight-bold;
 }
 
+.btn.btn-outline-primary {
+	background-color: $pure-white;
+
+	&:not(:disabled):hover,
+	&:not(:disabled):focus,
+	&:not(:disabled):active {
+		color: darken( $primary, 10% );
+		border-color: darken( $primary, 10% );
+		background-color: $pure-white;
+	}
+}
+
+.btn.btn-outline-secondary {
+	color: $primary;
+	border-color: $gray-200;
+	background-color: $pure-white;
+
+	&:not(:disabled):hover,
+	&:not(:disabled):focus,
+	&:not(:disabled):active {
+		color: darken( $primary, 10% );
+		background-color: $pure-white;
+		border-color: $primary;
+	}
+}
+
+.card {
+	margin-top: 1rem;
+	box-shadow: none;
+	transition: all 0.3s ease-in-out;
+
+	&:hover,
+	&:focus,
+	&:active {
+		transform: translateY(-3px);
+		box-shadow: 0 3px 30px -15px rgba(0, 3, 30, 0.25);
+	}
+}
+
 .view {
 	position: relative;
-	padding-top: 3rem;
-	margin-bottom: 2rem;
-	padding-bottom: 5rem;
+	margin-top: 3rem;
 
 	& > .row {
 		margin-bottom: 2rem;
 	}
 
 	&.recipe-details {
-		.card {
-			z-index: 1;
+		.recipe-image {
+			position: relative;
+
+			.recipe-image-caption {
+				position: absolute;
+				bottom: 0;
+				right: 0;
+				left: 0;
+				width: 100%;
+				text-align: right;
+				background-color: rgba( 255, 255, 255, 0.7);
+				padding: 0.5rem 1rem;
+				font-weight: $font-weight-bold;
+				font-size: 12px;
+				color: $gray-700;
+			}
 		}
 
 		@include media-breakpoint-down(sm) {
@@ -42,121 +102,176 @@ a {
 			margin-top: 1rem;
 		}
 	}
-}
 
-.view-card {
-	max-width: 600px;
-}
+	&.view-card {
+		max-width: 600px;
 
-.my-account {
-	form .row {
-		margin-bottom: 1rem;
+		.card {
+			z-index: 1;
+			box-shadow: 0 3px 30px -15px rgba(0, 3, 30, 0.25);
+		}
 	}
 
-	label,
-	input {
-		width: 100%;
+	&.add-recipe {
+		h2 {
+			margin-bottom: 1.5rem;
+		}
+
+		.add-recipe-form {
+			padding-top: 1rem;
+			border-top: 2px dashed $gray-200;
+			margin-top: 1rem;
+		}
+
+		.add-recipe-footer {
+			padding-top: 2rem;
+			border-top: 2px dashed $gray-200;
+
+			.btn {
+				margin-bottom: 1rem;
+			}
+
+			a {
+				display: block;
+			}
+		}
+
+		label {
+			width: 100%;
+
+			h3 {
+				margin-bottom: 0.5rem;
+			}
+
+			.input-group {
+				margin-top: 0.5rem;
+			}
+
+			&.upload-photo .form-control-file {
+				color: dark;
+				font-family: $font-family-base;
+			}
+		}
+
+		.form-group {
+			margin-bottom: 1.75rem;
+		}
 	}
 
-	ul {
-		padding: 0;
-		margin-bottom: 2.5rem;
-		border-top: 1px dashed $gray-300;
-
-		&:last-child {
+	&.account {
+		form .row {
 			margin-bottom: 1rem;
 		}
-	}
 
-	li {
-		border-bottom: 1px dashed $gray-300;
-	}
-
-	a,
-	.settings-item {
-		display: block;
-		padding: 1rem 0;
-		font-weight: $font-weight-bold;
-		color: $gray-600;
-
-		p {
-			color: $dark;
-			font-weight: $font-weight-normal;
-			margin: 0;
-			margin-top: 0.15rem;
-		}
-	}
-
-	label.settings-item {
-		margin-bottom: 0;
-	}
-
-	a {
-		color: $primary;
-
-		&:hover,
-		&:focus {
-			text-decoration: none;
-			color: darken( $primary, 10% );
-		}
-	}
-
-	ul.group-list {
-		border-top: 0;
-		margin-bottom: 1.5rem;
-
-		li {
-			border-bottom: 0;
+		label {
+			@extend h3;
 			margin-bottom: 0.5rem;
 		}
 
-		a {
-			border: 1px solid $primary;
-			border-radius: $border-radius;
-			text-align: left;
-			padding: 0.5rem 1rem;
-			font-weight: $font-weight-bold;
+		label,
+		input {
+			width: 100%;
 		}
-	}
 
-	button.settings-item {
-		margin: 0;
-		border: 0;
-		background: none;
-		font-weight: $font-weight-bold;
-		color: $primary;
-		display: block;
-		font-size: 1rem;
-		width: 100%;
-		text-align: left;
+		ul {
+			padding: 0;
+			margin-bottom: 2.5rem;
+			border-top: 1px dashed $gray-300;
 
-		&:hover,
-		&:focus {
-			color: darken( $primary, 10% );
+			&:last-child {
+				margin-bottom: 1rem;
+			}
 		}
-	}
 
-	form {
-		margin-bottom: 2.5rem;
+		.settings-item {
+			@extend h3;
+			color: $dark;
+			display: block;
+			padding: 1rem 0;
+
+			p {
+				color: $dark;
+				font-weight: $font-weight-normal;
+				margin: 0;
+				margin-top: 0.15rem;
+			}
+		}
+
+		a.settings-item {
+			color: $blue;
+		}
+
+		label.settings-item {
+			margin-bottom: 0;
+		}
+
+		form {
+			margin-bottom: 2.5rem;
+		}
 	}
 }
 
-.dashboard-add-recipe {
-	@include media-breakpoint-down(md) {
-		margin-top: 1rem;
+.btn-card-cancel {
+	padding-left: 3rem;
+	padding-right: 1rem;
+	background-color: $pure-white;
+}
+
+.btn-recipe-edit {
+	float: right;
+	padding-left: 3rem;
+	padding-right: 1rem;
+	background-color: $pure-white;
+}
+
+.btn-add-recipe {
+	position: relative;
+	padding-left: 3rem;
+	margin-top: 0.5rem;
+
+	&::after {
+		font-family: $font-family-base;
+		content: '+';
+		position: absolute;
+		left: 1rem;
+		top: 0;
+		font-size: 2rem;
+		line-height: 1.15;
+		height: 100%;
+		vertical-align: middle;
 	}
 }
 
 .greeting {
-	font-weight: normal;
-	font-size: 2.5rem;
-	font-weight: 900;
+	font-size: 2.75rem;
+	font-weight: $font-weight-bolder;
+	color: $blue;
+	margin-bottom: 0;
 }
 
-.recent-recipe-list {
-	article {
-		border-radius: $border-radius;
-		overflow: hidden;
+.home-intro {
+	padding-bottom: 1.5rem;
+}
+
+.home-recipe-list-intro {
+	border-top: 2px dashed $gray-200;
+	padding-top: 2.5rem;
+	margin-bottom: 2rem;
+
+	h1,
+	p {
+		display: inline-block;
+		margin-bottom: 0;
+	}
+
+	h1 {
+		margin-right: 2rem;
+	}
+
+	p {
+		font-family: $font-family-base;
+		font-weight: $font-weight-bold;
+		color: $gray-500;
 	}
 }
 
@@ -169,34 +284,6 @@ a {
 	}
 }
 
-.recent-recipe {
-	min-height: 70px;
-	background-color: $white;
-	color: $dark;
-	overflow: hidden;
-
-	h2 {
-		margin: 0;
-		font-size: 1.2rem;
-	}
-
-	.preview {
-		background-color: $gray-600;
-		background-image: url(/images/peach-cobbler-photo.jpg);
-		background-size: cover;
-		background-position: center;
-	}
-
-	.text {
-		@include vertical-center-parent;
-		padding: 1rem 1.25rem;
-	}
-
-	.text-inner {
-		@include vertical-center-child;
-	}
-}
-
 .recipe-summary {
 	h2 {
 		font-size: 1.5rem;
@@ -204,7 +291,7 @@ a {
 
 	.card {
 		margin-bottom: 30px;
-		background-color: $white;
+		background-color: $pure-white;
 	}
 
 	.card-body {
@@ -216,7 +303,7 @@ a {
 		margin-bottom: 0;
 
 		h2 {
-			margin-bottom: 0.5rem;
+			margin-bottom: 0.6rem;
 		}
 	}
 
@@ -226,26 +313,30 @@ a {
 	}
 
 	.author {
-		padding: 0.5rem 1rem;
-		padding-top: 0.25rem;
-		text-transform: uppercase;
-		font-size: 0.8rem;
-		font-weight: $font-weight-bolder;
-		color: $blue;
+		@extend h3;
+		padding: 0.75rem 1rem;
+		padding-top: 0;
+		margin-bottom: 0;
 	}
 
 	.card-footer {
-		border: 0;
-
-		p {
-			margin: 0;
-			font-size: 0.75rem;
-			font-weight: $font-weight-bold;
-		}
+		font-family: $font-family-base;
+		background-color: $pure-white;
+		color: $gray-400;
+		font-size: 14px;
+		padding-bottom: 1rem;
+		font-weight: $font-weight-normal;
 	}
 }
-.activity {
-	li {
-		margin-bottom: 0.5rem;
+
+.footer {
+	font-family: $font-family-base;
+	margin-bottom: 2rem;
+	margin-top: 4rem;
+
+	.row {
+		padding-top: 0.5rem;
+		border-top: 2px dashed $gray-200;
+		color: $gray-600;
 	}
 }

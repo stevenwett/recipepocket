@@ -25,85 +25,94 @@ class AddRecipe extends Component {
     if ( !auth.uid ) return <Redirect to='/signin' />
     return (
       <Container className="view view-card add-recipe">
-        <Link to="/recipes" className="btn btn-outline-primary">Cancel</Link>
+        <Link to="/recipes" className="btn btn-outline-primary btn-card-cancel">Cancel</Link>
         <article className="card">
           <CardBody>
             <Row className="justify-content-center">
               <Col>
                 <h1>Add a Recipe</h1>
-                <h2>Add Your Own Recipe</h2>
-                <Form className="mt-3" onSubmit={this.handleSubmit}>
-                  <FormGroup>
-                    <Label for="title">Recipe title</Label>
-                    <Input type="text" name="title" id="title" onChange={this.handleChange} />
-                  </FormGroup>
-                  <FormGroup>
-                    <Label for="author">Recipe Author</Label>
-                    <Input type="text" name="author" id="author" onChange={this.handleChange} />
-                  </FormGroup>
-                  <FormGroup>
-                    <Label for="yield">Yield</Label>
-                    <Input type="text" name="yield" id="yield" onChange={this.handleChange} />
-                  </FormGroup>
-                  <FormGroup>
-                    <Label for="time">Time</Label>
-                    <Input type="text" name="time" id="time" onChange={this.handleChange} />
-                  </FormGroup>
+                <div className="add-recipe-form">
+                  <h2>Add Your Own Recipe</h2>
+                  <Form onSubmit={this.handleSubmit}>
+                    <FormGroup>
+                      <Label for="title">
+                        <h3>Recipe title</h3>
+                        <Input type="text" name="title" id="title" onChange={this.handleChange} />
+                      </Label>
+                      <Label for="author">
+                        <h3>Recipe Author</h3>
+                        <Input type="text" name="author" id="author" onChange={this.handleChange} />
+                      </Label>
+                      <Label for="yield">
+                        <h3>Yield</h3>
+                        <Input type="text" name="yield" id="yield" placeholder="e.g. One 8-inch pie" onChange={this.handleChange} />
+                      </Label>
+                      <Label for="time">
+                        <h3>Time</h3>
+                        <Input type="text" name="time" id="time" placeholder="e.g. 1 1/2 hours, plus cooling" onChange={this.handleChange} />
+                      </Label>
+                      <Label for="description">
+                        <h3>Description</h3>
+                        <Input type="textarea" name="description" id="description" onChange={this.handleChange} />
+                      </Label>
+                    </FormGroup>
+                    <FormGroup>
+                      <Label for="photo" className="upload-photo">
+                        <h3>Recipe Photo</h3>
+                        <Input type="file" name="photo" id="photo" onChange={this.handleChange} />
+                      </Label>
+                    </FormGroup>
 
-                  <FormGroup>
-                    <Label for="description">Description</Label>
-                    <Input type="textarea" name="description" id="description" onChange={this.handleChange} />
-                  </FormGroup>
+                    <FormGroup>
+                      <Label>
+                        <h3>Ingredients</h3>
+                        <InputGroup>
+                          <Input placeholder="" />
+                          <InputGroupAddon addonType="append">
+                            <InputGroupText>=</InputGroupText>
+                          </InputGroupAddon>
+                        </InputGroup>
+                        <InputGroup>
+                          <Input placeholder="" />
+                          <InputGroupAddon addonType="append">
+                            <InputGroupText>=</InputGroupText>
+                          </InputGroupAddon>
+                        </InputGroup>
+                      </Label>
+                      <Button className="btn btn-outline-secondary add-ingredient">Add Another Ingredient</Button>
+                    </FormGroup>
 
-                  <FormGroup>
-                    <Label for="photo">Recipe Photo</Label>
-                    <Input type="file" name="photo" id="photo" onChange={this.handleChange} />
-                  </FormGroup>
+                    <FormGroup>
+                      <Label>
+                        <h3>Preparation Steps</h3>
+                        <InputGroup>
+                          <Input type="textarea" placeholder="" />
+                          <InputGroupAddon addonType="append">
+                            <InputGroupText>=</InputGroupText>
+                          </InputGroupAddon>
+                        </InputGroup>
+                        <InputGroup>
+                          <Input type="textarea" placeholder="" />
+                          <InputGroupAddon addonType="append">
+                            <InputGroupText>=</InputGroupText>
+                          </InputGroupAddon>
+                        </InputGroup>
+                      </Label>
+                      <Button className="btn btn-outline-secondary add-ingredient">Add Another Step</Button>
+                    </FormGroup>
 
-                  <FormGroup>
-                    <Label>Ingredients
-                      <InputGroup>
-                        <Input placeholder="" />
-                        <InputGroupAddon addonType="append">
-                          <InputGroupText>=</InputGroupText>
-                        </InputGroupAddon>
-                      </InputGroup>
-                      <InputGroup>
-                        <Input placeholder="" />
-                        <InputGroupAddon addonType="append">
-                          <InputGroupText>=</InputGroupText>
-                        </InputGroupAddon>
-                      </InputGroup>
-                    </Label>
-                    <Button className="btn btn-outline-primary add-ingredient">Add Another Ingredient</Button>
-                  </FormGroup>
-
-                  <FormGroup>
-                    <Label>Preparation Steps
-                      <InputGroup>
-                        <Input type="textarea" placeholder="" />
-                        <InputGroupAddon addonType="append">
-                          <InputGroupText>=</InputGroupText>
-                        </InputGroupAddon>
-                      </InputGroup>
-                      <InputGroup>
-                        <Input type="textarea" placeholder="" />
-                        <InputGroupAddon addonType="append">
-                          <InputGroupText>=</InputGroupText>
-                        </InputGroupAddon>
-                      </InputGroup>
-                    </Label>
-                    <Button className="btn btn-outline-primary add-ingredient">Add Another Step</Button>
-                  </FormGroup>
-
-                  <FormGroup>
-                    <Label for="tips">Recipe Tips</Label>
-                    <Input type="textarea" name="tips" id="tips" onChange={this.handleChange} />
-                  </FormGroup>
-
-                  <Button>Save Recipe</Button>
-                  <Link to="/recipes" className="btn btn-outline-primary">Don't Save and Cancel</Link>
-                </Form>
+                    <FormGroup>
+                      <Label for="tips">
+                        <h3>Recipe Tips</h3>
+                        <Input type="textarea" name="tips" id="tips" onChange={this.handleChange} />
+                      </Label>
+                    </FormGroup>
+                    <div className="add-recipe-footer">
+                      <Button color="primary" block>Save Recipe</Button>
+                      <Link to="/home" className="btn btn-outline-secondary">Don't Save and Cancel</Link>
+                    </div>
+                  </Form>
+                </div>
               </Col>
             </Row>
           </CardBody>

@@ -5,17 +5,18 @@
 /* Variables */
 /* - Colors */
 
-$white:     #FFFFFA;
-$gray-100:  #F6F4F5;
-$gray-200:  #E3DEE1;
-$gray-300:  #D0C8CD;
-$gray-400:  #978791;
-$gray-500:  #6D5F69;
-$gray-600:  #574C54;
-$gray-700:  #41393F;
-$gray-800:  #2C262A;
-$gray-900:  #1F1A24;
-$black:     #0b0b0c;
+$pure-white: #FFFFFF;
+$white:      #FBF9FA;
+$gray-100:   #F0EEEF;
+$gray-200:   #E3DEE1;
+$gray-300:   #D0C8CD;
+$gray-400:   #978791;
+$gray-500:   #6D5F69;
+$gray-600:   #574C54;
+$gray-700:   #41393F;
+$gray-800:   #2C262A;
+$gray-900:   #161315;
+$black:      #0B0B0C;
 
 $grays: ();
 $grays: map-merge(
@@ -33,74 +34,76 @@ $grays: map-merge(
   $grays
 );
 
-$purple: $gray-700;
-$rust:   #BF4422;
-$green: #40775A;
-$blue:   #4F7CAC;
-$salmon: #FF6B6B;
+$red:        #B73E3E;
+$salmon:     #F16060;
+$blue:       #387480;
+$light-blue: #4A8B97;
+$yellow:     #FFC43D;
 
-$light:     $gray-100;
-$dark:      $gray-800;
+$light:      $white;
+$dark:       $gray-800;
 
-$primary:   $blue;
-$secondary: $gray-600;
-$success:   $green;
-$info:      $blue;
-$warning:   $rust;
-$danger:    darken( $rust, 10% );
+$primary:    $salmon;
+$secondary:  $blue;
+$success:    $light-blue;
+$info:       $gray-600;
+$warning:    $red;
+$danger:     darken( $red, 10% );
 
 $colors: ();
 $colors: map-merge(
   (
-    "purple": $purple,
-    "rust":   $rust,
+  	"white": $pure-white,
+  	"black": $black,
     "blue":   $blue,
   ),
   $colors
 );
 
-$font-weight-light:  300;
-$font-weight-normal: $font-weight-light;
-$font-weight-bold:   600;
-$font-weight-bolder: 900;
+$border-radius: 20px;
+$spacer:        1rem;
 
-$border-radius: 8px;
+$font-weight-light:        300;
+$font-weight-normal:       $font-weight-light;
+$font-weight-bold:         600;
+$font-weight-bolder:       900;
 
-$font-family-sans-serif: 'Signika', sans-serif;
-$font-family-monospace:  'Signika', sans-serif;
-$font-family-base:       'Signika', sans-serif;
-$headings-font-family:   'Arima Madurai', sans-serif;
+$font-family-sans-serif:  'Signika', sans-serif;
+$font-family-monospace:   'Signika', sans-serif;
+$font-family-base:        'Signika', sans-serif;
+$headings-font-family:    'Arima Madurai', sans-serif;
+$headings-color:          $dark;
+$headings-margin-bottom:  $spacer * (0.8);
 
-$font-size-base:        1rem;
-$h1-font-size:          $font-size-base * 2;
-$h2-font-size:          $font-size-base * 1.5;
-$input-btn-font-family: $font-family-base;
+$font-size-base:          1rem;
+$h1-font-size:            $font-size-base * 2;
+$h2-font-size:            $font-size-base * 1.25;
+$h3-font-size:            14px;
+$input-btn-font-family:   $font-family-base;
+$input-btn-bg:            $pure-white;
 
-$btn-font-weight:        $font-weight-bold;
-$input-btn-border-width: 2px;
+$btn-font-weight:         $font-weight-bold;
+$btn-border-radius:       12px;
 
-$body-bg: $gray-800;
+$input-btn-border-width:  2px;
 
-$body-color: $white;
+$body-bg:                 $white;
+$body-color:              $gray-700;
 
-$input-bg:                $light;
-$input-color:             $dark;
-$input-placeholder-color: $gray-500;
-$input-border-color:      $white;
+$input-bg:                $pure-white;
+$input-color:             $gray-700;
+$input-placeholder-color: $gray-400;
+$input-border-color:      $gray-300;
+$input-border-radius:     12px;
 
-$card-color:        $dark;
-$card-border-color: darken( $dark, 5% );
+$card-color:              $dark;
+$card-bg:                 $pure-white;
+$card-border-color:       false;
 
-$text-muted: $gray-500;
+$transition-base:         all .1s ease-in-out;
 
-$transition-base: all .1s ease-in-out;
-
-$spacer: 1rem;
-
-$headings-margin-bottom: $spacer * (0.8);
-
-$navbar-dark-color: $gray-700;
-$navbar-padding-y: 1rem;
+$navbar-dark-color:       $gray-700;
+$navbar-padding-y:        1rem;
 
 @import 'meyer-hard-reset';
 
