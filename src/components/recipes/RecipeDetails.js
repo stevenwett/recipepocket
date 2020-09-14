@@ -16,13 +16,18 @@ class RecipeDetails extends Component {
   }
   render() {
     const { auth, recipe, recipeId } = this.props;
+
+    {/*
+      * Add in code to force the screen to the top.
+    */}
+
     if ( !auth.uid ) return <Redirect to='/signin' />
     if (recipe) {
       if ( recipe.disabled ) return <Redirect to='/recipes' />
       return (
         <Container className="view view-card recipe-details">
           <div className="text-right">
-            <Link to="/home" className="btn btn-outline-secondary btn-card-cancel">All Recipes</Link>
+            <Link to="/home" className="btn btn-outline-secondary btn-card-cancel float-left">All Recipes</Link>
             <Link to={"/recipes/" + recipeId + "/edit"} className="btn btn-outline-secondary btn-recipe-edit">Edit</Link>
           </div>
           <article className="card">

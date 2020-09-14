@@ -1,5 +1,9 @@
 // Global
 
+body {
+	background-color: $light;
+}
+
 h1,
 .h1 {
 	font-weight: $font-weight-bolder;
@@ -53,7 +57,7 @@ a {
 	&:not(:disabled):active {
 		color: darken( $primary, 10% );
 		background-color: $pure-white;
-		border-color: $primary;
+		border-color: $gray-300;
 	}
 }
 
@@ -178,7 +182,7 @@ a {
 		ul {
 			padding: 0;
 			margin-bottom: 2.5rem;
-			border-top: 1px dashed $gray-300;
+			border-top: 2px dashed $gray-300;
 
 			&:last-child {
 				margin-bottom: 1rem;
@@ -190,16 +194,25 @@ a {
 			color: $dark;
 			display: block;
 			padding: 1rem 0;
+			border-bottom: 1px solid $gray-200;
+			margin-bottom: 0;
+
+			&:hover,
+			&:focus {
+				text-decoration: none;
+				color: darken( $blue, 10% );
+			}
 
 			p {
 				color: $dark;
 				font-weight: $font-weight-normal;
 				margin: 0;
-				margin-top: 0.15rem;
+				margin-top: 0.25rem;
 			}
 		}
 
-		a.settings-item {
+		a.settings-item,
+		[role="button"] {
 			color: $blue;
 		}
 
@@ -214,15 +227,35 @@ a {
 }
 
 .btn-card-cancel {
+	position: relative;
 	padding-left: 3rem;
 	padding-right: 1rem;
 	background-color: $pure-white;
+
+	&::after {
+		content: url('/images/icon-back.svg');
+		position: absolute;
+		height: 18px;
+		width: 20px;
+		top: 9px;
+		left: 1rem;
+	}
 }
 
 .btn-recipe-edit {
 	padding-left: 3rem;
 	padding-right: 1rem;
 	background-color: $pure-white;
+	position: relative;
+
+	&::after {
+		content: url('/images/edit-icon.svg');
+		position: absolute;
+		height: 18px;
+		width: 18px;
+		top: 9px;
+		left: 1rem;
+	}
 }
 
 .btn-add-recipe {
@@ -257,7 +290,7 @@ a {
 .home-recipe-list-intro {
 	border-top: 2px dashed $gray-200;
 	padding-top: 2.5rem;
-	margin-bottom: 2rem;
+	margin-bottom: 1rem;
 
 	h1,
 	p {
@@ -304,6 +337,38 @@ a {
 
 	.card-body {
 		padding: 1rem 0;
+		position: relative;
+	}
+
+	.btn-recipe-card-edit {
+		position: absolute;
+		top: -23px;
+		right: 1rem;
+		height: 46px;
+		width: 46px;
+		background-color: $gray-100;
+		border-radius: 100%;
+		padding: 0;
+		transition: all 0.1s ease-in-out;
+
+		&::after {
+			content: url('/images/edit-icon.svg');
+			position: absolute;
+			height: 20px;
+			width: 20px;
+			top: 12px;
+			right: 12px;
+			opacity: 0.5;
+			transition: all 0.1s ease-in-out;
+		}
+
+		&:hover,
+		&:focus,
+		&:active {
+			&::after {
+				opacity: 1;
+			}
+		}
 	}
 
 	.card-title {

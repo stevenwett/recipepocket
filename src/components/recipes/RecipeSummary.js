@@ -12,6 +12,7 @@ const RecipeSummary = ({recipe}) => {
           <Card>
             <CardImg top width="100%" src="/images/peach-cobbler-photo.jpg" alt={recipe.imgAlt} />
             <CardBody>
+              <Link className="btn-recipe-card-edit" to={'/recipes/' + recipe.id + '/edit'}><span className="sr-only">Edit</span></Link>
               <CardTitle>
                 <h2>{recipe.title}</h2>
               </CardTitle>

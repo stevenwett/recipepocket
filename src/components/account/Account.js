@@ -28,9 +28,14 @@ class Account extends Component {
   render() {
     const { auth, signOut, profile } = this.props;
     if (!auth.uid) return <Redirect to='/' />
+
+    {/*
+      * Add in code to force the screen to the top.
+    */}
+
     return (
       <Container className="view view-card account">
-        <Link to="/home" className="btn btn-outline-secondary">All Recipes</Link>
+        <Link to="/home" className="btn btn-outline-secondary btn-card-cancel">All Recipes</Link>
         <article className="card">
           <CardBody>
             <Row>

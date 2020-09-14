@@ -19,6 +19,7 @@
 			&:not(:disabled):focus,
 			&:not(:disabled):active {
 				color: darken( $primary, 10% );
+				border-color: $gray-300;
 			}
 
 			&::after {

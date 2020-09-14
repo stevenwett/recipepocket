@@ -23,10 +23,15 @@ class AddRecipe extends Component {
   render() {
     const { auth } = this.props;
     if ( !auth.uid ) return <Redirect to='/signin' />
+
+    {/*
+      * Add in code to force the screen to the top.
+    */}
+
     return (
       <Container className="view view-card add-recipe">
         <div>
-          <Link to="/recipes" className="btn btn-outline-primary btn-card-cancel">Cancel</Link>
+          <Link to="/recipes" className="btn btn-outline-secondary btn-card-cancel">Cancel</Link>
         </div>
         <article className="card">
           <CardBody>
