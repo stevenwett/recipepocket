@@ -46,25 +46,25 @@ class Account extends Component {
                     <Col md={6}>
                       <FormGroup>
                         <Label for="firstName">First name</Label>
-                        <Input type="text" id="firstName" placeholder={profile.firstName} onChange={this.handleChange}/>
+                        <Input type="text" id="firstName" value={profile.firstName} onChange={this.handleChange}/>
                       </FormGroup>
                     </Col>
                     <Col md={6}>
                       <FormGroup>
                         <Label for="lastName">Last name</Label>
-                        <Input type="text" id="lastName" placeholder={profile.lastName} onChange={this.handleChange}/>
+                        <Input type="text" id="lastName" value={profile.lastName} onChange={this.handleChange}/>
                       </FormGroup>
                     </Col>
                     <Col md={6}>
                       <FormGroup>
                         <Label for="email">Email</Label>
-                        <Input type="email" id="email" placeholder={auth.email} />
+                        <Input type="email" id="email" value={auth.email} />
                       </FormGroup>
                     </Col>
                     <Col md={6}>
                       <FormGroup>
                         <Label for="password">Password</Label>
-                        <Input type="password" id="password" onChange={this.handleChange}/>
+                        <Input type="password" id="password" placeholder="(hidden)" onChange={this.handleChange}/>
                       </FormGroup>
                     </Col>
                   </Row>

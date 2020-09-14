@@ -21,9 +21,9 @@ class SignIn extends Component {
   render() {
     const { authError, auth } = this.props;
     if (auth.uid) return <Redirect to='/home' />
-
     return (
       <Container className="view view-card user-auth user-sign-in">
+        <Link to="/" className="btn btn-outline-secondary btn-card-cancel">Cancel</Link>
         <article className="card">
           <CardBody>
             <Row className="justify-content-center">
@@ -39,14 +39,7 @@ class SignIn extends Component {
                       <Label for="password">Password</Label>
                       <Input type="password" id="password" onChange={this.handleChange}/>
                     </FormGroup>
-                    <Row>
-                      <Col md={6}>
-                        <Button color="primary" block>Sign In</Button>
-                      </Col>
-                      <Col md={6}>
-                        <Link to="/" className="btn btn-outline-secondary">Cancel</Link>
-                      </Col>
-                    </Row>
+                    <Button color="primary" block>Sign In</Button>
                   </Form>
                   <div className="authentication-error">
                     { authError ? <p className="text-red">{ authError }</p> : null }
