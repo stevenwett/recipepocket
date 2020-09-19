@@ -442,8 +442,10 @@ a {
 	}
 
 	@include media-breakpoint-down(xs) {
-		font-size: 2rem;
-		display: none;
+		font-size: 1.75rem;
+		display: block;
+		float: none;
+		margin-bottom: 0.5rem;
 	}
 }
 
@@ -674,5 +676,6 @@ form {
 
 	@include media-breakpoint-down(sm) {
 		margin-top: 1rem;
+		margin-bottom: 1rem;
 	}
 }

@@ -10,7 +10,7 @@ import RecipeList from '../recipes/RecipeList';
 
 class Home extends Component {
   render() {
-    const { recipes, auth } = this.props;
+    const { recipes, auth, profile } = this.props;
     if (!auth.uid) return <Redirect to='/' />
 
     let recipeCount = '';
@@ -34,7 +34,7 @@ class Home extends Component {
         </Row>
         <Row className="home-recipe-list justify-content-center">
           <Col sm={10} md={12} className="home-recipe-list-intro">
-            <h1>Saved Recipes</h1>
+            <h1>{profile.firstName}&rsquo;s Recipes</h1>
             <p>{recipeCount} saved</p>
           </Col>
         </Row>
@@ -48,6 +48,7 @@ const mapStateToProps = (state) => {
   console.log(state.firestore);
   return {
     recipes: state.firestore.ordered.recipes,
+    profile: state.firebase.profile,
     auth: state.firebase.auth
   }
 }
