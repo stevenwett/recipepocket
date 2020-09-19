@@ -34,8 +34,8 @@ class Home extends Component {
         </Row>
         <Row className="home-recipe-list justify-content-center">
           <Col sm={10} md={12} className="home-recipe-list-intro">
-            <h1>{profile.firstName}&rsquo;s Recipes</h1>
-            <p>{recipeCount} saved</p>
+            { profile.firstName ? <h1>{profile.firstName}&rsquo;s Recipes</h1> : null }
+            { recipeCount ? <p>{recipeCount} saved</p> : null }
           </Col>
         </Row>
         <RecipeList recipes={recipes} />

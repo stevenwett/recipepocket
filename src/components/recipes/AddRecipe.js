@@ -32,7 +32,7 @@ class AddRecipe extends Component {
       <Container className="view add-recipe">
         <Breadcrumb className="breadcrumb-nav">
           <BreadcrumbItem><a href="/home">Home</a></BreadcrumbItem>
-          <BreadcrumbItem active>Add Recipe</BreadcrumbItem>
+          <BreadcrumbItem active>Add a Recipe</BreadcrumbItem>
         </Breadcrumb>
         <div className="view-card">
           <Link to="/home" className="btn btn-outline-secondary btn-card-cancel">Cancel</Link>
