@@ -1,12 +1,44 @@
 .navbar {
+	padding: 0;
+
+	.container {
+		position: relative;
+		padding: 1rem 1rem;
+
+		&::before {
+			content: '';
+			position: absolute;
+			height: 100%;
+			width: 800px;
+			right: -100px;
+			border-bottom-left-radius: 100px;
+			border-bottom-right-radius: 100px;
+			background-color: $pure-white;
+			z-index: 1;
+		}
+	}
+
 	.app-name {
-		color: $gray-300;
-		font-weight: $font-weight-bold;
-		font-family: $headings-font-family;
-		font-size: 1.5rem;
+		position: relative;
+		z-index: 2;
+
+		a {
+			color: $gray-600;
+			font-weight: $font-weight-bold;
+			font-family: $headings-font-family;
+			font-size: 1.5rem;
+		}
+	}
+
+	.nav {
+		position: relative;
+		z-index: 2;
 	}
 
 	.nav-group {
+		position: relative;
+		z-index: 2;
+
 		.btn.nav-account {
 			position: relative;
 			padding-right: 3rem;

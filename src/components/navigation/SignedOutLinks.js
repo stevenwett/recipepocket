@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Nav, NavItem } from 'reactstrap';
 
 
@@ -7,7 +7,7 @@ const SignedOutLinks = () => {
 	return (
 		<Nav className="justify-content-end">
 			<NavItem>
-				<NavLink className="btn btn-outline-secondary nav-link" to="/signin">Sign In</NavLink>
+				<Link className="btn btn-outline-secondary nav-link" to="/signin">Sign In</Link>
 			</NavItem>
 		</Nav>
 	)

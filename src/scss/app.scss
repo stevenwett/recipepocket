@@ -77,7 +77,7 @@ $headings-margin-bottom:  $spacer * (0.8);
 
 $font-size-base:          1rem;
 $h1-font-size:            $font-size-base * 2;
-$h2-font-size:            $font-size-base * 1.25;
+$h2-font-size:            $font-size-base * 1.5;
 $h3-font-size:            14px;
 $input-btn-font-family:   $font-family-base;
 $input-btn-bg:            $pure-white;
@@ -104,6 +104,26 @@ $transition-base:         all .1s ease-in-out;
 
 $navbar-dark-color:       $gray-700;
 $navbar-padding-y:        1rem;
+
+// Grid breakpoints
+
+$grid-breakpoints: (
+	xs: 0,
+	sm: 576px,
+	md: 768px,
+	lg: 992px,
+   nav: 992px,
+	xl: 1200px
+);
+
+// Grid containers
+
+$container-max-widths: (
+	sm: 768px,
+	md: 992px,
+	lg: 1200px,
+	xl: 1200px
+);
 
 @import 'meyer-hard-reset';
 

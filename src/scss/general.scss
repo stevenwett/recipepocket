@@ -1,5 +1,9 @@
 // Global
 
+.App {
+	overflow: hidden;
+}
+
 body {
 	background-color: $light;
 }
@@ -69,24 +73,64 @@ a {
 
 .view {
 	position: relative;
-	margin-top: 3rem;
+	padding-top: 3rem;
 
 	& > .row {
 		margin-bottom: 2rem;
 	}
 
 	&.welcome {
+		&::before {
+			content: '';
+			position: absolute;
+			width: 1400px;
+			height: 700px;
+			left: -500px;
+			top: -270px;
+			background-color: $gray-100;
+			border-radius: 350px;
+			z-index: 0;
+		}
+
+		&::after {
+			content: '';
+			position: absolute;
+			border-radius: 350px;
+			background-color: #F6F4F5;
+			height: 700px;
+			width: 1200px;
+			bottom: -450px;
+			right: -650px;
+			z-index: 0;
+		}
+
 		.btn {
 			margin-right: 0.5rem;
+		}
+
+		.welcome-icons {
+			margin-top: 6rem;
+			position: relative;
+			z-index: 2;
+
+			p {
+				margin-top: 0.75rem;
+				font-weight: $font-weight-bold;
+			}
+
+			svg {
+				height: 88px;
+			}
 		}
 	}
 
 	h1.greetings-line {
-		font-size: 2.625rem;
+		font-size: 2.5rem;
 		padding-top: 2rem;
 		margin-top: 3rem;
-		margin-bottom: 1rem;
+		margin-bottom: 2rem;
 		position: relative;
+		color: $gray-700;
 
 		&::after {
 			content: '';
@@ -99,18 +143,69 @@ a {
 	}
 
 	&.account-sign-up {
+		&::before {
+			content: '';
+			position: absolute;
+			width: 1400px;
+			height: 700px;
+			left: -335px;
+			top: -210px;
+			background-color: $gray-100;
+			border-radius: 350px;
+			z-index: 0;
+		}
+
+		&::after {
+			content: '';
+			position: absolute;
+			border-radius: 350px;
+			background-color: #F6F4F5;
+			height: 700px;
+			width: 1200px;
+			bottom: -300px;
+			right: -600px;
+			z-index: 0;
+		}
+
+		ol {
+			counter-reset: custom-numbers;
+			list-style: none;
+		}
+
 		li {
-			margin-bottom: 2rem;
+			margin-bottom: 2.25rem;
+			counter-increment: custom-numbers;
+			position: relative;
+			padding-left: 50px;
+
+			&::before {
+				color: $blue;
+				content: counter(custom-numbers);
+				position: absolute;
+				left: 10px;
+				top: -3px;
+				height: 30px;
+				width: 30px;
+				border-radius: 100%;
+				border: 3px solid $blue;
+				text-align: center;
+				line-height: 1.6;
+				font-weight: $font-weight-bolder;
+				font-family: $headings-font-family;
+				font-size: 1.1rem;
+			}
 
 			h2 {
 				font-size: 1.375rem;
-				margin-bottom: 0.5rem;
-
+				margin-bottom: 0.25rem;
 			}
 		}
 
 		.card {
 			box-shadow: 0 3px 30px -15px rgba(0, 3, 30, 0.25);
+			margin-top: 6rem;
+			margin-bottom: 4rem;
+			z-index: 1;
 
 			h1 {
 				font-size: 2.625rem;
@@ -365,7 +460,7 @@ a {
 	}
 
 	.card {
-		margin-bottom: 30px;
+		margin-bottom: 1.5rem;
 		background-color: $pure-white;
 
 		&:hover,
@@ -379,6 +474,8 @@ a {
 	.card-body {
 		padding: 1rem 0;
 		position: relative;
+		border: 2px solid $gray-200;
+		border-bottom: 0;
 	}
 
 	.btn-recipe-card-edit {
@@ -388,7 +485,7 @@ a {
 		height: 46px;
 		width: 46px;
 		background-color: $white;
-		border: 2px solid $gray-200;
+		border: 2px solid $gray-100;
 		border-radius: 100%;
 		padding: 0;
 		transition: all 0.2s ease-in-out;
@@ -400,14 +497,15 @@ a {
 			width: 20px;
 			top: 11px;
 			right: 10px;
-			opacity: 0.5;
+			opacity: 0.6;
 			transition: all 0.2s ease-in-out;
 		}
 
 		&:hover,
 		&:focus,
 		&:active {
-			border: 2px solid $gray-300;
+			border: 2px solid $gray-200;
+			background-color: $pure-white;
 
 			&::after {
 				opacity: 1;
@@ -443,6 +541,8 @@ a {
 		font-size: 14px;
 		padding-bottom: 1rem;
 		font-weight: $font-weight-normal;
+		border: 2px solid $gray-200;
+		border-top: 0;
 	}
 }
 
@@ -481,6 +581,8 @@ form {
 	font-family: $font-family-base;
 	margin-bottom: 2rem;
 	margin-top: 4rem;
+	z-index: 2;
+	position: relative;
 
 	.row {
 		padding-top: 0.5rem;

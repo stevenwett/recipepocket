@@ -105,7 +105,7 @@ class EditRecipe extends Component {
                     <Input type="textarea" name="tips" id="tips" onChange={this.handleChange} />
                   </FormGroup>
 
-                  <Button>Update Recipe</Button>
+                  <Button color="primary" block>Update Recipe</Button>
                   <Link to="/recipes" className="btn btn-outline-primary">Cancel</Link>
                 </Form>
               </Col>

@@ -25,7 +25,7 @@ class SignUp extends Component {
     if (auth.uid ) return <Redirect to='/' />
     return (
       <Container className="view account-sign-up">
-        <Row>
+        <Row className="get-started">
           <Col lg={6}>
             <h1 className="greetings-line">It's Easy to Get Started</h1>
             <ol>
@@ -40,8 +40,8 @@ class SignUp extends Component {
             </ol>
           </Col>
         </Row>
-        <Row className="justify-content-center">
-          <Col lg={6}>
+        <Row className="justify-content-center create-account">
+          <Col sm={10} md={8} lg={6}>
             <article className="card">
               <CardBody>
                 <h1>Create an account</h1>
