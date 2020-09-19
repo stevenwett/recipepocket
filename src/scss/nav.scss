@@ -25,6 +25,19 @@
 		font-weight: $font-weight-bold;
 		font-family: $headings-font-family;
 		font-size: 1.5rem;
+
+		span {
+			padding: 0.25rem 0.75rem;
+			background-color: $blue;
+			color: $light;
+			font-family: $font-family-base;
+			border-radius: $border-radius;
+			font-size: 1rem;
+			line-height: 1;
+			display: inline-block;
+			vertical-align: middle;
+			margin-left: 0.5rem;
+		}
 	}
 
 	.nav {

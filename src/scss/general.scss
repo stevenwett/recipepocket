@@ -297,13 +297,18 @@ a {
 			}
 
 			.input-group {
-				margin-top: 0.5rem;
+				margin-top: 0.75rem;
 			}
 
 			&.upload-photo .form-control-file {
 				color: dark;
 				font-family: $font-family-base;
 			}
+		}
+
+		.form-control {
+			min-height: 40px;
+			max-height: 600px;
 		}
 	}
 

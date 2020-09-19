@@ -1,6 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom';
 import { Navbar, Container } from 'reactstrap';
 
 import SignedInLinks from './SignedInLinks'
@@ -14,7 +13,7 @@ const NavigationBar = (props) => {
 		<Navbar>
 			<h1 className="sr-only">recipepocket navigation</h1>
 			<Container>
-				<div className="app-name">Recipepocket.app</div>
+				<div className="app-name">Recipepocket.app <span>beta</span></div>
 				{ links }
 			</Container>
 		</Navbar>
