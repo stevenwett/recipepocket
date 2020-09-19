@@ -39,29 +39,33 @@ a {
 	font-weight: $font-weight-bold;
 }
 
-.btn.btn-outline-primary {
-	background-color: $pure-white;
+.btn {
+	margin-right: 1rem;
 
-	&:not(:disabled):hover,
-	&:not(:disabled):focus,
-	&:not(:disabled):active {
-		color: darken( $primary, 10% );
-		border-color: darken( $primary, 10% );
+	&.btn-outline-primary {
 		background-color: $pure-white;
+
+		&:not(:disabled):hover,
+		&:not(:disabled):focus,
+		&:not(:disabled):active {
+			color: darken( $primary, 10% );
+			border-color: darken( $primary, 10% );
+			background-color: $pure-white;
+		}
 	}
-}
 
-.btn.btn-outline-secondary {
-	color: $primary;
-	border-color: $gray-200;
-	background-color: $pure-white;
-
-	&:not(:disabled):hover,
-	&:not(:disabled):focus,
-	&:not(:disabled):active {
-		color: darken( $primary, 10% );
+	&.btn-outline-secondary {
+		color: $primary;
+		border-color: $gray-200;
 		background-color: $pure-white;
-		border-color: $gray-300;
+
+		&:not(:disabled):hover,
+		&:not(:disabled):focus,
+		&:not(:disabled):active {
+			color: darken( $primary, 10% );
+			background-color: $pure-white;
+			border-color: $gray-300;
+		}
 	}
 }
 
@@ -73,41 +77,44 @@ a {
 
 .view {
 	position: relative;
-	padding-top: 3rem;
+	// padding-top: 3rem;
+
+	&::before {
+		content: '';
+		position: absolute;
+		width: 1400px;
+		height: 700px;
+		left: -500px;
+		top: -270px;
+		background-color: $gray-100;
+		border-radius: 350px;
+		z-index: 0;
+	}
+
+	&::after {
+		content: '';
+		position: absolute;
+		border-radius: 350px;
+		background-color: #F6F4F5;
+		height: 700px;
+		width: 1200px;
+		bottom: -450px;
+		right: -650px;
+		z-index: 0;
+	}
 
 	& > .row {
 		margin-bottom: 2rem;
+
+		@include media-breakpoint-down(md) {
+			margin-bottom: 1rem;
+		}
+	}
+
+	&.home {
 	}
 
 	&.welcome {
-		&::before {
-			content: '';
-			position: absolute;
-			width: 1400px;
-			height: 700px;
-			left: -500px;
-			top: -270px;
-			background-color: $gray-100;
-			border-radius: 350px;
-			z-index: 0;
-		}
-
-		&::after {
-			content: '';
-			position: absolute;
-			border-radius: 350px;
-			background-color: #F6F4F5;
-			height: 700px;
-			width: 1200px;
-			bottom: -450px;
-			right: -650px;
-			z-index: 0;
-		}
-
-		.btn {
-			margin-right: 0.5rem;
-		}
-
 		.welcome-icons {
 			margin-top: 6rem;
 			position: relative;
@@ -241,19 +248,20 @@ a {
 				color: $dark;
 			}
 		}
-
-		@include media-breakpoint-down(sm) {
-			padding-top: 4rem;
-			margin-top: 1rem;
-		}
 	}
 
-	&.view-card {
+	.view-card {
+		margin: 0 auto;
 		max-width: 600px;
 
 		.card {
 			z-index: 1;
 			box-shadow: 0 3px 30px -15px rgba(0, 3, 30, 0.25);
+			margin-top: 0.75rem;
+		}
+
+		.btn {
+			margin-right: 0;
 		}
 	}
 
@@ -332,12 +340,6 @@ a {
 			border-bottom: 1px solid $gray-200;
 			margin-bottom: 0;
 
-			&:hover,
-			&:focus {
-				text-decoration: none;
-				color: darken( $blue, 10% );
-			}
-
 			p {
 				color: $dark;
 				font-weight: $font-weight-normal;
@@ -349,6 +351,12 @@ a {
 		a.settings-item,
 		[role="button"] {
 			color: $blue;
+
+			&:hover,
+			&:focus {
+				text-decoration: none;
+				color: darken( $blue, 10% );
+			}
 		}
 
 		label.settings-item {
@@ -394,9 +402,11 @@ a {
 }
 
 .btn-add-recipe {
+	float: right;
 	position: relative;
 	padding-left: 3rem;
 	margin-top: 0.5rem;
+	margin-right: 0;
 
 	&::after {
 		font-family: $font-family-base;
@@ -409,23 +419,44 @@ a {
 		height: 100%;
 		vertical-align: middle;
 	}
+
+	@include media-breakpoint-down(sm) {
+		margin-bottom: 0.5rem;
+	}
+
+	@include media-breakpoint-down(xs) {
+		float: none;
+	}
 }
 
 .greeting {
+	display: inline-block;
+	float: left;
 	font-size: 2.75rem;
 	font-weight: $font-weight-bolder;
 	color: $blue;
 	margin-bottom: 0;
+
+	@include media-breakpoint-down(md) {
+		font-size: 2.5rem;
+	}
+
+	@include media-breakpoint-down(xs) {
+		font-size: 2rem;
+		display: none;
+	}
 }
 
 .home-intro {
-	padding-bottom: 1.5rem;
+	@include media-breakpoint-only(sm) {
+		padding: 0;
+		margin: 0 0.5rem;
+	}
 }
 
 .home-recipe-list-intro {
 	border-top: 2px dashed $gray-200;
-	padding-top: 2.5rem;
-	margin-bottom: 1rem;
+	padding-top: 2rem;
 
 	h1,
 	p {
@@ -443,9 +474,29 @@ a {
 		color: $gray-500;
 		vertical-align: text-bottom;
 	}
+
+	@include media-breakpoint-down(sm) {
+		padding-top: 1.5rem;
+		padding-left: 0;
+		padding-right: 0;
+		margin-right: 0.5rem;
+		margin-left: 0.5rem;
+
+		h1 {
+			font-size: 1.5rem;
+		}
+
+		p {
+			vertical-align: unset;
+			float: right;
+		}
+	}
 }
 
 .recipe-list {
+	position: relative;
+	z-index: 2;
+
 	a {
 		&:hover,
 		&:focus {
@@ -460,22 +511,29 @@ a {
 	}
 
 	.card {
+		overflow: hidden;
+		margin: 0;
 		margin-bottom: 1.5rem;
 		background-color: $pure-white;
+		border: 3px solid $gray-200;
 
 		&:hover,
 		&:focus,
 		&:active {
 			transform: translateY(-3px);
 			box-shadow: 0 3px 30px -15px rgba(0, 3, 30, 0.25);
+			border-color: $primary;
 		}
-	}
 
-	.card-body {
-		padding: 1rem 0;
-		position: relative;
-		border: 2px solid $gray-200;
-		border-bottom: 0;
+		.card-img-top {
+			border-top-left-radius: 0;
+			border-top-right-radius: 0;
+		}
+
+		.card-body {
+			padding: 1rem 0;
+			position: relative;
+		}
 	}
 
 	.btn-recipe-card-edit {
@@ -541,8 +599,6 @@ a {
 		font-size: 14px;
 		padding-bottom: 1rem;
 		font-weight: $font-weight-normal;
-		border: 2px solid $gray-200;
-		border-top: 0;
 	}
 }
 
@@ -588,5 +644,35 @@ form {
 		padding-top: 0.5rem;
 		border-top: 2px dashed $gray-200;
 		color: $gray-600;
+	}
+}
+
+.breadcrumb-nav {
+	display: inline-block;
+}
+
+.breadcrumb {
+	position: relative;
+	z-index: 2;
+	background: none;
+	padding: 0;
+	margin-bottom: 3rem;
+
+	a {
+		color: $primary;
+	}
+
+	.breadcrumb-item {
+		font-weight: 600;
+		// font-family: $font-family-base;
+
+		&.active {
+			// color: $gray-400;
+			// font-weight: 900;
+		}
+	}
+
+	@include media-breakpoint-down(sm) {
+		margin-top: 1rem;
 	}
 }

@@ -22,33 +22,35 @@ class SignIn extends Component {
     const { authError, auth } = this.props;
     if (auth.uid) return <Redirect to='/home' />
     return (
-      <Container className="view view-card user-auth user-sign-in">
-        <Link to="/" className="btn btn-outline-secondary btn-card-cancel">Cancel</Link>
-        <article className="card">
-          <CardBody>
-            <Row className="justify-content-center">
-              <Col>
-                <article>
-                  <h1>Sign in</h1>
-                  <Form className="mt-3" onSubmit={this.handleSubmit}>
-                    <FormGroup>
-                      <Label for="email">Email</Label>
-                      <Input type="email" id="email" onChange={this.handleChange}/>
-                    </FormGroup>
-                    <FormGroup>
-                      <Label for="password">Password</Label>
-                      <Input type="password" id="password" onChange={this.handleChange}/>
-                    </FormGroup>
-                    <Button color="primary" block>Sign In</Button>
-                  </Form>
-                  <div className="authentication-error">
-                    { authError ? <p className="text-red">{ authError }</p> : null }
-                  </div>
-                </article>
-              </Col>
-            </Row>
-          </CardBody>
-        </article>
+      <Container className="view user-auth user-sign-in">
+        <div className="view-card">
+          <Link to="/" className="btn btn-outline-secondary btn-card-cancel">Cancel</Link>
+          <article className="card">
+            <CardBody>
+              <Row className="justify-content-center">
+                <Col>
+                  <article>
+                    <h1>Sign in</h1>
+                    <Form className="mt-3" onSubmit={this.handleSubmit}>
+                      <FormGroup>
+                        <Label for="email">Email</Label>
+                        <Input type="email" id="email" onChange={this.handleChange}/>
+                      </FormGroup>
+                      <FormGroup>
+                        <Label for="password">Password</Label>
+                        <Input type="password" id="password" onChange={this.handleChange}/>
+                      </FormGroup>
+                      <Button color="primary" block>Sign In</Button>
+                    </Form>
+                    <div className="authentication-error">
+                      { authError ? <p className="text-red">{ authError }</p> : null }
+                    </div>
+                  </article>
+                </Col>
+              </Row>
+            </CardBody>
+          </article>
+        </div>
       </Container>
     )
   }

@@ -3,7 +3,7 @@
 
 	.container {
 		position: relative;
-		padding: 1rem 1rem;
+		padding: 0.5rem 0.5rem;
 
 		&::before {
 			content: '';
@@ -21,13 +21,10 @@
 	.app-name {
 		position: relative;
 		z-index: 2;
-
-		a {
-			color: $gray-600;
-			font-weight: $font-weight-bold;
-			font-family: $headings-font-family;
-			font-size: 1.5rem;
-		}
+		color: $gray-600;
+		font-weight: $font-weight-bold;
+		font-family: $headings-font-family;
+		font-size: 1.5rem;
 	}
 
 	.nav {
@@ -43,6 +40,7 @@
 			position: relative;
 			padding-right: 3rem;
 			padding-left: 1rem;
+			margin-right: 0;
 			background-color: $pure-white;
 			color: $primary;
 			border-color: $gray-200;
@@ -65,54 +63,6 @@
 
 			&.active {
 				border-color: $primary;
-			}
-		}
-
-		@include media-breakpoint-down(md) {
-			position: fixed;
-			bottom: 0;
-			left: 0;
-			right: 0;
-			width: 100%;
-			z-index: 2;
-			border-top: 1px solid $gray-600;
-
-			.btn-group {
-				width: 100%;
-				background: $dark;
-			}
-
-			.btn {
-				border: 0;
-				border-radius: 0;
-				padding-top: 2rem;
-				padding-bottom: 2rem;
-				font-size: 1rem;
-
-				&.active {
-					background-color: initial;
-					color: lighten( $primary, 15% );
-
-					&:hover,
-					&:active {
-						color: lighten( $primary, 15% );
-					}
-				}
-
-				&:hover,
-				&:active {
-					background-color: initial;
-					color: $white;
-				}
-			}
-		}
-
-		@include media-breakpoint-down(sm) {
-			.btn {
-				border: 0;
-				border-radius: 0;
-				padding-top: 1.5rem;
-				padding-bottom: 1.5rem;
 			}
 		}
 	}

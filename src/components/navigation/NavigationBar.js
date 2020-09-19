@@ -14,7 +14,7 @@ const NavigationBar = (props) => {
 		<Navbar>
 			<h1 className="sr-only">recipepocket navigation</h1>
 			<Container>
-				<div className="app-name"><Link to="/home">Recipepocket.app</Link></div>
+				<div className="app-name">Recipepocket.app</div>
 				{ links }
 			</Container>
 		</Navbar>

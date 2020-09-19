@@ -6,7 +6,7 @@ import { Col, Card, CardBody, CardImg, CardTitle, CardFooter } from 'reactstrap'
 const RecipeSummary = ({recipe}) => {
   // const isNewRecipe = recipe.lastViewed > recipe.createdAt;
   return (
-    <Col sm="12" md="6" lg="4">
+    <Col xs={12} sm={10} md={6} lg={4}>
       <Link to={'/recipes/' + recipe.id}>
         <article className="recipe-summary">
           <Card>

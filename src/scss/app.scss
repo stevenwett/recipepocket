@@ -105,6 +105,15 @@ $transition-base:         all .1s ease-in-out;
 $navbar-dark-color:       $gray-700;
 $navbar-padding-y:        1rem;
 
+// Breadcrumbs
+$breadcrumb-bg:            $light;
+$breadcrumb-divider-color: $gray-400;
+$breadcrumb-active-color:  $gray-400;
+$breadcrumb-divider:       quote('›');
+
+// Grid
+$grid-gutter-width: 1rem;
+
 // Grid breakpoints
 
 $grid-breakpoints: (

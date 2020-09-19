@@ -5,7 +5,7 @@ import RecipeSummary from './RecipeSummary'
 
 const RecipeList = ({recipes}) => {
   return (
-    <Row className="recipe-list">
+    <Row className="recipe-list justify-content-center">
       { recipes && recipes.map(recipe => {
         if (!recipe.disabled) {
           return (

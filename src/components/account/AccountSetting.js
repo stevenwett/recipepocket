@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, CardBody } from 'reactstrap';
+import { Container, Row, Col, CardBody, Breadcrumb, BreadcrumbItem }  from 'reactstrap';
 
 const AccountSetting = (props) => {
   console.log(props);
@@ -19,16 +19,23 @@ const AccountSetting = (props) => {
   }
 
   return (
-    <Container className="view view-card account-setting">
-      <article className="card">
-        <CardBody>
-          <Row className="justify-content-center">
-            <Col>
-              <h1>{title}</h1>
-            </Col>
-          </Row>
-        </CardBody>
-      </article>
+    <Container className="view account-setting">
+      <Breadcrumb className="breadcrumb-nav">
+        <BreadcrumbItem><a href="/home">Home</a></BreadcrumbItem>
+        <BreadcrumbItem><a href="/account">Account</a></BreadcrumbItem>
+        <BreadcrumbItem active>{title}</BreadcrumbItem>
+      </Breadcrumb>
+      <div className="view-card">
+        <article className="card">
+          <CardBody>
+            <Row className="justify-content-center">
+              <Col>
+                <h1>{title}</h1>
+              </Col>
+            </Row>
+          </CardBody>
+        </article>
+      </div>
     </Container>
   )
 }

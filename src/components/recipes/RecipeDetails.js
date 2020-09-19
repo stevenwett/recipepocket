@@ -3,7 +3,7 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { Redirect, Link } from 'react-router-dom';
 import { firestoreConnect } from 'react-redux-firebase'
-import { Col, Row, Container, CardBody, CardImg } from 'reactstrap';
+import { Col, Row, Container, CardBody, CardImg, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 
 import { updateRecipe } from '../../store/actions/recipeActions'
 
@@ -16,81 +16,87 @@ class RecipeDetails extends Component {
   }
   render() {
     const { auth, recipe, recipeId } = this.props;
+    if ( !auth.uid ) return <Redirect to='/signin' />
 
     {/*
       * Add in code to force the screen to the top.
     */}
 
-    if ( !auth.uid ) return <Redirect to='/signin' />
     if (recipe) {
-      if ( recipe.disabled ) return <Redirect to='/recipes' />
+      if ( recipe.disabled ) return <Redirect to='/home' />
       return (
-        <Container className="view view-card recipe-details">
-          <div className="text-right">
-            <Link to="/home" className="btn btn-outline-secondary btn-card-cancel float-left">All Recipes</Link>
-            <Link to={"/recipes/" + recipeId + "/edit"} className="btn btn-outline-secondary btn-recipe-edit">Edit</Link>
-          </div>
-          <article className="card">
-            <div className="recipe-image">
-              <CardImg top width="100%" src="/images/peach-cobbler-photo.jpg" alt="" />
-              <div className="recipe-image-caption">Image caption</div>
+        <Container className="view recipe-details">
+          <Breadcrumb className="breadcrumb-nav">
+            <BreadcrumbItem><a href="/home">Home</a></BreadcrumbItem>
+            <BreadcrumbItem active>{ recipe.title }</BreadcrumbItem>
+          </Breadcrumb>
+          <div className="view-card">
+            <div className="text-right">
+              <Link to="/home" className="btn btn-outline-secondary btn-card-cancel float-left">All Recipes</Link>
+              <Link to={"/recipes/" + recipeId + "/edit"} className="btn btn-outline-secondary btn-recipe-edit">Edit</Link>
             </div>
-            <CardBody>
-              <div className="recipe-intro">
-                <Row>
-                  <Col>
-                    <h1>{ recipe.title }</h1>
-                    { recipe.author && <p className="author">{ recipe.author }</p> }
-                  </Col>
-                </Row>
-                <Row>
-                  <Col>
-                    <div className="overview">
-                      <h2 className="sr-only">Overview</h2>
-                      <Row>
-                        <Col lg={4}>
-                          <h3>YIELD</h3>
-                        </Col>
-                        <Col lg={8}>
-                        </Col>
-                      </Row>
-                      <Row>
-                        <Col lg={4}>
-                          <h3>TIME</h3>
-                        </Col>
-                        <Col lg={8}>
-                        </Col>
-                      </Row>
-                      { recipe.description && <p className="description">{ recipe.description }</p>
-                    }
-                    </div>
-                  </Col>
-                </Row>
+            <article className="card">
+              <div className="recipe-image">
+                <CardImg top width="100%" src="/images/peach-cobbler-photo.jpg" alt="" />
+                <div className="recipe-image-caption">Image caption</div>
               </div>
-              <section className="recipe-ingredients">
-                <Row>
-                  <Col>
-                    <h2>Ingredients</h2>
-                    <ul className="ingredients">
-                    </ul>
-                  </Col>
-                </Row>
-              </section>
-              <section className="recipe-preparation">
-                <Row>
-                  <Col>
-                    <h2>Preparation</h2>
-                    <ol className="preparation">
-                    </ol>
-                  </Col>
-                </Row>
-              </section>
-              <section className="recipe-tips">
-                <h3>Tips</h3>
-                {recipe.tips}
-              </section>
-            </CardBody>
-          </article>
+              <CardBody>
+                <div className="recipe-intro">
+                  <Row>
+                    <Col>
+                      <h1>{ recipe.title }</h1>
+                      { recipe.author && <p className="author">{ recipe.author }</p> }
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col>
+                      <div className="overview">
+                        <h2 className="sr-only">Overview</h2>
+                        <Row>
+                          <Col lg={4}>
+                            <h3>YIELD</h3>
+                          </Col>
+                          <Col lg={8}>
+                          </Col>
+                        </Row>
+                        <Row>
+                          <Col lg={4}>
+                            <h3>TIME</h3>
+                          </Col>
+                          <Col lg={8}>
+                          </Col>
+                        </Row>
+                        { recipe.description && <p className="description">{ recipe.description }</p>
+                      }
+                      </div>
+                    </Col>
+                  </Row>
+                </div>
+                <section className="recipe-ingredients">
+                  <Row>
+                    <Col>
+                      <h2>Ingredients</h2>
+                      <ul className="ingredients">
+                      </ul>
+                    </Col>
+                  </Row>
+                </section>
+                <section className="recipe-preparation">
+                  <Row>
+                    <Col>
+                      <h2>Preparation</h2>
+                      <ol className="preparation">
+                      </ol>
+                    </Col>
+                  </Row>
+                </section>
+                <section className="recipe-tips">
+                  <h3>Tips</h3>
+                  {recipe.tips}
+                </section>
+              </CardBody>
+            </article>
+          </div>
         </Container>
       )
     } else {

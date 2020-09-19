@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { Redirect, Link } from 'react-router-dom';
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row, Col, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 
 // import Activity from './Activity';
 import RecipeList from '../recipes/RecipeList';
@@ -23,25 +23,22 @@ class Home extends Component {
 
     return (
       <Container className="view home">
-        <Row>
-            <Col sm="12" md="6">
+        <Breadcrumb className="breadcrumb-nav">
+          <BreadcrumbItem active>Home</BreadcrumbItem>
+        </Breadcrumb>
+        <Row className="justify-content-center">
+            <Col xs={12} sm={10} md={12} className="home-intro">
               <p className="h1 greeting">Happy cooking!</p>
-            </Col>
-            <Col sm="12" md="6" className="text-right">
               <Link to="/recipes/add" className="btn btn-outline-primary btn-add-recipe">Add a Recipe</Link>
             </Col>
         </Row>
-        <Row>
-          <Col sm="12">
-            <section className="home-recipe-list">
-              <div className="home-recipe-list-intro">
-                <h1>Saved Recipes</h1>
-                <p>{recipeCount} saved</p>
-              </div>
-              <RecipeList recipes={recipes} />
-            </section>
+        <Row className="home-recipe-list justify-content-center">
+          <Col sm={10} md={12} className="home-recipe-list-intro">
+            <h1>Saved Recipes</h1>
+            <p>{recipeCount} saved</p>
           </Col>
         </Row>
+        <RecipeList recipes={recipes} />
       </Container>
     )
   }
