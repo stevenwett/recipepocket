@@ -12,21 +12,11 @@ const RecipeSummary = ({recipe}) => {
           <Card>
             <CardBody>
               <CardTitle>
-                <Link className="btn-recipe-card-edit" to={'/recipes/' + recipe.id + '/edit'} title="Edit"><span className="sr-only">Edit</span></Link>
+                {/*<Link className="btn-recipe-card-edit" to={'/recipes/' + recipe.id + '/edit'} title="Edit"><span className="sr-only">Edit</span></Link>
+                */}
                 <h2>{recipe.title}</h2>
               </CardTitle>
-              {/*
-              <div className="card-text">
-                <div className="author">{recipe.author}</div>
-                <div className="excerpt">{recipe.excerpt}</div>
-              </div>
-            */}
             </CardBody>
-            {/*
-            <CardFooter>
-              {'Created ' + moment(recipe.createdAt.toDate()).calendar()}
-            </CardFooter>
-          */}
           </Card>
         </article>
       </Link>
