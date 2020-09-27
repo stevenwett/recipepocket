@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Link, Redirect } from 'react-router-dom';
-import { Form, Container, Row, Col, Input, InputGroup, Label, FormGroup, Button, CardBody, Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { Form, Container, Row, Col, Input, InputGroup, Label, FormGroup, FormText, Button, CardBody, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 
 import { createRecipe } from '../../store/actions/recipeActions'
 
@@ -47,7 +47,7 @@ class AddRecipe extends Component {
           <BreadcrumbItem active>Add a Recipe</BreadcrumbItem>
         </Breadcrumb>
         <div className="view-card">
-          <Link to="/home" className="btn btn-outline-secondary btn-card-cancel">Cancel</Link>
+          <Link to="/home" className="btn btn-card-cancel">Cancel</Link>
           <article className="card">
             <CardBody>
               <Row className="justify-content-center">
@@ -79,6 +79,9 @@ class AddRecipe extends Component {
                       <FormGroup>
                         <Label for="photo" className="upload-photo"><h3>Recipe Photo</h3></Label>
                         <Input type="file" name="photo" id="photo" onChange={this.handleChange} />
+                        <FormText color="muted">
+                          Upload a photo of your final masterpiece!
+                        </FormText>
                       </FormGroup>
                       <FormGroup>
                         <Label><h3>Ingredients</h3></Label>

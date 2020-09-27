@@ -3,7 +3,7 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { Redirect, Link } from 'react-router-dom';
 import { firestoreConnect } from 'react-redux-firebase'
-import { Form, Container, Row, Col, Input, InputGroup, Label, FormGroup, Button, CardBody, BreadcrumbItem, Breadcrumb } from 'reactstrap';
+import { Form, Container, Row, Col, Input, InputGroup, Label, FormGroup, FormText, Button, CardBody, BreadcrumbItem, Breadcrumb } from 'reactstrap';
 
 import { updateRecipe, deleteRecipe } from '../../store/actions/recipeActions'
 
@@ -39,13 +39,10 @@ class EditRecipe extends Component {
           <Breadcrumb className="breadcrumb-nav">
             <BreadcrumbItem><a href="/home">Home</a></BreadcrumbItem>
             <BreadcrumbItem><a href={"/recipes/" + recipeId}>{ recipe.title }</a></BreadcrumbItem>
-            <BreadcrumbItem active>Edit Recipe</BreadcrumbItem>
+            <BreadcrumbItem active>Edit</BreadcrumbItem>
           </Breadcrumb>
           <div className="view-card">
-            <div className="text-right">
-              <Link to={"/recipes/" + recipeId} className="btn btn-outline-secondary btn-card-cancel float-left">Cancel</Link>
-              <Button outline color="secondary" className="btn-recipe-delete" onClick={this.handleDelete}>Delete</Button>
-            </div>
+            <Link to={"/recipes/" + recipeId} className="btn btn-card-cancel">Cancel</Link>
             <article className="card">
               <CardBody>
                 <Row className="justify-content-center">
@@ -76,6 +73,9 @@ class EditRecipe extends Component {
                       <FormGroup>
                         <Label for="photo"><h3>Recipe Photo</h3></Label>
                         <Input type="file" name="photo" id="photo" onChange={this.handleChange} />
+                        <FormText color="muted">
+                          Upload a photo of your final masterpiece!
+                        </FormText>
                       </FormGroup>
                       <FormGroup>
                         <Label><h3>Ingredients</h3></Label>
@@ -85,7 +85,7 @@ class EditRecipe extends Component {
                         <InputGroup className="step">
                           <Input placeholder="" name="ingredient" />
                         </InputGroup>
-                        <Button className="btn btn-outline-secondary add-ingredient">Add Another Ingredient</Button>
+                        <Button className="btn btn-outline-secondary add-ingredient add">Add Another Ingredient</Button>
                       </FormGroup>
                       <FormGroup>
                         <Label><h3>Preparation Steps</h3></Label>
@@ -95,7 +95,7 @@ class EditRecipe extends Component {
                         <InputGroup className="step">
                           <Input type="textarea" placeholder="" />
                         </InputGroup>
-                        <Button className="btn btn-outline-secondary add-ingredient">Add Another Step</Button>
+                        <Button className="btn btn-outline-secondary add-ingredient add">Add Another Step</Button>
                       </FormGroup>
                       <FormGroup>
                         <Label for="tips"><h3>Recipe Tips</h3></Label>
@@ -103,13 +103,16 @@ class EditRecipe extends Component {
                       </FormGroup>
                       <div className="add-recipe-footer">
                         <Button color="primary" block>Update Recipe</Button>
-                        <Link to="/recipes" className="btn btn-outline-primary">Cancel</Link>
+                        <Link to={"/recipes/" + recipeId} className="btn btn-outline-primary">Cancel</Link>
                       </div>
                     </Form>
                   </Col>
                 </Row>
               </CardBody>
             </article>
+          </div>
+          <div className="text-center">
+            <Button className="btn btn-recipe-delete" onClick={this.handleDelete}>Delete Recipe</Button>
           </div>
         </Container>
       )

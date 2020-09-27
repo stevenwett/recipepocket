@@ -39,6 +39,15 @@
 			vertical-align: middle;
 			margin-left: 0.125rem;
 		}
+
+		@include media-breakpoint-down(sm) {
+			font-size: 1.125rem;
+
+			span {
+				padding: 0 0.3rem;
+				font-size: 0.5rem;
+			}
+		}
 	}
 
 	.nav {
@@ -78,6 +87,20 @@
 
 			&.active {
 				border-color: $primary;
+			}
+
+			@include media-breakpoint-down(xs) {
+				height: 24px;
+				padding: 0;
+
+				span {
+					display: none;
+				}
+
+				&::after {
+					top: 0;
+					right: 0;
+				}
 			}
 		}
 	}
@@ -181,7 +204,7 @@
 .breadcrumb-nav {
 	position: relative;
 	display: inline-block;
-	margin-bottom: 1.5rem;
+	// margin-bottom: 1.5rem;
 	background-color: $gray-100;
 	padding: 0.5rem 1rem;
 	padding-left: 0;
@@ -198,6 +221,7 @@
 	background: none;
 	padding: 0;
 	margin: 0;
+	transition: $transition-base;
 
 	a {
 		color: $primary;
@@ -205,16 +229,14 @@
 
 	.breadcrumb-item {
 		font-weight: 600;
-		// font-family: $font-family-base;
-
-		&.active {
-			// color: $gray-400;
-			// font-weight: 900;
-		}
 	}
 
 	@include media-breakpoint-down(sm) {
-		margin-top: 1rem;
+		margin-top: 0;
 		margin-bottom: 1rem;
+
+		.breadcrumb-item {
+			font-size: 0.8rem;
+		}
 	}
 }

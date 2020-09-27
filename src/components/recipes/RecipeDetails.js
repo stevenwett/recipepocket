@@ -32,8 +32,8 @@ class RecipeDetails extends Component {
           </Breadcrumb>
           <div className="view-card">
             <div className="text-right">
-              <Link to="/home" className="btn btn-outline-secondary btn-card-cancel float-left">All Recipes</Link>
-              <Link to={"/recipes/" + recipeId + "/edit"} className="btn btn-outline-secondary btn-recipe-edit">Edit</Link>
+              <Link to="/home" className="btn btn-card-cancel float-left">All Recipes</Link>
+              <Link to={"/recipes/" + recipeId + "/edit"} className="btn btn-recipe-edit">Edit</Link>
             </div>
             <article className="card">
               <div className="recipe-image">
