@@ -89,7 +89,7 @@ class Account extends Component {
                         <p>1.0</p>
                       </div>
                     </li>
-                    <li><Link className="settings-item" to="/account/terms-conditions">Terms and conditions</Link></li>
+                    <li><Link className="settings-item" to="/account/terms-conditions">Terms &amp; conditions</Link></li>
                     <li><Link className="settings-item" to="/account/privacy-policy">Privacy policy</Link></li>
                   </ul>
                   <h2>Other</h2>

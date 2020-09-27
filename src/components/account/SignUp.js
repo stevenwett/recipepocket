@@ -21,7 +21,7 @@ class SignUp extends Component {
     this.props.signUp(this.state)
   }
   render() {
-    const { auth, authError } = this.props;
+    const { auth } = this.props;
     if (auth.uid ) return <Redirect to='/home' />
     return (
       <Container className="view account-sign-up">

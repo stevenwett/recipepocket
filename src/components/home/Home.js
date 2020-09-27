@@ -29,7 +29,7 @@ class Home extends Component {
         <Row className="justify-content-center">
             <Col xs={12} sm={10} md={12} className="home-intro">
               <p className="h1 greeting">Happy cooking!</p>
-              <Link to="/recipes/add" className="btn btn-outline-primary btn-add-recipe">Add a Recipe</Link>
+              <Link to="/recipes/add" className="btn btn-outline-primary btn-add-recipe add">Add a Recipe</Link>
             </Col>
         </Row>
         <Row className="home-recipe-list justify-content-center">

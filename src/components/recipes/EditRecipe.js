@@ -3,9 +3,9 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { Redirect, Link } from 'react-router-dom';
 import { firestoreConnect } from 'react-redux-firebase'
-import { Form, Container, Row, Col, Input, InputGroup, InputGroupAddon, InputGroupText, Label, FormGroup, Button, CardBody, BreadcrumbItem, Breadcrumb } from 'reactstrap';
+import { Form, Container, Row, Col, Input, InputGroup, Label, FormGroup, Button, CardBody, BreadcrumbItem, Breadcrumb } from 'reactstrap';
 
-import { createRecipe } from '../../store/actions/recipeActions'
+import { updateRecipe, deleteRecipe } from '../../store/actions/recipeActions'
 
 class EditRecipe extends Component {
   state = {
@@ -20,7 +20,10 @@ class EditRecipe extends Component {
   }
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.createRecipe(this.state);
+    this.props.updateRecipe(this.props.recipeId, this.state);
+  }
+  handleDelete = (e) => {
+    this.props.deleteRecipe(this.props.recipeId);
   }
   render() {
     const { auth, recipe, recipeId } = this.props;
@@ -39,7 +42,10 @@ class EditRecipe extends Component {
             <BreadcrumbItem active>Edit Recipe</BreadcrumbItem>
           </Breadcrumb>
           <div className="view-card">
-            <Link to={"/recipes/" + recipeId} className="btn btn-outline-secondary btn-card-cancel">Cancel</Link>
+            <div className="text-right">
+              <Link to={"/recipes/" + recipeId} className="btn btn-outline-secondary btn-card-cancel float-left">Cancel</Link>
+              <Button outline color="secondary" className="btn-recipe-delete" onClick={this.handleDelete}>Delete</Button>
+            </div>
             <article className="card">
               <CardBody>
                 <Row className="justify-content-center">
@@ -47,75 +53,58 @@ class EditRecipe extends Component {
                     <h1>Edit Recipe</h1>
                     <Form className="mt-3" onSubmit={this.handleSubmit}>
                       <FormGroup>
-                        <Label for="title">Recipe title</Label>
+                        <Label for="title"><h3>Recipe title</h3></Label>
                         <Input type="text" name="title" id="title" onChange={this.handleChange} />
                       </FormGroup>
                       <FormGroup>
-                        <Label for="author">Recipe Author</Label>
+                        <Label for="author"><h3>Recipe Author</h3></Label>
                         <Input type="text" name="author" id="author" onChange={this.handleChange} />
                       </FormGroup>
                       <FormGroup>
-                        <Label for="yield">Yield</Label>
+                        <Label for="yield"><h3>Yield</h3></Label>
                         <Input type="text" name="yield" id="yield" onChange={this.handleChange} />
                       </FormGroup>
                       <FormGroup>
-                        <Label for="time">Time</Label>
-                        <Input type="text" name="time" id="time" onChange={this.handleChange} />
+                        <Label for="totalTime"><h3>Total Time</h3></Label>
+                        <Input type="text" name="totalTime" id="totalTime" onChange={this.handleChange} />
                       </FormGroup>
 
                       <FormGroup>
-                        <Label for="description">Description</Label>
+                        <Label for="description"><h3>Description</h3></Label>
                         <Input type="textarea" name="description" id="description" onChange={this.handleChange} />
                       </FormGroup>
-
                       <FormGroup>
-                        <Label for="photo">Recipe Photo</Label>
+                        <Label for="photo"><h3>Recipe Photo</h3></Label>
                         <Input type="file" name="photo" id="photo" onChange={this.handleChange} />
                       </FormGroup>
-
                       <FormGroup>
-                        <Label>Ingredients
-                          <InputGroup>
-                            <Input placeholder="" />
-                            <InputGroupAddon addonType="append">
-                              <InputGroupText>=</InputGroupText>
-                            </InputGroupAddon>
-                          </InputGroup>
-                          <InputGroup>
-                            <Input placeholder="" />
-                            <InputGroupAddon addonType="append">
-                              <InputGroupText>=</InputGroupText>
-                            </InputGroupAddon>
-                          </InputGroup>
-                        </Label>
-                        <Button className="btn btn-outline-primary add-ingredient">Add Another Ingredient</Button>
+                        <Label><h3>Ingredients</h3></Label>
+                        <InputGroup className="step">
+                          <Input placeholder="" name="ingredient" />
+                        </InputGroup>
+                        <InputGroup className="step">
+                          <Input placeholder="" name="ingredient" />
+                        </InputGroup>
+                        <Button className="btn btn-outline-secondary add-ingredient">Add Another Ingredient</Button>
                       </FormGroup>
-
                       <FormGroup>
-                        <Label>Preparation Steps
-                          <InputGroup>
-                            <Input type="textarea" placeholder="" />
-                            <InputGroupAddon addonType="append">
-                              <InputGroupText>=</InputGroupText>
-                            </InputGroupAddon>
-                          </InputGroup>
-                          <InputGroup>
-                            <Input type="textarea" placeholder="" />
-                            <InputGroupAddon addonType="append">
-                              <InputGroupText>=</InputGroupText>
-                            </InputGroupAddon>
-                          </InputGroup>
-                        </Label>
-                        <Button className="btn btn-outline-primary add-ingredient">Add Another Step</Button>
+                        <Label><h3>Preparation Steps</h3></Label>
+                        <InputGroup className="step">
+                          <Input type="textarea" placeholder="" />
+                        </InputGroup>
+                        <InputGroup className="step">
+                          <Input type="textarea" placeholder="" />
+                        </InputGroup>
+                        <Button className="btn btn-outline-secondary add-ingredient">Add Another Step</Button>
                       </FormGroup>
-
                       <FormGroup>
-                        <Label for="tips">Recipe Tips</Label>
+                        <Label for="tips"><h3>Recipe Tips</h3></Label>
                         <Input type="textarea" name="tips" id="tips" onChange={this.handleChange} />
                       </FormGroup>
-
-                      <Button color="primary" block>Update Recipe</Button>
-                      <Link to="/recipes" className="btn btn-outline-primary">Cancel</Link>
+                      <div className="add-recipe-footer">
+                        <Button color="primary" block>Update Recipe</Button>
+                        <Link to="/recipes" className="btn btn-outline-primary">Cancel</Link>
+                      </div>
                     </Form>
                   </Col>
                 </Row>
@@ -151,7 +140,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    createRecipe: (recipe) => dispatch(createRecipe(recipe))
+    updateRecipe: (recipeId, recipe) => dispatch(updateRecipe(recipeId, recipe)),
+    deleteRecipe: (recipeId, recipe) => dispatch(deleteRecipe(recipeId, recipe))
   }
 }
 

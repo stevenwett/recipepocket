@@ -40,3 +40,9 @@ export const updateRecipe = (recipeId, recipe = null) => {
   }
 };
 
+export const deleteRecipe = (recipeId, recipe = null) => {
+  return (dispatch, getState, { getFirestore }) => {
+    console.log('delete ' + recipeId);
+  }
+}
+
