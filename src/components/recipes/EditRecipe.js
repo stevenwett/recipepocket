@@ -50,7 +50,7 @@ class EditRecipe extends Component {
               <CardBody>
                 <Row className="justify-content-center">
                   <Col>
-                    <h1>Edit Recipe</h1>
+                    <h1>{recipe.title}</h1>
                     <Form className="mt-3" onSubmit={this.handleSubmit}>
                       <FormGroup>
                         <Label for="title"><h3>Recipe title</h3></Label>
