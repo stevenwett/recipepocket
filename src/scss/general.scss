@@ -649,54 +649,87 @@ form {
 }
 
 .recipe-summary {
-	h2 {
-		font-size: 1.5rem;
-	}
-
 	.card {
 		overflow: hidden;
 		margin: 0;
 		margin-bottom: 1.5rem;
 		background-color: $pure-white;
-		border: 3px solid $gray-200;
+		box-shadow: 0 3px 30px -15px rgba(0,3,30,0.25);
+		// border: 3px solid $gray-200;
+
+		background-image: url('/images/peach-cobbler-photo.jpg');
+		background-size: cover;
 
 		&:hover,
 		&:focus,
 		&:active {
 			transform: translateY(-3px);
-			box-shadow: 0 3px 30px -15px rgba(0, 3, 30, 0.25);
-			border-color: $primary;
+			// box-shadow: 0 3px 30px -15px rgba(0, 3, 30, 0.25);
+			// border-color: $primary;
+
+			h2 {
+				text-decoration: underline;
+			}
 		}
 
-		.card-img-top {
-			border-top-left-radius: 0;
-			border-top-right-radius: 0;
-		}
+		// .card-img-top {
+		// 	border-top-left-radius: 0;
+		// 	border-top-right-radius: 0;
+		// }
 
 		.card-body {
-			padding: 1rem 0;
 			position: relative;
+			padding: 0;
+		}
+
+		.card-title {
+			padding: 0;
+			padding-top: 200px;
+
+			h2 {
+				padding: 1.25rem;
+				padding-bottom: 0.75rem;
+				padding-right: 5rem;
+				font-size: 1.5rem;
+				margin: 0;
+				color: $pure-white;
+				z-index: 1;
+				position: relative;
+
+				&::before {
+					content: '';
+					position: absolute;
+					height: 160%;
+					bottom: 0;
+					left: 0;
+					width: 100%;
+					// background: rgb(0,0,0);
+					background: linear-gradient(0deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.65) 50%, rgba(0,212,255,0) 100%);
+					z-index: -1;
+				}
+			}
 		}
 	}
 
 	.btn-recipe-card-edit {
 		position: absolute;
-		top: -23px;
+		bottom: 1rem;
 		right: 1rem;
-		height: 46px;
-		width: 46px;
-		background-color: $white;
-		border: 2px solid $gray-100;
+		height: 42px;
+		width: 42px;
+		// background-color: $white;
+		border: 2px solid $gray-500;
 		border-radius: 100%;
 		padding: 0;
 		transition: all 0.2s ease-in-out;
+		z-index: 2;
 
 		&::after {
 			content: url('/images/edit-icon.svg');
 			position: absolute;
-			height: 20px;
-			width: 20px;
-			top: 11px;
+			height: 16px;
+			width: 16px;
+			top: 9px;
 			right: 10px;
 			opacity: 0.6;
 			transition: all 0.2s ease-in-out;
@@ -705,8 +738,8 @@ form {
 		&:hover,
 		&:focus,
 		&:active {
-			border: 2px solid $gray-200;
-			background-color: $pure-white;
+			border: 2px solid $gray-400;
+			// background-color: $pure-white;
 
 			&::after {
 				opacity: 1;
@@ -719,7 +752,8 @@ form {
 		margin-bottom: 0;
 
 		h2 {
-			margin-bottom: 0.6rem;
+			// margin-bottom: 0.6rem;
+			margin-bottom: 0;
 		}
 	}
 
