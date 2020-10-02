@@ -10,7 +10,18 @@ import { updateRecipe, deleteRecipe } from '../../store/actions/recipeActions'
 class EditRecipe extends Component {
   state = {
     title: '',
-    excerpt: ''
+    author: '',
+    yield: '',
+    time: '',
+    description: '',
+    photo: {
+      url: '',
+      alt: '',
+      caption: ''
+    },
+    ingredients: [],
+    steps: [],
+    tips: ''
   }
   handleChange = (e) => {
     console.log(e.target.value);
@@ -51,7 +62,7 @@ class EditRecipe extends Component {
                     <Form className="mt-3" onSubmit={this.handleSubmit}>
                       <FormGroup>
                         <Label for="title"><h3>Recipe title</h3></Label>
-                        <Input type="text" name="title" id="title" onChange={this.handleChange} />
+                        <Input type="text" name="title" id="title" ref={this.state.title} onChange={this.handleChange} />
                       </FormGroup>
                       <FormGroup>
                         <Label for="author"><h3>Recipe Author</h3></Label>

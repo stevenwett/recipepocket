@@ -1,6 +1,6 @@
 // App
 
-@import url('https://fonts.googleapis.com/css2?family=Arima+Madurai:wght@900&family=Signika:wght@300;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arima+Madurai:wght@900&family=Signika:wght@300;400;600;700&display=swap');
 
 /* Variables */
 /* - Colors */
@@ -64,7 +64,7 @@ $border-radius: 20px;
 $spacer:        1rem;
 
 $font-weight-light:        300;
-$font-weight-normal:       $font-weight-light;
+$font-weight-normal:       400;
 $font-weight-bold:         600;
 $font-weight-bolder:       900;
 
@@ -76,8 +76,8 @@ $headings-color:          $dark;
 $headings-margin-bottom:  $spacer * (0.8);
 
 $font-size-base:          1rem;
-$h1-font-size:            $font-size-base * 2;
-$h2-font-size:            $font-size-base * 1.5;
+$h1-font-size:            $font-size-base * 2.125;
+$h2-font-size:            $font-size-base * 1.75;
 $h3-font-size:            14px;
 $input-btn-font-family:   $font-family-base;
 $input-btn-bg:            $pure-white;

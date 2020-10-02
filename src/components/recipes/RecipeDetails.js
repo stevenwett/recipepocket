@@ -38,7 +38,7 @@ class RecipeDetails extends Component {
             <article className="card">
               <div className="recipe-image">
                 <CardImg top width="100%" src="/images/peach-cobbler-photo.jpg" alt="" />
-                <div className="recipe-image-caption">Image caption</div>
+                <div className="recipe-image-caption">Jonny Miller for the New York Times. Food Stylist: Erin Jeanne McDowell.</div>
               </div>
               <CardBody>
                 <div className="recipe-intro">
@@ -53,17 +53,19 @@ class RecipeDetails extends Component {
                       <div className="overview">
                         <h2 className="sr-only">Overview</h2>
                         <Row>
-                          <Col lg={4}>
+                          <Col xs={2}>
                             <h3>YIELD</h3>
                           </Col>
-                          <Col lg={8}>
+                          <Col xs={10}>
+                            <p>One 8-inch pie</p>
                           </Col>
                         </Row>
                         <Row>
-                          <Col lg={4}>
+                          <Col xs={2}>
                             <h3>TIME</h3>
                           </Col>
-                          <Col lg={8}>
+                          <Col xs={10}>
+                            <p>1 1/2 hours, plus cooling</p>
                           </Col>
                         </Row>
                         { recipe.description && <p className="description">{ recipe.description }</p>
@@ -77,6 +79,14 @@ class RecipeDetails extends Component {
                     <Col>
                       <h2>Ingredients</h2>
                       <ul className="ingredients">
+                        <li>2 pounds ripe peaches or 6 cups frozen sliced peaches</li>
+                        <li>12 tablespoons butter (1 1/2 sticks)</li>
+                        <li>1 1/2 cips granulated sugar</li>
+                        <li>1 cup plus 2 tablespoons all-purpose flour</li>
+                        <li>1 1/2 teaspoons baking powder</li>
+                        <li>3/4 teaspoon fine sea salt</li>
+                        <li>1/2 cup milk</li>
+                        <li>Vanilla ice cream, for serving (optional)</li>
                       </ul>
                     </Col>
                   </Row>
@@ -86,14 +96,36 @@ class RecipeDetails extends Component {
                     <Col>
                       <h2>Preparation</h2>
                       <ol className="preparation">
+                        <li>
+                          <h3>Step 1</h3>
+                          <p>Heat oven to 350 degrees. Peel, pit and slice the peaches. Melt 4 tablespoons of butter in a medium saucepan. Add the sliced peaches and 1/2 cup sugar. Stir in 2 tablespoons of flour and simmer for 10 to 15 minutes, until soft and syrupy.</p>
+                        </li>
+                        <li>
+                          <h3>Step 2</h3>
+                          <p>Meanwhile, in a medium bowl, combine the remaining 1 cup sugar with the remaining 1 cup flour, baking powder and salt. Stir in the milk until combined.</p>
+                        </li>
+                         <li>
+                          <h3>Step 3</h3>
+                          <p>Add 8 tablespoons of butter to a 9-by-13-inch baking pan and place it in the oven. When the butter is melted, reserve 1/3 cup of the batter and set aside. Add the rest of the batter to the pan, using a spatula to spread it out as much as you can. It will not fully cover the bottom of the pan. That’s O.K.</p>
+                        </li>
+                         <li>
+                          <h3>Step 4</h3>
+                          <p>Spoon the peach mixture evenly over the top of the batter. Using a clean spoon, dollop small bits of the reserved batter over the peaches, and spread around a bit with the back of the spoon. (It will not fully cover the peaches. Again, that’s O.K.!)</p>
+                        </li>
+                         <li>
+                          <h3>Step 5</h3>
+                          <p>Bake for about 1 hour, or until the top is golden brown. Serve warm with vanilla ice cream, if desired.</p>
+                        </li>
                       </ol>
                     </Col>
                   </Row>
                 </section>
-                <section className="recipe-tips">
-                  <h3>Tips</h3>
-                  {recipe.tips}
-                </section>
+                  { recipe.tips &&
+                    <section className="recipe-tips">
+                      <h3>Tips</h3>
+                      <p>{recipe.tips}</p>
+                    </section>
+                  }
               </CardBody>
             </article>
           </div>

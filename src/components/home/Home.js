@@ -5,7 +5,6 @@ import { firestoreConnect } from 'react-redux-firebase';
 import { Redirect, Link } from 'react-router-dom';
 import { Container, Row, Col, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 
-// import Activity from './Activity';
 import RecipeList from '../recipes/RecipeList';
 
 class Home extends Component {
