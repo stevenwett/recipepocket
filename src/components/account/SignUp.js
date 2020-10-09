@@ -11,6 +11,9 @@ class SignUp extends Component {
     email: '',
     password: ''
   }
+  componentDidMount = () => {
+    window.scrollTo(0, 0);
+  }
   handleChange = (e) => {
     this.setState({
       [e.target.id]: e.target.value
@@ -23,6 +26,7 @@ class SignUp extends Component {
   render() {
     const { auth } = this.props;
     if (auth.uid ) return <Redirect to='/home' />
+
     return (
       <Container className="view account-sign-up">
         <Row className="get-started">

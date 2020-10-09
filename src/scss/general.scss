@@ -346,6 +346,11 @@ form {
 				font-weight: $font-weight-normal;
 				font-size: 10px;
 				color: $gray-800;
+				line-height: 1.1;
+
+				@include media-breakpoint-down(xs) {
+					font-size: 8px;
+				}
 			}
 		}
 

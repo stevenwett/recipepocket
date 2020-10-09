@@ -5,23 +5,23 @@ import { Redirect, Link } from 'react-router-dom';
 import { firestoreConnect } from 'react-redux-firebase'
 import { Col, Row, Container, CardBody, CardImg, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 
-import { updateRecipe } from '../../store/actions/recipeActions'
+import { updateRecipe } from '../../store/actions/recipeActions';
+import { IngredientList } from './ingredients/IngredientList';
 
 class RecipeDetails extends Component {
   componentDidMount() {
     const { recipeId } = this.props;
+    window.scrollTo(0, 0);
     if (recipeId) {
-      this.props.updateRecipe(recipeId);
+      // this.props.updateRecipe(recipeId);
     }
+  }
+  handleClick = (e) => {
+    console.log(e.target.value);
   }
   render() {
     const { auth, recipe, recipeId } = this.props;
     if ( !auth.uid ) return <Redirect to='/signin' />
-
-    {/*
-      * Add in code to force the screen to the top.
-    */}
-
     if (recipe) {
       if ( recipe.disabled ) return <Redirect to='/home' />
       return (
@@ -44,7 +44,7 @@ class RecipeDetails extends Component {
                 <div className="recipe-intro">
                   <Row>
                     <Col>
-                      <h1>{ recipe.title }</h1>
+                      { recipe.title && <h1>{ recipe.title }</h1> }
                       { recipe.author && <p className="author">{ recipe.author }</p> }
                     </Col>
                   </Row>
@@ -52,24 +52,27 @@ class RecipeDetails extends Component {
                     <Col>
                       <div className="overview">
                         <h2 className="sr-only">Overview</h2>
-                        <Row>
-                          <Col xs={2}>
-                            <h3>YIELD</h3>
-                          </Col>
-                          <Col xs={10}>
-                            <p>One 8-inch pie</p>
-                          </Col>
-                        </Row>
-                        <Row>
-                          <Col xs={2}>
-                            <h3>TIME</h3>
-                          </Col>
-                          <Col xs={10}>
-                            <p>1 1/2 hours, plus cooling</p>
-                          </Col>
-                        </Row>
-                        { recipe.description && <p className="description">{ recipe.description }</p>
-                      }
+                        { recipe.yield &&
+                          <Row>
+                            <Col xs={2}>
+                              <h3>YIELD</h3>
+                            </Col>
+                            <Col xs={10}>
+                              <p>{ recipe.yield }</p>
+                            </Col>
+                          </Row>
+                        }
+                        { recipe.time &&
+                          <Row>
+                            <Col xs={2}>
+                              <h3>TIME</h3>
+                            </Col>
+                            <Col xs={10}>
+                              <p>{ recipe.time }</p>
+                            </Col>
+                          </Row>
+                        }
+                        { recipe.description && <p className="description">{ recipe.description }</p> }
                       </div>
                     </Col>
                   </Row>
@@ -78,16 +81,6 @@ class RecipeDetails extends Component {
                   <Row>
                     <Col>
                       <h2>Ingredients</h2>
-                      <ul className="ingredients">
-                        <li>2 pounds ripe peaches or 6 cups frozen sliced peaches</li>
-                        <li>12 tablespoons butter (1 1/2 sticks)</li>
-                        <li>1 1/2 cips granulated sugar</li>
-                        <li>1 cup plus 2 tablespoons all-purpose flour</li>
-                        <li>1 1/2 teaspoons baking powder</li>
-                        <li>3/4 teaspoon fine sea salt</li>
-                        <li>1/2 cup milk</li>
-                        <li>Vanilla ice cream, for serving (optional)</li>
-                      </ul>
                     </Col>
                   </Row>
                 </section>

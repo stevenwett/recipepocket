@@ -9,7 +9,6 @@ export const createRecipe = (recipe) => {
       ownerFirstName: profile.firstName,
       ownerLastName: profile.lastName,
       ownerId: ownerId,
-      groups: [],
       createdAt: new Date(),
       lastModified: new Date(),
       lastViewed: new Date(),
@@ -43,6 +42,17 @@ export const updateRecipe = (recipeId, recipe = null) => {
 export const deleteRecipe = (recipeId, recipe = null) => {
   return (dispatch, getState, { getFirestore }) => {
     console.log('delete ' + recipeId);
+    // make async call to database
+    const firestore = getFirestore();
+    if (recipeId ) {
+      firestore.collection('recipes').doc(recipeId).delete()
+      .then(() => {
+        dispatch({ type: 'DELETE_RECIPE', recipeId })
+      })
+      .catch((error) => {
+        dispatch({ type: 'DELETE_RECIPE_ERROR', error })
+      })
+    }
   }
 }
 

@@ -8,7 +8,7 @@ import SignedOutLinks from './SignedOutLinks'
 const NavigationBar = (props) => {
   const { auth, profile } = props;
   const links = auth.uid ? <SignedInLinks profile={profile} /> : <SignedOutLinks />;
-  console.log(props);
+  // console.log(props);
 	return (
 		<Navbar>
 			<h1 className="sr-only">recipepocket navigation</h1>

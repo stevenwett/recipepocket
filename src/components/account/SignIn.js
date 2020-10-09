@@ -9,6 +9,9 @@ class SignIn extends Component {
     email: '',
     password: ''
   }
+  componentDidMount = () => {
+    window.scrollTo(0, 0);
+  }
   handleChange = (e) => {
     this.setState({
       [e.target.id]: e.target.value
@@ -21,6 +24,7 @@ class SignIn extends Component {
   render() {
     const { authError, auth } = this.props;
     if (auth.uid) return <Redirect to='/home' />
+
     return (
       <Container className="view user-auth user-sign-in">
         <div className="view-card">

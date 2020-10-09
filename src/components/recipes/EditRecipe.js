@@ -12,7 +12,7 @@ class EditRecipe extends Component {
     title: '',
     author: '',
     yield: '',
-    time: '',
+    totalTime: '',
     description: '',
     photo: {
       url: '',
@@ -23,8 +23,10 @@ class EditRecipe extends Component {
     steps: [],
     tips: ''
   }
+  componentDidMount = () => {
+    window.scrollTo(0, 0);
+  }
   handleChange = (e) => {
-    console.log(e.target.value);
     this.setState({
       [e.target.id]: e.target.value
     })
@@ -34,15 +36,17 @@ class EditRecipe extends Component {
     this.props.updateRecipe(this.props.recipeId, this.state);
   }
   handleDelete = (e) => {
+    {/* TODO: Double check that the user wants to delete it */}
     this.props.deleteRecipe(this.props.recipeId);
+    this.props.history.push('/home');
+    {/* TODO: Include a message that it has has been deleted */}
   }
   render() {
     const { auth, recipe, recipeId } = this.props;
+    // console.log(this.state);
+    console.log(this.props.recipe);
     if ( !auth.uid ) return <Redirect to='/signin' />
 
-    {/*
-      * Add in code to force the screen to the top.
-    */}
     if (recipe) {
       if ( recipe.disabled ) return <Redirect to='/home' />
       return (
@@ -62,7 +66,7 @@ class EditRecipe extends Component {
                     <Form className="mt-3" onSubmit={this.handleSubmit}>
                       <FormGroup>
                         <Label for="title"><h3>Recipe title</h3></Label>
-                        <Input type="text" name="title" id="title" ref={this.state.title} onChange={this.handleChange} />
+                        <Input type="text" name="title" id="title" value={this.state.title} onChange={this.handleChange} />
                       </FormGroup>
                       <FormGroup>
                         <Label for="author"><h3>Recipe Author</h3></Label>

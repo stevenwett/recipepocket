@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import moment from 'moment';
+// import moment from 'moment';
 import { Col, Card, CardBody, CardImg, CardTitle, CardFooter, Button } from 'reactstrap';
 
 const RecipeSummary = ({recipe}) => {

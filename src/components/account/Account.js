@@ -10,6 +10,9 @@ class Account extends Component {
     email: '',
     password: ''
   }
+  componentDidMount = () => {
+    window.scrollTo(0, 0);
+  }
   handleChange = (e) => {
     this.setState({
       [e.target.id]: e.target.value
@@ -28,10 +31,6 @@ class Account extends Component {
   render() {
     const { auth, signOut, profile } = this.props;
     if (!auth.uid) return <Redirect to='/' />
-
-    {/*
-      * Add in code to force the screen to the top.
-    */}
 
     return (
       <Container className="view account">

@@ -16,7 +16,6 @@ import SignIn from './components/account/SignIn';
 import SignUp from './components/account/SignUp';
 
 class App extends Component {
-  const
   render() {
     return (
       <BrowserRouter>

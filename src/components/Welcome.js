@@ -4,6 +4,9 @@ import { Container, Row, Col } from 'reactstrap';
 import homeCard from '../images/home-card.svg';
 
 class Welcome extends Component {
+  componentDidMount = () => {
+    window.scrollTo(0, 0);
+  }
   render() {
     return (
       <Container className="view welcome">

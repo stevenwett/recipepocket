@@ -10,35 +10,47 @@ class AddRecipe extends Component {
     title: '',
     author: '',
     yield: '',
-    time: '',
+    totalTime: '',
     description: '',
     photo: {
       url: '',
       alt: '',
       caption: ''
     },
-    ingredients: [],
-    steps: [],
+    ingredients: [
+      {
+        text: '2 pounds ripe peaches or 6 cups frozen sliced peaches',
+        active: false
+      }
+    ],
+    steps: [
+      {
+        text: 'Heat oven to 350 degrees. Peel, pit and slice the peaches. Melt 4 tablespoons of butter in a medium saucepan. Add the sliced peaches and 1/2 cup sugar. Stir in 2 tablespoons of flour and simmer for 10 to 15 minutes, until soft and syrupy.'
+      },
+      {
+        text: 'Meanwhile, in a medium bowl, combine the remaining 1 cup sugar with the remaining 1 cup flour, baking powder and salt. Stir in the milk until combined.'
+      }
+    ],
     tips: ''
+  }
+  componentDidMount = () => {
+    window.scrollTo(0, 0);
   }
   handleChange = (e) => {
     // console.log(e.target.value);
     this.setState({
       [e.target.id]: e.target.value
     })
-    console.log(this.state);
+    // console.log(this.state);
   }
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.createRecipe(this.state);
+    this.props.history.push('/home');
   }
   render() {
     const { auth } = this.props;
     if ( !auth.uid ) return <Redirect to='/signin' />
-
-    {/*
-      * Add in code to force the screen to the top.
-    */}
 
     return (
       <Container className="view add-recipe">
