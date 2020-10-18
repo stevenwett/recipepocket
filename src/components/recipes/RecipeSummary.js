@@ -9,11 +9,9 @@ const RecipeSummary = ({recipe}) => {
     <Col xs={12} sm={10} md={6} lg={4}>
       <Link to={'/recipes/' + recipe.id}>
         <article className="recipe-summary">
-          <Card>
+          <Card style={{backgroundImage: `url(${recipe.photos && recipe.photos[0].source})`}}>
             <CardBody>
               <CardTitle>
-                {/*<Link className="btn-recipe-card-edit" to={'/recipes/' + recipe.id + '/edit'} title="Edit"><span className="sr-only">Edit</span></Link>
-                */}
                 <h2>{recipe.title}</h2>
               </CardTitle>
             </CardBody>

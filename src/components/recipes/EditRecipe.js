@@ -36,10 +36,8 @@ class EditRecipe extends Component {
     this.props.updateRecipe(this.props.recipeId, this.state);
   }
   handleDelete = (e) => {
-    {/* TODO: Double check that the user wants to delete it */}
     this.props.deleteRecipe(this.props.recipeId);
     this.props.history.push('/home');
-    {/* TODO: Include a message that it has has been deleted */}
   }
   render() {
     const { auth, recipe, recipeId } = this.props;

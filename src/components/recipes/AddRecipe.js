@@ -3,7 +3,7 @@ import firebase from 'firebase/app'
 // import { storage } from 'firebase'
 import {connect} from 'react-redux'
 import {Link, Redirect} from 'react-router-dom';
-import {Form, Container, Row, Col, Input, InputGroup, Label, FormGroup, FormText, Button, CardBody, Breadcrumb, BreadcrumbItem} from 'reactstrap';
+import {Form, Container, Row, Col, Input, Label, FormGroup, FormText, Button, CardBody, Breadcrumb, BreadcrumbItem} from 'reactstrap';
 
 import AddIngredientsList from './AddIngredientsList';
 import AddStepsList from './AddStepsList';

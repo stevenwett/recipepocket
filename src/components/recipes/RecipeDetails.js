@@ -39,7 +39,7 @@ class RecipeDetails extends Component {
             </div>
             <article className="card">
               <div className="recipe-image">
-                { recipe.photos[0] && <CardImg top width="100%" src={recipe.photos[0].source} alt="" /> }
+                { recipe.photos && <CardImg top width="100%" src={recipe.photos[0].source} alt="" /> }
                 <div className="recipe-image-caption">Jonny Miller for the New York Times. Food Stylist: Erin Jeanne McDowell.</div>
               </div>
               <CardBody>
