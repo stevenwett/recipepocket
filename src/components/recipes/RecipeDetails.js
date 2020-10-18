@@ -6,7 +6,9 @@ import { firestoreConnect } from 'react-redux-firebase'
 import { Col, Row, Container, CardBody, CardImg, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 
 import { updateRecipe } from '../../store/actions/recipeActions';
-// import { IngredientList } from './IngredientList';
+
+import IngredientsList from './IngredientsList';
+import StepsList from './StepsList';
 
 class RecipeDetails extends Component {
   componentDidMount() {
@@ -83,7 +85,7 @@ class RecipeDetails extends Component {
                   <Row>
                     <Col>
                       <h2>Ingredients</h2>
-                      { /* <IngredientList /> */ }
+                      <IngredientsList ingredients={recipe.ingredients}/>
                     </Col>
                   </Row>
                 </section>
@@ -91,28 +93,7 @@ class RecipeDetails extends Component {
                   <Row>
                     <Col>
                       <h2>Preparation</h2>
-                      <ol className="preparation">
-                        <li>
-                          <h3>Step 1</h3>
-                          <p>Heat oven to 350 degrees. Peel, pit and slice the peaches. Melt 4 tablespoons of butter in a medium saucepan. Add the sliced peaches and 1/2 cup sugar. Stir in 2 tablespoons of flour and simmer for 10 to 15 minutes, until soft and syrupy.</p>
-                        </li>
-                        <li>
-                          <h3>Step 2</h3>
-                          <p>Meanwhile, in a medium bowl, combine the remaining 1 cup sugar with the remaining 1 cup flour, baking powder and salt. Stir in the milk until combined.</p>
-                        </li>
-                         <li>
-                          <h3>Step 3</h3>
-                          <p>Add 8 tablespoons of butter to a 9-by-13-inch baking pan and place it in the oven. When the butter is melted, reserve 1/3 cup of the batter and set aside. Add the rest of the batter to the pan, using a spatula to spread it out as much as you can. It will not fully cover the bottom of the pan. That’s O.K.</p>
-                        </li>
-                         <li>
-                          <h3>Step 4</h3>
-                          <p>Spoon the peach mixture evenly over the top of the batter. Using a clean spoon, dollop small bits of the reserved batter over the peaches, and spread around a bit with the back of the spoon. (It will not fully cover the peaches. Again, that’s O.K.!)</p>
-                        </li>
-                         <li>
-                          <h3>Step 5</h3>
-                          <p>Bake for about 1 hour, or until the top is golden brown. Serve warm with vanilla ice cream, if desired.</p>
-                        </li>
-                      </ol>
+                      <StepsList steps={recipe.steps}/>
                     </Col>
                   </Row>
                 </section>

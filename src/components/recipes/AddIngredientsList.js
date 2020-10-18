@@ -1,7 +1,7 @@
 import React from 'react';
 import {Input} from 'reactstrap';
 
-function Ingredients({ingredients, deleteIngredient, updateIngredient}) {
+function AddIngredientsList({ingredients, deleteIngredient, updateIngredient}) {
   const ingredientList = ingredients.map(ingredient => {
     return (
       <div className="step input-group" key={ingredient.id}>
@@ -16,4 +16,4 @@ function Ingredients({ingredients, deleteIngredient, updateIngredient}) {
   )
 }
 
-export default Ingredients;
+export default AddIngredientsList;

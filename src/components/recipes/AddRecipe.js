@@ -5,9 +5,8 @@ import {connect} from 'react-redux'
 import {Link, Redirect} from 'react-router-dom';
 import {Form, Container, Row, Col, Input, InputGroup, Label, FormGroup, FormText, Button, CardBody, Breadcrumb, BreadcrumbItem} from 'reactstrap';
 
-import Ingredients from './Ingredients';
-
-import Steps from './Steps';
+import AddIngredientsList from './AddIngredientsList';
+import AddStepsList from './AddStepsList';
 import {createRecipe} from '../../store/actions/recipeActions';
 
 class AddRecipe extends Component {
@@ -196,12 +195,12 @@ class AddRecipe extends Component {
                       </FormGroup>
                       <FormGroup>
                         <Label><h3>Ingredients</h3></Label>
-                        <Ingredients deleteIngredient={this.deleteIngredient} updateIngredient={this.updateIngredient} ingredients={this.state.ingredients} />
+                        <AddIngredientsList deleteIngredient={this.deleteIngredient} updateIngredient={this.updateIngredient} ingredients={this.state.ingredients} />
                         <Button className="btn btn-outline-secondary add-ingredient add" id="ingredient" onClick={this.addItem}>Add Another Ingredient</Button>
                       </FormGroup>
                       <FormGroup>
                         <Label><h3>Preparation Steps</h3></Label>
-                        <Steps deleteStep={this.deleteStep} updateStep={this.updateStep} steps={this.state.steps} />
+                        <AddStepsList deleteStep={this.deleteStep} updateStep={this.updateStep} steps={this.state.steps} />
                         <Button className="btn btn-outline-secondary add-ingredient btn-add-recipe add" id="step" onClick={this.addItem}>Add Another Step</Button>
                       </FormGroup>
                       <FormGroup>

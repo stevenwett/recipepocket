@@ -1,7 +1,7 @@
 import React from 'react';
 import {Input} from 'reactstrap';
 
-function Steps({steps, deleteStep, updateStep}) {
+function AddStepsList({steps, deleteStep, updateStep}) {
   const stepList = steps.map(step => {
     return (
       <div className="step input-group" key={step.id}>
@@ -16,4 +16,4 @@ function Steps({steps, deleteStep, updateStep}) {
   )
 }
 
-export default Steps;
+export default AddStepsList;
