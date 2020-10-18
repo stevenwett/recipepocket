@@ -6,7 +6,7 @@ import { firestoreConnect } from 'react-redux-firebase'
 import { Col, Row, Container, CardBody, CardImg, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 
 import { updateRecipe } from '../../store/actions/recipeActions';
-import { IngredientList } from './ingredients/IngredientList';
+// import { IngredientList } from './IngredientList';
 
 class RecipeDetails extends Component {
   componentDidMount() {
@@ -37,7 +37,7 @@ class RecipeDetails extends Component {
             </div>
             <article className="card">
               <div className="recipe-image">
-                <CardImg top width="100%" src="/images/peach-cobbler-photo.jpg" alt="" />
+                { recipe.photos[0] && <CardImg top width="100%" src={recipe.photos[0].source} alt="" /> }
                 <div className="recipe-image-caption">Jonny Miller for the New York Times. Food Stylist: Erin Jeanne McDowell.</div>
               </div>
               <CardBody>
@@ -62,17 +62,19 @@ class RecipeDetails extends Component {
                             </Col>
                           </Row>
                         }
-                        { recipe.time &&
+                        { recipe.totalTime &&
                           <Row>
                             <Col xs={2}>
                               <h3>TIME</h3>
                             </Col>
                             <Col xs={10}>
-                              <p>{ recipe.time }</p>
+                              <p>{ recipe.totalTime }</p>
                             </Col>
                           </Row>
                         }
-                        { recipe.description && <p className="description">{ recipe.description }</p> }
+                        { recipe.description &&
+                          <p className="description">{ recipe.description }</p>
+                        }
                       </div>
                     </Col>
                   </Row>
@@ -81,6 +83,7 @@ class RecipeDetails extends Component {
                   <Row>
                     <Col>
                       <h2>Ingredients</h2>
+                      { /* <IngredientList /> */ }
                     </Col>
                   </Row>
                 </section>
