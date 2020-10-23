@@ -5,7 +5,7 @@ import {connect} from 'react-redux'
 import {Link, Redirect} from 'react-router-dom';
 import {Form, Container, Row, Col, Input, Label, FormGroup, FormText, Button, CardBody, Breadcrumb, BreadcrumbItem} from 'reactstrap';
 
-import AddIngredientsList from './AddIngredientsList';
+import AddIngredientsGroups from './AddIngredientsGroups';
 import AddStepsList from './AddStepsList';
 import {createRecipe} from '../../store/actions/recipeActions';
 
@@ -19,15 +19,37 @@ class AddRecipe extends Component {
     photos: [],
     ingredients: [
       {
-        text: '',
-        active: false,
-        id: 0
+        heading: '',
+        id: 0,
+        list: [
+          {
+            text: '',
+            active: false,
+            id: 0
+          },
+          {
+            text: '',
+            active: false,
+            id: 1
+          },
+          {
+            text: '',
+            active: false,
+            id: 2
+          }
+        ]
       }
     ],
     steps: [
       {
-        text: '',
-        id: 0
+        heading: '',
+        id: 0,
+        list: [
+          {
+            text: '',
+            id: 0
+          }
+        ]
       }
     ],
     tips: ''
@@ -186,17 +208,15 @@ class AddRecipe extends Component {
                         <Label for="description"><h3>Description</h3></Label>
                           <Input type="textarea" name="description" id="description" onChange={this.handleChange} />
                       </FormGroup>
-                      <FormGroup>
+                      <FormGroup className="upload-photo-group">
                         <Label for="photo" className="upload-photo"><h3>Recipe Photo</h3></Label>
-                        <Input type="file" name="photo" id="photo" onChange={this.handleFileUpload} />
                         <FormText color="muted">
-                          Upload a photo of your final masterpiece!
+                          Upload a photo of your final masterpiece! Landscape orientation works best.
                         </FormText>
+                        <Input type="file" name="photo" id="photo" onChange={this.handleFileUpload} />
                       </FormGroup>
                       <FormGroup>
-                        <Label><h3>Ingredients</h3></Label>
-                        <AddIngredientsList deleteIngredient={this.deleteIngredient} updateIngredient={this.updateIngredient} ingredients={this.state.ingredients} />
-                        <Button className="btn btn-outline-secondary add-ingredient add" id="ingredient" onClick={this.addItem}>Add Another Ingredient</Button>
+                        <AddIngredientsGroups ingredientsGroups={this.state.ingredients} />
                       </FormGroup>
                       <FormGroup>
                         <Label><h3>Preparation Steps</h3></Label>
