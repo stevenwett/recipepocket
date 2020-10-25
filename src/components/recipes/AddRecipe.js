@@ -5,7 +5,7 @@ import {connect} from 'react-redux'
 import {Link, Redirect} from 'react-router-dom';
 import {Form, Container, Row, Col, Input, Label, FormGroup, FormText, Button, CardBody, Breadcrumb, BreadcrumbItem} from 'reactstrap';
 
-import AddIngredientsGroups from './AddIngredientsGroups';
+import AddIngredientsGroups from './ingredients/AddIngredientsGroups';
 import AddStepsList from './AddStepsList';
 import {createRecipe} from '../../store/actions/recipeActions';
 
@@ -20,36 +20,25 @@ class AddRecipe extends Component {
     ingredients: [
       {
         heading: '',
-        id: 0,
+        id: Math.random(),
         list: [
           {
             text: '',
             active: false,
-            id: 0
+            id: Math.random()
           },
           {
             text: '',
             active: false,
-            id: 1
-          },
-          {
-            text: '',
-            active: false,
-            id: 2
+            id: Math.random()
           }
         ]
       }
     ],
     steps: [
       {
-        heading: '',
-        id: 0,
-        list: [
-          {
-            text: '',
-            id: 0
-          }
-        ]
+        text: '',
+        id: Math.random()
       }
     ],
     tips: ''
@@ -98,49 +87,95 @@ class AddRecipe extends Component {
     console.log('image uploaded.');
   }
 
-  addItem = (e, type) => {
+  // Ingredients Groups
+  addIngredientsGroup = (e) => {
     e.preventDefault();
-    // We're using the same function for adding ingredients and steps
-    type = e.currentTarget.id;
-    let item = {
+    const ingredientGroup = {
+      heading: '',
+      id: Math.random(),
+      list: [
+        {
+          text: '',
+          active: false,
+          id: 0
+        },
+        {
+          text: '',
+          active: false,
+          id: 1
+        }
+      ]
+    }
+    let ingredientGroups = [...this.state.ingredients, ingredientGroup];
+    this.setState({
+      ingredients: ingredientGroups
+    });
+  }
+
+  deleteIngredientsGroup = (e, ingredientsGroupId) => {
+    e.preventDefault();
+    let ingredientGroups = this.state.ingredients.filter(ingredientGroup => {
+      return ingredientGroup.id !== ingredientsGroupId
+    });
+    this.setState({
+      ingredients: ingredientGroups
+    });
+  }
+
+  addIngredient = (e, ingredientsGroupId) => {
+    e.preventDefault();
+    let ingredient = {
       text: '',
       id: Math.random()
     }
-    if ('ingredient' === type) {
-      item.active = false;
-      let ingredients = [...this.state.ingredients, item];
-      this.setState({
-        ingredients
-      });
-    }
-    if ('step' === type) {
-      let steps = [...this.state.steps, item];
-      this.setState({
-        steps
-      });
-    }
+    ingredient.active = false;
+    // identify the ingredient group
+    // add a new ingredient to that group
+
+    // let ingredients = [...this.state.ingredients, item];
+    // this.setState({
+    //   ingredients
+    // });
   }
 
   updateIngredient = (id, text) => {
-    let ingredients = this.state.ingredients.map(ingredient => {
-      if (id === ingredient.id) {
-        ingredient.text = text;
-      }
-      return ingredient;
-    });
-    this.setState({
-      ingredients
-    });
+    // let ingredients = this.state.ingredients.map(ingredient => {
+    //   if (id === ingredient.id) {
+    //     ingredient.text = text;
+    //   }
+    //   return ingredient;
+    // });
+    // this.setState({
+    //   ingredients
+    // });
   }
+
   deleteIngredient = (id, e) => {
     e.preventDefault();
-    let ingredients = this.state.ingredients.filter(ingredient => {
-      return ingredient.id !== id
-    });
-    this.setState({
-      ingredients
-    });
+    // let ingredients = this.state.ingredients.filter(ingredient => {
+    //   return ingredient.id !== id
+    // });
+    // this.setState({
+    //   ingredients
+    // });
   }
+
+  addStep = (e) => {
+    e.preventDefault();
+    let step = {
+      text: '',
+      id: Math.random()
+    }
+    step.active = false;
+    // identify the step group
+    // add a new step to that group
+
+    // let steps = [...this.state.steps, item];
+    // this.setState({
+      // steps
+    // });
+  }
+
   updateStep = (id, text) => {
     let steps = this.state.steps.map(step => {
       if (id === step.id) {
@@ -152,6 +187,7 @@ class AddRecipe extends Component {
       steps
     });
   }
+
   deleteStep = (id, e) => {
     e.preventDefault();
     let steps = this.state.steps.filter(step => {
@@ -161,12 +197,14 @@ class AddRecipe extends Component {
       steps
     });
   }
+
   handleSubmit = (e) => {
     e.preventDefault();
     console.log(this.state);
     this.props.createRecipe(this.state);
     this.props.history.push('/home');
   }
+
   render() {
     const { auth } = this.props;
     // console.log(this.state);
@@ -216,12 +254,12 @@ class AddRecipe extends Component {
                         <Input type="file" name="photo" id="photo" onChange={this.handleFileUpload} />
                       </FormGroup>
                       <FormGroup>
-                        <AddIngredientsGroups ingredientsGroups={this.state.ingredients} />
+                        <AddIngredientsGroups ingredientsGroups={this.state.ingredients} addIngredientsGroup={this.addIngredientsGroup} deleteIngredientsGroup={this.deleteIngredientsGroup} addIngredient={this.addIngredient} updateIngredient={this.updateIngredient} deleteIngredient={this.deleteIngredient}/>
                       </FormGroup>
                       <FormGroup>
                         <Label><h3>Preparation Steps</h3></Label>
                         <AddStepsList deleteStep={this.deleteStep} updateStep={this.updateStep} steps={this.state.steps} />
-                        <Button className="btn btn-outline-secondary add-ingredient btn-add-recipe add" id="step" onClick={this.addItem}>Add Another Step</Button>
+                        <Button className="btn btn-outline-secondary add-ingredient btn-add-recipe add" id="step" onClick={this.addStep}>Add Another Step</Button>
                       </FormGroup>
                       <FormGroup>
                         <Label for="tips"><h3>Recipe Tips</h3></Label>

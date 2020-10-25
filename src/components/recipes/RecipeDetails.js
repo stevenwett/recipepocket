@@ -5,9 +5,7 @@ import { Redirect, Link } from 'react-router-dom';
 import { firestoreConnect } from 'react-redux-firebase'
 import { Col, Row, Container, CardBody, CardImg, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 
-import { updateRecipe } from '../../store/actions/recipeActions';
-
-import IngredientsList from './IngredientsList';
+import IngredientsGroups from './ingredients/IngredientsGroups';
 import StepsList from './StepsList';
 
 class RecipeDetails extends Component {
@@ -18,8 +16,8 @@ class RecipeDetails extends Component {
       // this.props.updateRecipe(recipeId);
     }
   }
-  handleClick = (e) => {
-    console.log(e.target.value);
+  handleIngredientClick = (e, ingredientsGroups, ingredientsGroup) => {
+    /* with this information, update the state of the ingredient when clicked */
   }
   render() {
     const { auth, recipe, recipeId } = this.props;
@@ -39,8 +37,8 @@ class RecipeDetails extends Component {
             </div>
             <article className="card">
               <div className="recipe-image">
-                { recipe.photos && <CardImg top width="100%" src={recipe.photos[0].source} alt="" /> }
-                <div className="recipe-image-caption">Jonny Miller for the New York Times. Food Stylist: Erin Jeanne McDowell.</div>
+                { recipe.photos[0].source && <CardImg top width="100%" src={recipe.photos[0].source} alt="" /> }
+                { recipe.photos[0].caption && <div className="recipe-image-caption">recipe.photos[0].caption</div> }
               </div>
               <CardBody>
                 <div className="recipe-intro">
@@ -75,7 +73,7 @@ class RecipeDetails extends Component {
                           </Row>
                         }
                         { recipe.description &&
-                          <p className="description">{ recipe.description }</p>
+                          <p className="description">{ recipe.description } </p>
                         }
                       </div>
                     </Col>
@@ -85,7 +83,7 @@ class RecipeDetails extends Component {
                   <Row>
                     <Col>
                       <h2>Ingredients</h2>
-                      <IngredientsList ingredients={recipe.ingredients}/>
+                      <IngredientsGroups ingredients={recipe.ingredients} handleIngredientClick={ this.handleIngredientClick } />
                     </Col>
                   </Row>
                 </section>
@@ -134,14 +132,8 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    updateRecipe: (recipeId, recipe = null) => dispatch(updateRecipe(recipeId, recipe))
-  }
-}
-
 export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
+  connect(mapStateToProps),
   firestoreConnect([
     { collection: 'recipes' }
   ])

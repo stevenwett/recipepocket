@@ -55,4 +55,3 @@ export const deleteRecipe = (recipeId, recipe = null) => {
     }
   }
 }
-
