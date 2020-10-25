@@ -54,20 +54,20 @@ class RecipeDetails extends Component {
                         <h2 className="sr-only">Overview</h2>
                         { recipe.yield &&
                           <Row>
-                            <Col xs={2}>
+                            <Col xs={6} sm={2}>
                               <h3>YIELD</h3>
                             </Col>
-                            <Col xs={10}>
+                            <Col xs={6} sm={10}>
                               <p>{ recipe.yield }</p>
                             </Col>
                           </Row>
                         }
                         { recipe.totalTime &&
                           <Row>
-                            <Col xs={2}>
+                            <Col xs={6} sm={2}>
                               <h3>TIME</h3>
                             </Col>
-                            <Col xs={10}>
+                            <Col xs={6} sm={10}>
                               <p>{ recipe.totalTime }</p>
                             </Col>
                           </Row>

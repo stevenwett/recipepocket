@@ -138,7 +138,11 @@ class AddRecipe extends Component {
     // });
   }
 
-  updateIngredient = (id, text) => {
+  updateIngredient = (text, ingredientId, ingredientsGroupId) => {
+    console.log(text);
+    console.log(ingredientId);
+    console.log(ingredientsGroupId);
+
     // let ingredients = this.state.ingredients.map(ingredient => {
     //   if (id === ingredient.id) {
     //     ingredient.text = text;
@@ -150,8 +154,10 @@ class AddRecipe extends Component {
     // });
   }
 
-  deleteIngredient = (id, e) => {
+  deleteIngredient = (e, ingredientId, ingredientsGroupId) => {
     e.preventDefault();
+    console.log(ingredientId);
+    console.log(ingredientsGroupId);
     // let ingredients = this.state.ingredients.filter(ingredient => {
     //   return ingredient.id !== id
     // });
