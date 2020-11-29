@@ -1,17 +1,24 @@
 import React from 'react';
+import {Row, Col} from 'reactstrap';
+
 import IngredientsList from './IngredientsList';
 
-function IngredientsGroups({ingredients, handleIngredientClick}) {
-  const ingredientGroupList = ingredients.map(ingredientsGroup => {
+function IngredientsGroups({ingredients}) {
+  let ingredientsGroups = ingredients.map(ingredientsGroup => {
     return (
-      <IngredientsList ingredientsGroup={ ingredientsGroup } key={ingredientsGroup.id} handleIngredientClick={(e) => {handleIngredientClick(e, ingredients, ingredientsGroup) }} />
+      <div className="ingredients-group" key={ingredientsGroup.id}>
+        { ingredientsGroup &&
+          <h3>{ingredientsGroup.heading}</h3>
+        }
+        <IngredientsList ingredients={ingredientsGroup.list} />
+      </div>
     )
-  })
-  return(
+  });
+  return (
     <div className="ingredients-groups">
-      {ingredientGroupList}
+      {ingredientsGroups}
     </div>
   )
 }
 
-export default IngredientsGroups
+export default IngredientsGroups;

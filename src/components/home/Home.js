@@ -14,7 +14,6 @@ class Home extends Component {
   render() {
     const { recipes, auth, profile } = this.props;
     if (!auth.uid) return <Redirect to='/' />
-
     let recipeCount = '';
     if ( recipes && 0 < recipes.length ) {
       if ( 1 === recipes.length ) {

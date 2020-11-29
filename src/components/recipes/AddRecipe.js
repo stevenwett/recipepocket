@@ -5,7 +5,9 @@ import {connect} from 'react-redux'
 import {Link, Redirect} from 'react-router-dom';
 import {Form, Container, Row, Col, Input, Label, FormGroup, FormText, Button, CardBody, Breadcrumb, BreadcrumbItem} from 'reactstrap';
 
-import AddIngredientsGroups from './ingredients/AddIngredientsGroups';
+// import AddIngredientsGroups from './ingredients/AddIngredientsGroups';
+import AddIngredientsGroup from './ingredients/AddIngredientsGroup';
+
 import AddStepsList from './AddStepsList';
 import {createRecipe} from '../../store/actions/recipeActions';
 
@@ -17,17 +19,13 @@ class AddRecipe extends Component {
     totalTime: '',
     description: '',
     photos: [],
-    ingredients: [
+      ingredients: [
       {
         heading: '',
         id: Math.random(),
         list: [
           {
-            text: '',
-            active: false,
-            id: Math.random()
-          },
-          {
+            quantity: '',
             text: '',
             active: false,
             id: Math.random()
@@ -43,16 +41,17 @@ class AddRecipe extends Component {
     ],
     tips: ''
   }
+
   componentDidMount = () => {
     window.scrollTo(0, 0);
   }
+
   handleChange = (e) => {
-    // console.log(e.target.value);
     this.setState({
       [e.target.id]: e.target.value
     })
-    // console.log(this.state);
   }
+
   handleFileUpload = (e) => {
     const image      = e.target.files[0];
 
@@ -82,104 +81,57 @@ class AddRecipe extends Component {
       });
     });
   }
+
   imageUploaded = () => {
     console.log(this.state);
     console.log('image uploaded.');
   }
 
   // Ingredients Groups
-  addIngredientsGroup = (e) => {
+  onAddIngredientsGroupClick = (e) => {
     e.preventDefault();
-    const ingredientGroup = {
+    const ingredientsGroup = {
       heading: '',
       id: Math.random(),
       list: [
         {
+          quantity: '',
           text: '',
           active: false,
-          id: 0
-        },
-        {
-          text: '',
-          active: false,
-          id: 1
+          id: Math.random()
         }
       ]
-    }
-    let ingredientGroups = [...this.state.ingredients, ingredientGroup];
+    };
+    let ingredientsGroups = [...this.state.ingredients, ingredientsGroup];
     this.setState({
-      ingredients: ingredientGroups
+      ingredients: ingredientsGroups
     });
   }
 
-  deleteIngredientsGroup = (e, ingredientsGroupId) => {
-    e.preventDefault();
-    let ingredientGroups = this.state.ingredients.filter(ingredientGroup => {
-      return ingredientGroup.id !== ingredientsGroupId
+  deleteIngredientsGroup = (id) => {
+    let ingredientsGroups = this.state.ingredients.filter(ingredientsGroup => {
+      return ingredientsGroup.id !== id
     });
     this.setState({
-      ingredients: ingredientGroups
+      ingredients: ingredientsGroups
     });
   }
 
-  addIngredient = (e, ingredientsGroupId) => {
-    e.preventDefault();
-    let ingredient = {
-      text: '',
-      id: Math.random()
-    }
-    ingredient.active = false;
-    // identify the ingredient group
-    // add a new ingredient to that group
-
-    // let ingredients = [...this.state.ingredients, item];
-    // this.setState({
-    //   ingredients
-    // });
-  }
-
-  updateIngredient = (text, ingredientId, ingredientsGroupId) => {
-    console.log(text);
-    console.log(ingredientId);
-    console.log(ingredientsGroupId);
-
-    // let ingredients = this.state.ingredients.map(ingredient => {
-    //   if (id === ingredient.id) {
-    //     ingredient.text = text;
-    //   }
-    //   return ingredient;
-    // });
-    // this.setState({
-    //   ingredients
-    // });
-  }
-
-  deleteIngredient = (e, ingredientId, ingredientsGroupId) => {
-    e.preventDefault();
-    console.log(ingredientId);
-    console.log(ingredientsGroupId);
-    // let ingredients = this.state.ingredients.filter(ingredient => {
-    //   return ingredient.id !== id
-    // });
-    // this.setState({
-    //   ingredients
-    // });
-  }
-
-  addStep = (e) => {
+  addPreparationStep = (e) => {
     e.preventDefault();
     let step = {
       text: '',
       id: Math.random()
     }
-    step.active = false;
-    // identify the step group
-    // add a new step to that group
 
-    // let steps = [...this.state.steps, item];
-    // this.setState({
-      // steps
-    // });
+    let steps = [
+      ...this.state.steps,
+      step
+    ]
+
+    this.setState({
+      steps
+    });
   }
 
   updateStep = (id, text) => {
@@ -194,10 +146,10 @@ class AddRecipe extends Component {
     });
   }
 
-  deleteStep = (id, e) => {
+  deleteStep = (e, stepId) => {
     e.preventDefault();
     let steps = this.state.steps.filter(step => {
-      return step.id !== id
+      return step.id !== stepId
     });
     this.setState({
       steps
@@ -206,15 +158,23 @@ class AddRecipe extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state);
     this.props.createRecipe(this.state);
     this.props.history.push('/home');
   }
 
   render() {
     const { auth } = this.props;
-    // console.log(this.state);
     if ( !auth.uid ) return <Redirect to='/signin' />
+
+    const ingredientsGroupsList = this.state.ingredients.map(ingredientsGroup => {
+      if( ingredientsGroup ) {
+        return (
+          <AddIngredientsGroup ingredientsGroup={ingredientsGroup} deleteIngredientsGroup={this.deleteIngredientsGroup} key={ingredientsGroup.id}/>
+        )
+      } else {
+        return null;
+      }
+    });
 
     return (
       <Container className="view add-recipe">
@@ -250,7 +210,7 @@ class AddRecipe extends Component {
                       </FormGroup>
                       <FormGroup>
                         <Label for="description"><h3>Description</h3></Label>
-                          <Input type="textarea" name="description" id="description" onChange={this.handleChange} />
+                          <Input type="textarea" name="description" id="description" rows={5} onChange={this.handleChange} />
                       </FormGroup>
                       <FormGroup className="upload-photo-group">
                         <Label for="photo" className="upload-photo"><h3>Recipe Photo</h3></Label>
@@ -260,16 +220,22 @@ class AddRecipe extends Component {
                         <Input type="file" name="photo" id="photo" onChange={this.handleFileUpload} />
                       </FormGroup>
                       <FormGroup>
-                        <AddIngredientsGroups ingredientsGroups={this.state.ingredients} addIngredientsGroup={this.addIngredientsGroup} deleteIngredientsGroup={this.deleteIngredientsGroup} addIngredient={this.addIngredient} updateIngredient={this.updateIngredient} deleteIngredient={this.deleteIngredient}/>
+                        <div className="ingredients-groups">
+                          <h3>Ingredients List</h3>
+                          { ingredientsGroupsList }
+                          <Button color="secondary" outline className="btn add" onClick={this.onAddIngredientsGroupClick}>Add Ingredients Group</Button>
+                        </div>
                       </FormGroup>
-                      <FormGroup>
+                      <FormGroup className="steps-groups">
                         <Label><h3>Preparation Steps</h3></Label>
                         <AddStepsList deleteStep={this.deleteStep} updateStep={this.updateStep} steps={this.state.steps} />
-                        <Button className="btn btn-outline-secondary add-ingredient btn-add-recipe add" id="step" onClick={this.addStep}>Add Another Step</Button>
+                        <div className="text-right">
+                          <Button className="btn btn-outline-secondary add-step add" id="step" onClick={this.addPreparationStep}>Add Another Step</Button>
+                        </div>
                       </FormGroup>
                       <FormGroup>
                         <Label for="tips"><h3>Recipe Tips</h3></Label>
-                        <Input type="textarea" name="tips" id="tips" onChange={this.handleChange} />
+                        <Input type="textarea" name="tips" id="tips" rows={5} onChange={this.handleChange} />
                       </FormGroup>
                       <div className="add-recipe-footer">
                         <Button color="primary" block>Save Recipe</Button>

@@ -63,6 +63,8 @@ $colors: map-merge(
 $border-radius: 20px;
 $spacer:        1rem;
 
+$border-radius-inner: 10px;
+
 $font-weight-light:        300;
 $font-weight-normal:       400;
 $font-weight-bold:         600;
@@ -83,7 +85,7 @@ $input-btn-font-family:   $font-family-base;
 $input-btn-bg:            $pure-white;
 
 $btn-font-weight:         $font-weight-bold;
-// $btn-border-radius:       12px;
+$btn-border-radius:       $border-radius-inner;
 
 $input-btn-border-width:  2px;
 
@@ -94,7 +96,7 @@ $input-bg:                $pure-white;
 $input-color:             $gray-700;
 $input-placeholder-color: $gray-400;
 $input-border-color:      $gray-200;
-// $input-border-radius:     12px;
+$input-border-radius:     $border-radius-inner;
 
 $card-color:              $dark;
 $card-bg:                 $pure-white;

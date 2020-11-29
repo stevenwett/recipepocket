@@ -21,7 +21,6 @@ class RecipeDetails extends Component {
   }
   render() {
     const { auth, recipe, recipeId } = this.props;
-    if ( !auth.uid ) return <Redirect to='/signin' />
     if (recipe) {
       if ( recipe.disabled ) return <Redirect to='/home' />
       return (
@@ -73,7 +72,7 @@ class RecipeDetails extends Component {
                           </Row>
                         }
                         { recipe.description &&
-                          <p className="description">{ recipe.description } </p>
+                          <p className="description" aria-expanded="false">{ recipe.description } </p>
                         }
                       </div>
                     </Col>
@@ -83,7 +82,9 @@ class RecipeDetails extends Component {
                   <Row>
                     <Col>
                       <h2>Ingredients</h2>
-                      <IngredientsGroups ingredients={recipe.ingredients} handleIngredientClick={ this.handleIngredientClick } />
+                      { recipe.ingredients &&
+                        <IngredientsGroups ingredients={recipe.ingredients} />
+                      }
                     </Col>
                   </Row>
                 </section>
