@@ -386,18 +386,23 @@ form {
 			.description {
 				margin-top: 1rem;
 				position: relative;
-				height: 100px;
 				overflow: hidden;
+				height: auto;
+				transition: $transition-base;
 
-				&[aria-expanded="false"]::after {
-					content: '';
-					position: absolute;
-					width: 100%;
+				&[aria-expanded="false"] {
 					height: 100px;
-					right: 0;
-					bottom: 0;
-					left: 0;
-					background: linear-gradient(transparent, $pure-white);
+
+					&::after {
+						content: '';
+						position: absolute;
+						width: 100%;
+						height: 100px;
+						right: 0;
+						bottom: 0;
+						left: 0;
+						background: linear-gradient(transparent, $pure-white);
+					}
 				}
 			}
 		}
@@ -421,40 +426,27 @@ form {
 			margin-bottom: 1.25rem;
 		}
 
-		ul.ingredients {
+		li.ingredient {
 			display: flex;
 			flex-flow: row wrap;
 			align-content: flex-start;
 			align-items: flex-start;
 			justify-content: flex-start;
+			margin-bottom: 1rem;
+			font-size: 1.1rem;
 
-			li {
-				// width: 50%;
-				height: auto;
-				margin-bottom: 1.5rem;
-				padding-left: 36px;
-				padding-right: 1rem;
-				line-height: 1.3;
+			.row {
+				width: 100%;
+				padding-left: 1rem;
+			}
+
+			.quantity {
+				text-align: right;
 				font-weight: $font-weight-bold;
-				position: relative;
-				color: $gray-600;
+			}
 
-				&::before {
-					position: absolute;
-					content: '';
-					top: 50%;
-					margin-top: -11px;
-					left: 0;
-					height: 22px;
-					width: 22px;
-					border-radius: 100%;
-					border: 2px solid $gray-200;
-				}
-
-				@include media-breakpoint-down(xs) {
-					display: block;
-					width: 100%;
-				}
+			.text {
+				padding-left: 0.5rem;
 			}
 		}
 
@@ -583,6 +575,7 @@ form {
 
 		.add-ingredient {
 			margin: 0;
+			display: inline-block;
 		}
 
 		.ingredients-groups {
@@ -611,6 +604,7 @@ form {
 
 		.ingredients-group-footer {
 			margin-top: 1rem;
+			text-align: right;
 		}
 
 		.add-ingredients-group {
@@ -663,6 +657,7 @@ form {
 		}
 
 		.delete-step {
+			display: inline-block;
 			margin: 0;
 			background: none;
 			color: $gray-400;

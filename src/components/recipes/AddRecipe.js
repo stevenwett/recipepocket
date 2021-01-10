@@ -19,13 +19,13 @@ class AddRecipe extends Component {
     totalTime: '',
     description: '',
     photos: [],
-      ingredients: [
+    ingredients: [
       {
         heading: '',
         id: Math.random(),
         list: [
           {
-            quantity: '',
+            quantity: 0,
             text: '',
             active: false,
             id: Math.random()
@@ -87,6 +87,13 @@ class AddRecipe extends Component {
     console.log('image uploaded.');
   }
 
+  // handlePhoto = (e) => {
+  //   console.log(e.target.value);
+  //   newPhoto = {
+  //     ...this.state.photo,
+  //   }
+  // }
+
   // Ingredients Groups
   onAddIngredientsGroupClick = (e) => {
     e.preventDefault();
@@ -105,6 +112,26 @@ class AddRecipe extends Component {
     let ingredientsGroups = [...this.state.ingredients, ingredientsGroup];
     this.setState({
       ingredients: ingredientsGroups
+    });
+  }
+
+  ingredientsChange = (newIngredientsGroup) => {
+    const newIngredientsGroups = this.state.ingredients.map(ingredientsGroup => {
+      if( ingredientsGroup.id === newIngredientsGroup.id ) {
+        return {
+          ...ingredientsGroup,
+          heading: newIngredientsGroup.heading,
+          list: newIngredientsGroup.list
+        }
+      } else {
+        return {
+          ...ingredientsGroup
+        }
+      }
+    });
+    this.setState({
+      ...this.state,
+      ingredients: newIngredientsGroups
     });
   }
 
@@ -169,7 +196,7 @@ class AddRecipe extends Component {
     const ingredientsGroupsList = this.state.ingredients.map(ingredientsGroup => {
       if( ingredientsGroup ) {
         return (
-          <AddIngredientsGroup ingredientsGroup={ingredientsGroup} deleteIngredientsGroup={this.deleteIngredientsGroup} key={ingredientsGroup.id}/>
+          <AddIngredientsGroup ingredientsGroup={ingredientsGroup} deleteIngredientsGroup={this.deleteIngredientsGroup} ingredientsChange={this.ingredientsChange} key={ingredientsGroup.id}/>
         )
       } else {
         return null;
@@ -193,11 +220,11 @@ class AddRecipe extends Component {
                     <h2>Add Your Own Recipe</h2>
                     <Form onSubmit={this.handleSubmit}>
                       <FormGroup>
-                        <Label for="title"><h3>Recipe title</h3></Label>
+                        <Label for="title"><h3>Recipe Title</h3></Label>
                         <Input type="text" name="title" id="title" onChange={this.handleChange} />
                       </FormGroup>
                       <FormGroup>
-                        <Label for="author"><h3>Recipe Author</h3></Label>
+                        <Label for="author"><h3>Author Name</h3></Label>
                         <Input type="text" name="author" id="author" onChange={this.handleChange} />
                       </FormGroup>
                       <FormGroup>

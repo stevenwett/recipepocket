@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Input, Button, Row, Col} from 'reactstrap';
 
-import AddIngredient from './AddIngredient';
+// import AddIngredient from './AddIngredient';
 
 class AddIngredientsGroup extends Component {
   state = {...this.props.ingredientsGroup}
@@ -12,6 +12,7 @@ class AddIngredientsGroup extends Component {
     this.setState({
       heading: e.target.value
     })
+    this.props.ingredientsChange(this.state);
   }
 
   onAddIngredientsGroupClick = (e) => {
@@ -27,7 +28,7 @@ class AddIngredientsGroup extends Component {
   onAddIngredientClick = (e) => {
     e.preventDefault();
     const ingredient = {
-      quantity: '',
+      quantity: 0,
       text: '',
       active: false,
       id: Math.random()
@@ -36,6 +37,7 @@ class AddIngredientsGroup extends Component {
     this.setState({
       list: ingredients
     });
+    this.props.ingredientsChange(this.state);
   }
 
   deleteIngredient = (id) => {
@@ -45,14 +47,54 @@ class AddIngredientsGroup extends Component {
     this.setState({
       list: ingredients
     });
+    this.props.ingredientsChange(this.state);
+  }
+
+  // onAddIngredientsChange = (e) => {
+  //   this.props.ingredientsChange(this.state);
+  // }
+
+  onIngredientChange = (ingredientId, e) => {
+    e.preventDefault();
+    let value = e.target.value;
+    if ("quantity" === e.target.name) {
+      value = parseFloat(value);
+    }
+
+    const newIngredientList = this.state.list.map(ingredient => {
+      if( ingredient.id === ingredientId ) {
+        return {
+          ...ingredient,
+          [e.target.name]: value
+        }
+      } else {
+        return {
+          ...ingredient
+        }
+      }
+    });
+    this.setState({
+      ...this.state,
+      list: newIngredientList
+    });
+    this.props.ingredientsChange(this.state);
   }
 
   render() {
-    console.log(this.state);
     const addIngredientsList = this.state.list.map(ingredient => {
       if ( ingredient ) {
         return (
-          <AddIngredient ingredient={ingredient} deleteIngredient={this.deleteIngredient} key={ingredient.id}/>
+          <div className="input-group" key={ingredient.id}>
+            <Row className="no-gutters">
+              <Col className="quantity-column" xs={4} sm={3}>
+                <Input type="number" min={0} step={0.125} name="quantity" onChange={(e) => {this.onIngredientChange(ingredient.id, e)}} />
+              </Col>
+              <Col xs={8} sm={9}>
+                <Input type="text" name="text" onChange={(e) => {this.onIngredientChange(ingredient.id, e)}} />
+                <Button className="btn remove-ingredient" title="Remove ingredient" onClick={this.onDeleteIngredientClick}>&ndash;</Button>
+              </Col>
+            </Row>
+          </div>
         )
       }
     });
@@ -60,15 +102,15 @@ class AddIngredientsGroup extends Component {
       <div className="ingredients-group">
         <Input type="text" name="ingredientHeading" className="group-heading" placeholder="(Add Group Heading)" onChange={this.onIngredientsGroupTitleChange} />
         <Row className="no-gutters">
-          <Col md={2}>
-            <p className="h4">Qty</p>
+          <Col xs={4} sm={3}>
+            <p className="h4">Quantity</p>
           </Col>
-          <Col md={10}>
+          <Col xs={8} sm={9}>
             <p className="h4">Ingredient</p>
           </Col>
         </Row>
         { addIngredientsList }
-        <div className="text-right ingredients-group-footer">
+        <div className="ingredients-group-footer">
           <Button color="secondary" outline className="btn delete-ingredient-group" onClick={this.onDeleteIngredientsGroupClick}>Remove Group</Button>
           <Button color="secondary" outline className="btn add-ingredient add" onClick={this.onAddIngredientClick}>Add Ingredient</Button>
         </div>
