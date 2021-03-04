@@ -5,14 +5,14 @@ import { Redirect, Link } from 'react-router-dom';
 import { firestoreConnect } from 'react-redux-firebase'
 import { Col, Row, Container, CardBody, CardImg, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 
-import IngredientsGroups from './ingredients/IngredientsGroups';
+import IngredientsGroups from './IngredientsGroups';
 import StepsList from './StepsList';
 
 class RecipeDetails extends Component {
   componentDidMount() {
     const { recipeId } = this.props;
-    window.scrollTo(0, 0);
-    if (recipeId) {
+    window.scrollTo( 0, 0 );
+    if ( recipeId ) {
       // this.props.updateRecipe(recipeId);
     }
   }
@@ -32,12 +32,16 @@ class RecipeDetails extends Component {
   // }
   render() {
     const { auth, recipe, recipeId } = this.props;
-    if (recipe) {
+    if ( recipe ) {
       if ( recipe.disabled ) return <Redirect to='/home' />
       let photoUrl = '',
         photoAlt = '',
         photoCaption = '';
-      if ( recipe && recipe.hasOwnProperty('photos') && undefined !== recipe.photos[0] ) {
+      if (
+        recipe &&
+        recipe.hasOwnProperty('photos') &&
+        undefined !== recipe.photos[0]
+      ) {
         if ( recipe.photos[0].hasOwnProperty('source') ) {
           photoUrl = recipe.photos[0].source;
         }
@@ -56,20 +60,25 @@ class RecipeDetails extends Component {
           </Breadcrumb>
           <div className="view-card">
             <div className="text-right">
-              <Link to="/home" className="btn btn-card-cancel float-left">All Recipes</Link>
-              <Link to={"/recipes/" + recipeId + "/edit"} className="btn btn-recipe-edit">Edit</Link>
+              <Link
+                to="/home"
+                className="btn btn-card-cancel float-left">All Recipes</Link>
+              <Link
+                to={ "/recipes/" + recipeId + "/edit" }
+                className="btn btn-recipe-edit">Edit</Link>
             </div>
             <article className="card">
               <div className="recipe-image">
-                <CardImg top width="100%" src={photoUrl} alt={photoAlt} />
-               <div className="recipe-image-caption">{photoCaption}</div>
+                <CardImg top width="100%" src={ photoUrl } alt={photoAlt}/>
+               <div className="recipe-image-caption">{ photoCaption }</div>
               </div>
               <CardBody>
                 <div className="recipe-intro">
                   <Row>
                     <Col>
-                      {recipe.title && <h1>{ recipe.title }</h1>}
-                      {recipe.author && <p className="author">{recipe.author}</p>}
+                      { recipe.title && <h1>{ recipe.title }</h1> }
+                      { recipe.author &&
+                        <p className="author">{ recipe.author }</p> }
                     </Col>
                   </Row>
                   <Row>
@@ -97,7 +106,10 @@ class RecipeDetails extends Component {
                           </Row>
                         }
                         { recipe.description &&
-                          <p className="description" aria-expanded="false" onClick={this.onDescriptionClick}>{recipe.description} </p>
+                          <p
+                            className="description"
+                            aria-expanded="false"
+                            onClick={this.onDescriptionClick}>{recipe.description}</p>
                         }
                       </div>
                     </Col>
@@ -108,7 +120,7 @@ class RecipeDetails extends Component {
                     <Col>
                       <h2>Ingredients</h2>
                       { recipe.ingredients &&
-                        <IngredientsGroups ingredients={recipe.ingredients} />
+                        <IngredientsGroups ingredients={recipe.ingredients}/>
                       }
                     </Col>
                   </Row>

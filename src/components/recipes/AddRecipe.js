@@ -3,12 +3,11 @@ import firebase from 'firebase/app'
 // import { storage } from 'firebase'
 import {connect} from 'react-redux'
 import {Link, Redirect} from 'react-router-dom';
-import {Form, Container, Row, Col, Input, Label, FormGroup, FormText, Button, CardBody, Breadcrumb, BreadcrumbItem} from 'reactstrap';
+import {Card, CardHeader, CardFooter, Form, Container, Row, Col, Input, Label, FormGroup, FormText, Button, CardBody, Breadcrumb, BreadcrumbItem} from 'reactstrap';
 
-// import AddIngredientsGroups from './ingredients/AddIngredientsGroups';
-import AddIngredientsGroup from './ingredients/AddIngredientsGroup';
+import IngredientsGroups from './add/IngredientsGroups';
 
-import AddStepsList from './AddStepsList';
+import PreparationStepsList from './PreparationStepsList';
 import {createRecipe} from '../../store/actions/recipeActions';
 
 class AddRecipe extends Component {
@@ -25,9 +24,8 @@ class AddRecipe extends Component {
         id: Math.random(),
         list: [
           {
-            quantity: 0,
+            quantity: '',
             text: '',
-            active: false,
             id: Math.random()
           }
         ]
@@ -95,38 +93,43 @@ class AddRecipe extends Component {
   // }
 
   // Ingredients Groups
-  onAddIngredientsGroupClick = (e) => {
-    e.preventDefault();
-    const ingredientsGroup = {
-      heading: '',
-      id: Math.random(),
-      list: [
-        {
+  // onAddIngredientsGroupClick = (e) => {
+  //   e.preventDefault();
+  //   const ingredientsGroup = {
+  //     heading: '',
+  //     id: Math.random(),
+  //     list: [
+  //       {
+  //         quantity: '',
+  //         text: '',
+  //         active: false,
+  //         id: Math.random()
+  //       }
+  //     ]
+  //   };
+  //   let ingredientsGroups = [...this.state.ingredients, ingredientsGroup];
+  //   this.setState({
+  //     ingredients: ingredientsGroups
+  //   });
+  // }
+
+
+  // Handle Ingredients
+
+  /* Add Ingredient
+   */
+  addIngredient = (ingredientsGroupId) => {
+    console.log('addIngredient', ingredientsGroupId);
+    const newIngredientsGroups = this.state.ingredients.map(ingredientsGroup => {
+      if( ingredientsGroupId === ingredientsGroup.id ) {
+        ingredientsGroup.list.push({
           quantity: '',
           text: '',
-          active: false,
           id: Math.random()
-        }
-      ]
-    };
-    let ingredientsGroups = [...this.state.ingredients, ingredientsGroup];
-    this.setState({
-      ingredients: ingredientsGroups
-    });
-  }
-
-  ingredientsChange = (newIngredientsGroup) => {
-    const newIngredientsGroups = this.state.ingredients.map(ingredientsGroup => {
-      if( ingredientsGroup.id === newIngredientsGroup.id ) {
-        return {
-          ...ingredientsGroup,
-          heading: newIngredientsGroup.heading,
-          list: newIngredientsGroup.list
-        }
-      } else {
-        return {
-          ...ingredientsGroup
-        }
+        });
+      }
+      return {
+        ...ingredientsGroup
       }
     });
     this.setState({
@@ -135,9 +138,93 @@ class AddRecipe extends Component {
     });
   }
 
-  deleteIngredientsGroup = (id) => {
+  /* Remove Ingredient
+   */
+  removeIngredient = (ingredientsGroupId, ingredientId) => {
+    console.log('removeIngredient', ingredientsGroupId, ingredientId);
+    const newIngredientsGroups = this.state.ingredients.map(ingredientsGroup => {
+      if ( ingredientsGroupId === ingredientsGroup.id ) {
+        ingredientsGroup.list = ingredientsGroup.list.filter(ingredient => {
+          return ingredient.id !== ingredientId
+        });
+      }
+      return {
+        ...ingredientsGroup
+      }
+    });
+    this.setState({
+      ...this.state,
+      ingredients: newIngredientsGroups
+    });
+  }
+
+  /*
+   * Update Ingredient Value
+   */
+  updateIngredient = (type, ingredientId, value, ingredientsGroupId) => {
+    console.log('updateIngredient', type, ingredientId, value, ingredientsGroupId);
+    const newIngredientsGroups = this.state.ingredients.map(ingredientsGroup => {
+      if( ingredientsGroupId === ingredientsGroup.id ) {
+        ingredientsGroup.list.map(ingredient => {
+          if( ingredient.id === ingredientId ) {
+            ingredient[type] = value;
+          }
+        });
+      }
+      return {
+        ...ingredientsGroup
+      }
+    });
+    this.setState({
+      ...this.state,
+      ingredients: newIngredientsGroups
+    });
+  }
+
+  /*
+   * Update Ingredients Group Heading
+   */
+  updateIngredientsGroupHeading = (ingredientsGroupId, value) => {
+    console.log('updateIngredientsGroupHeading', ingredientsGroupId, value);
+    const newIngredientsGroups = this.state.ingredients.map(ingredientsGroup => {
+      if( ingredientsGroupId === ingredientsGroup.id ) {
+        ingredientsGroup.heading = value;
+      }
+      return {
+        ...ingredientsGroup
+      }
+    });
+    this.setState({
+      ...this.state,
+      ingredients: newIngredientsGroups
+    });
+  }
+
+  addIngredientsGroup = () => {
+    console.log('addIngredientsGroup');
+    this.state.ingredients.push({
+      heading: '',
+      id: Math.random(),
+      list: [
+        {
+          quantity: '',
+          text: '',
+          id: Math.random()
+        }
+      ]
+    });
+
+    this.setState({
+      ...this.state
+    });
+
+    console.log(this.state.ingredients);
+  }
+
+  removeIngredientsGroup = (ingredientsGroupId) => {
+    console.log('updateIngredients', ingredientsGroupId);
     let ingredientsGroups = this.state.ingredients.filter(ingredientsGroup => {
-      return ingredientsGroup.id !== id
+      return ingredientsGroup.id !== ingredientsGroupId
     });
     this.setState({
       ingredients: ingredientsGroups
@@ -168,6 +255,7 @@ class AddRecipe extends Component {
       }
       return step;
     });
+    console.log("updateStep", steps.length, steps);
     this.setState({
       steps
     });
@@ -181,6 +269,7 @@ class AddRecipe extends Component {
     this.setState({
       steps
     });
+    console.log("deleteStep", steps.length, steps);
   }
 
   handleSubmit = (e) => {
@@ -192,17 +281,6 @@ class AddRecipe extends Component {
   render() {
     const { auth } = this.props;
     if ( !auth.uid ) return <Redirect to='/signin' />
-
-    const ingredientsGroupsList = this.state.ingredients.map(ingredientsGroup => {
-      if( ingredientsGroup ) {
-        return (
-          <AddIngredientsGroup ingredientsGroup={ingredientsGroup} deleteIngredientsGroup={this.deleteIngredientsGroup} ingredientsChange={this.ingredientsChange} key={ingredientsGroup.id}/>
-        )
-      } else {
-        return null;
-      }
-    });
-
     return (
       <Container className="view add-recipe">
         <Breadcrumb className="breadcrumb-nav">
@@ -216,57 +294,129 @@ class AddRecipe extends Component {
               <Row className="justify-content-center">
                 <Col>
                   <h1>Add a Recipe</h1>
+                  {/*
+                  <p>To get started, you can either import a recipe or enter in
+                  your details manually. If you choose to import a recipe, it
+                  will fill in the the fields that it can and you can tweak them
+                  as you wish.</p>
+                  <div className="import-recipe-form">
+                    <h2>Import a Recipe</h2>
+                    <Card>
+                      <CardBody>
+                        <Form>
+                          <FormGroup>
+                            <Label><h3>Recipe to Import (Optional)</h3></Label>
+                            <Input placeholder="Add a recipe URL ..." />
+                            <Button color="primary" outline>Import Recipe</Button>
+                            <Button color="secondary" outline>No Thanks</Button>
+                          </FormGroup>
+                        </Form>
+                      </CardBody>
+                    </Card>
+                  </div>
+                  */}
                   <div className="add-recipe-form">
-                    <h2>Add Your Own Recipe</h2>
-                    <Form onSubmit={this.handleSubmit}>
+                    <h2>Recipe Details</h2>
+                    <Form onSubmit={ this.handleSubmit }>
                       <FormGroup>
                         <Label for="title"><h3>Recipe Title</h3></Label>
-                        <Input type="text" name="title" id="title" onChange={this.handleChange} />
+                        <Input
+                          type="text"
+                          name="title"
+                          id="title"
+                          onChange={ this.handleChange }/>
                       </FormGroup>
                       <FormGroup>
                         <Label for="author"><h3>Author Name</h3></Label>
-                        <Input type="text" name="author" id="author" onChange={this.handleChange} />
+                        <Input
+                          type="text"
+                          name="author"
+                          id="author"
+                          onChange={ this.handleChange }/>
                       </FormGroup>
                       <FormGroup>
                         <Label for="yield"><h3>Yield</h3></Label>
-                        <Input type="text" name="yield" id="yield" placeholder="e.g. One 8-inch pie" onChange={this.handleChange} />
+                        <Input
+                          type="text"
+                          name="yield"
+                          id="yield"
+                          placeholder="e.g. One 8-inch pie"
+                          onChange={ this.handleChange }/>
                       </FormGroup>
                       <FormGroup>
                         <Label for="totalTime"><h3>Total Time</h3></Label>
-                        <Input type="text" name="totalTime" id="totalTime" placeholder="e.g. 1 1/2 hours, plus cooling" onChange={this.handleChange} />
+                        <Input
+                          type="text"
+                          name="totalTime"
+                          id="totalTime"
+                          placeholder="e.g. 1 1/2 hours, plus cooling"
+                          onChange={ this.handleChange }/>
                       </FormGroup>
                       <FormGroup>
                         <Label for="description"><h3>Description</h3></Label>
-                          <Input type="textarea" name="description" id="description" rows={5} onChange={this.handleChange} />
+                          <Input
+                            type="textarea"
+                            name="description"
+                            id="description"
+                            rows={5}
+                            onChange={ this.handleChange }/>
                       </FormGroup>
                       <FormGroup className="upload-photo-group">
-                        <Label for="photo" className="upload-photo"><h3>Recipe Photo</h3></Label>
-                        <FormText color="muted">
-                          Upload a photo of your final masterpiece! Landscape orientation works best.
-                        </FormText>
-                        <Input type="file" name="photo" id="photo" onChange={this.handleFileUpload} />
+                        <Label for="photo" className="upload-photo">
+                          <h3>Recipe Photo</h3>
+                        </Label>
+                        <FormText color="muted">Upload a photo of your final masterpiece! Landscape orientation works best.</FormText>
+                        <Input
+                          type="file"
+                          name="photo"
+                          id="photo"
+                          onChange={ this.handleFileUpload }/>
                       </FormGroup>
-                      <FormGroup>
-                        <div className="ingredients-groups">
-                          <h3>Ingredients List</h3>
-                          { ingredientsGroupsList }
-                          <Button color="secondary" outline className="btn add" onClick={this.onAddIngredientsGroupClick}>Add Ingredients Group</Button>
-                        </div>
+                      <FormGroup className="ingredients-groups">
+                        { this.state.ingredients &&
+                          <IngredientsGroups
+                            ingredients={ this.state.ingredients }
+                            addIngredientsGroup={ this.addIngredientsGroup }
+                            removeIngredientsGroup={ this.removeIngredientsGroup }
+                            updateIngredientsGroupHeading={
+                              this.updateIngredientsGroupHeading }
+                            addIngredient={ this.addIngredient }
+                            removeIngredient={ this.removeIngredient }
+                            updateIngredient={ this.updateIngredient }/>
+                        }
                       </FormGroup>
-                      <FormGroup className="steps-groups">
+                      <FormGroup className="preparation-steps">
                         <Label><h3>Preparation Steps</h3></Label>
-                        <AddStepsList deleteStep={this.deleteStep} updateStep={this.updateStep} steps={this.state.steps} />
-                        <div className="text-right">
-                          <Button className="btn btn-outline-secondary add-step add" id="step" onClick={this.addPreparationStep}>Add Another Step</Button>
+                        <div>
+                          <PreparationStepsList
+                            deleteStep={ this.deleteStep }
+                            steps={ this.state.steps }
+                            updateStep={ this.updateStep }/>
+                          <Card>
+                            <Button
+                              color="secondary"
+                              outline
+                              className="btn add-preparation-step add"
+                              id="step"
+                              onClick={ this.addPreparationStep }>
+                              Add Preparation Step</Button>
+                          </Card>
                         </div>
                       </FormGroup>
                       <FormGroup>
                         <Label for="tips"><h3>Recipe Tips</h3></Label>
-                        <Input type="textarea" name="tips" id="tips" rows={5} onChange={this.handleChange} />
+                        <Input
+                          type="textarea"
+                          name="tips"
+                          id="tips"
+                          rows={5}
+                          onChange={this.handleChange}/>
                       </FormGroup>
                       <div className="add-recipe-footer">
                         <Button color="primary" block>Save Recipe</Button>
-                        <Link to="/home" className="btn btn-outline-secondary">Don't Save and Cancel</Link>
+                        <Link
+                          to="/home"
+                          className="btn btn-outline-secondary">Don't Save and Cancel</Link>
                       </div>
 
                     </Form>

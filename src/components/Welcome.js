@@ -110,7 +110,9 @@ class Welcome extends Component {
                         d="M10 0h46a10 10 0 0110 10v23H0V10A10 10 0 0110 0z"
                       ></path>
                       <path fill="#f16060" d="M7 40h25v4H7z"></path>
-                      <path fill="#d0c8cd" d="M7 60h50v8H7zm0-11h50v8H7zm0 22h50v8H7z"></path>
+                      <path
+                        fill="#d0c8cd"
+                        d="M7 60h50v8H7zm0-11h50v8H7zm0 22h50v8H7z"></path>
                     </svg>
                 <p>Simple Layout</p>
               </Col>

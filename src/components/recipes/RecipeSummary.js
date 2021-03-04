@@ -19,7 +19,9 @@ const RecipeSummary = ({recipe}) => {
           <Card style={{backgroundImage: `url(${photoUrl})`}}>
             <CardBody>
               <CardTitle>
-                <h2>{recipe.title}</h2>
+                {recipe.title &&
+                  <h2>{recipe.title}</h2>
+                }
               </CardTitle>
             </CardBody>
           </Card>

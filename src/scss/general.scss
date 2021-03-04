@@ -33,11 +33,12 @@ h3,
 
 h4,
 .h4 {
-	font-size: 0.9rem;
+	font-size: 1rem;
 	margin-bottom: 0;
 	font-family: $font-family-base;
 	font-weight: $font-weight-bold;
-	text-transform: uppercase;
+	// text-transform: uppercase;
+	color: $gray-700;
 }
 
 li {
@@ -67,7 +68,7 @@ form {
 
 	.form-group {
 		label {
-			@extend h3;
+			// @extend h3;
 			margin-bottom: 0;
 			width: 100%;
 
@@ -488,19 +489,28 @@ form {
 
 	&.add-recipe {
 		h2 {
-			margin-bottom: 1.5rem;
+			margin-bottom: 1rem;
 		}
 
+		h3 {
+			margin-bottom: 0.5rem;
+		}
+
+		.import-recipe-form {
+			padding-bottom: 1rem;
+		}
+
+		.import-recipe-form,
 		.add-recipe-form {
 			padding-top: 1rem;
-			border-top: 2px dashed $gray-200;
+			border-top: 2px dashed $gray-300;
 			margin-top: 1rem;
 		}
 
 		.add-recipe-footer {
 			margin-top: 2rem;
 			padding-top: 1rem;
-			border-top: 2px dashed $gray-200;
+			border-top: 2px dashed $gray-300;
 
 			.btn {
 				margin-bottom: 1rem;
@@ -524,143 +534,122 @@ form {
 			position: relative;
 		}
 
-		.group-heading {
-			border: 0;
+		.preparation-steps,
+		.ingredients-groups {
+			padding-bottom: 2rem;
+			border-bottom: 2px dashed $gray-300;
+			margin-bottom: 2rem;
+
+			.card:first-child {
+				margin-top: 0;
+			}
+
+			.add-preparation-step,
+			.add-ingredients-group {
+				margin-top: 0;
+				border-color: $gray-100;
+				border-radius: $border-radius;
+			}
+		}
+
+		.add-ingredients-group {
+			border: 2px solid $gray-100;
+			margin-top: 0;
+			background-color: $pure-white;
+		}
+
+		.ingredients-group-heading-column {
+			padding-right: $grid-gutter-width / 2;
+		}
+
+		.ingredients-group-heading {
 			background: none;
 			margin-bottom: 1rem;
 			transition: $transition-base;
-			font-size: 1.1rem;
+			font-size: 1rem;
 			font-weight: $font-weight-bold;
 			color: $blue;
 			text-transform: uppercase;
 
 			&::placeholder {
-				color: $gray-300;
+				color: $blue;
+				opacity: 0.4;
 			}
 
-			&:hover,
 			&:focus {
-				background-color: $white;
+				box-shadow: none;
 			}
 		}
 
-		.remove-ingredient {
-			position: absolute;
-			top: 2px;
-			right: 2px;
-			margin: 0;
-			padding: 0 1rem;
-			height: calc( 100% - 4px );
-			font-size: 1.5rem;
-			color: $red;
-			background: none;
-			border: 0;
-			border-left: 2px solid $gray-200;
-			transition: $transition-base;
-			border-radius: 0;
-			border-bottom-right-radius: $border-radius-inner;
-			border-top-right-radius: $border-radius-inner;
+		.add-ingredients-header {
+			padding-bottom: $grid-gutter-width / 2;
+		}
 
-			&:hover,
-			&:focus {
-				background-color: $white;
+		.add-ingredients-list {
+			.add-ingredients-item {
+				margin-bottom: $grid-gutter-width / 2 !important;
 			}
 
-			&:active {
-				color: $red;
-				border-left: 2px solid $gray-200;
-				background-color: $gray-100;
+			.text {
+				padding-left: $grid-gutter-width / 2;
+				padding-right: $grid-gutter-width / 2;
+			}
+
+			.remove-ingredient {
+				margin: 0;
+				height: 40px;
+				width: 100%;
+				line-height: 0;
+				border: 0;
 			}
 		}
 
 		.add-ingredient {
 			margin: 0;
-			display: inline-block;
 		}
 
-		.ingredients-groups {
-			margin-bottom: 2rem;
-			padding-bottom: 1rem;
-			padding-top: 1rem;
-			border-bottom: 2px dashed $gray-300;
-			border-top: 2px dashed $gray-300;
-		}
-
-
-		.ingredients-group {
-			position: relative;
-			padding: 1rem;
-			// padding-bottom: 3.5rem;
-			border: 2px solid $gray-100;
-			// background-color: $gray-100;
-			border-radius: $border-radius;
-			margin-bottom: 1rem;
-
-			.row {
-				width: 100%;
-				margin: 0 auto;
-			}
-		}
-
-		.ingredients-group-footer {
-			margin-top: 1rem;
-			text-align: right;
-		}
-
-		.add-ingredients-group {
-			margin-top: 0;
-		}
-
-		.quantity-column {
-			padding-right: $grid-gutter-width;
-		}
-
-		.delete-ingredient-group {
+		.remove-ingredient-group {
+			height: 40px;
+			width: 100%;
 			margin: 0;
-			background: none;
-			color: $gray-400;
 			border: 0;
-			text-transform: uppercase;
-			transition: $transition-base;
-			position: absolute;
-			bottom: 1rem;
-			left: 1rem;
+			// background: none;
+			// color: $gray-500;
+			// border: 2px solid $gray-200;
+			// text-transform: uppercase;
+			// transition: $transition-base;
+			// position: absolute;
+			// bottom: 0;
+			// left: 0;
 
-			&:hover,
-			&:focus {
-				color: $red;
-			}
+			// &:hover,
+			// &:focus {
+			// 	color: $black;
+			// 	background-color: $gray-100;
+			// 	border-color: $gray-300;
+			// }
 
-			&:active {
-				background-color: $gray-100;
-			}
+			// &:active {
+			// 	background-color: $white;
+			// }
 		}
 
-		.steps-list {
-			.step-title {
-				padding: 6px 12px;
+		.preparation-steps-list {
+			.preparation-step-title {
+				// padding: 6px 12px;
 				padding-left: 0;
 			}
 
-			.step {
+			.preparation-step {
 				margin-bottom: 1rem;
 			}
 		}
 
-		.steps-groups {
-			padding-bottom: 1rem;
-			border-bottom: 2px dashed $gray-300;
-
-			.add-step {
-				margin-top: 0;
-			}
-		}
-
-		.delete-step {
+		.delete-preparation-step {
 			display: inline-block;
 			margin: 0;
 			background: none;
-			color: $gray-400;
+			color: $gray-500;
 			transition: $transition-base;
 			border: 0;
 			text-transform: uppercase;
