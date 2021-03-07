@@ -116,6 +116,12 @@ $breadcrumb-divider:       quote('›');
 // Grid
 $grid-gutter-width: 1rem;
 
+
+// Components
+$box-shadow-sm: 0 0.125rem 0.25rem rgba($black, 0.075);
+$box-shadow:    0 3px 30px -15px rgba(0, 3, 30, 0.25);
+$box-shadow-lg: 0 1rem 3rem rgba($black, 0.175);
+
 // Grid breakpoints
 
 $grid-breakpoints: (

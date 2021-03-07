@@ -13,12 +13,12 @@ function IngredientsGroups({
   updateIngredient
 }) {
 
-  const ingredientsGroups = ingredients.map(ingredientsGroup => {
+  const ingredientsGroups = ingredients.map((ingredientsGroup, index) => {
     return (
       <Card className="ingredients-group" key={ingredientsGroup.id}>
         <CardBody>
           <Row className="no-gutters">
-            <Col xs={11} sm={11} className="ingredients-group-heading-column">
+            <Col xs={12} sm={8} className="ingredients-group-heading-column">
               <Input
                 type="text"
                 name="ingredientHeading"
@@ -32,7 +32,7 @@ function IngredientsGroups({
                   );
                 }}/>
             </Col>
-            <Col className="remove-ingredient-group-column">
+            <Col xs={12} sm={4} className="remove-ingredient-group-column text-right">
               <Button
                 color="secondary"
                 outline
@@ -41,7 +41,7 @@ function IngredientsGroups({
                 onClick={(e) => {
                   e.preventDefault();
                   removeIngredientsGroup(ingredientsGroup.id);
-                }}></Button>
+                }}>Remove Group {index + 1}</Button>
             </Col>
           </Row>
           <Row className="no-gutters" className="add-ingredients-header">
@@ -61,7 +61,7 @@ function IngredientsGroups({
           }
           <div className="no-gutters ingredients-group-footer">
             <Row className="no-gutters">
-              <Col>
+              <Col className="text-right">
                 <Button
                   color="secondary"
                   outline
@@ -82,15 +82,13 @@ function IngredientsGroups({
       <>
         <h3>Ingredients Groups</h3>
         <p>There are currently no groups of ingredients. Please add one.</p>
-        <Card>
-          <Button
-            color="secondary"
-            outline className="btn add-ingredients-group add"
-            onClick={(e) => {
-              e.preventDefault();
-              addIngredientsGroup();
-            }}>Add Ingredients Group</Button>
-        </Card>
+        <Button
+          color="secondary"
+          outline className="btn add-ingredients-group"
+          onClick={(e) => {
+            e.preventDefault();
+            addIngredientsGroup();
+          }}>Add Ingredients Group</Button>
       </>
     )
   } else {
@@ -98,15 +96,13 @@ function IngredientsGroups({
       <>
         <h3>Ingredients Groups</h3>
         {ingredientsGroups}
-        <Card>
-          <Button
-            color="secondary"
-            outline className="btn add-ingredients-group add"
-            onClick={(e) => {
-              e.preventDefault();
-              addIngredientsGroup();
-            }}>Add Ingredients Group</Button>
-        </Card>
+        <Button
+          color="secondary"
+          outline className="btn add-ingredients-group"
+          onClick={(e) => {
+            e.preventDefault();
+            addIngredientsGroup();
+          }}>Add Ingredients Group</Button>
       </>
     )
   }

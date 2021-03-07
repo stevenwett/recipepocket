@@ -36,7 +36,7 @@ function IngredientsList({
                 );
             }}/>
           </Col>
-          <Col>
+          <Col className="text-right">
             <Button
               color="secondary"
               outline className="remove-ingredient"

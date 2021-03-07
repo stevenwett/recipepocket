@@ -392,15 +392,13 @@ class AddRecipe extends Component {
                             deleteStep={ this.deleteStep }
                             steps={ this.state.steps }
                             updateStep={ this.updateStep }/>
-                          <Card>
-                            <Button
-                              color="secondary"
-                              outline
-                              className="btn add-preparation-step add"
-                              id="step"
-                              onClick={ this.addPreparationStep }>
-                              Add Preparation Step</Button>
-                          </Card>
+                          <Button
+                            color="secondary"
+                            outline
+                            className="btn add-preparation-step"
+                            id="step"
+                            onClick={ this.addPreparationStep }>
+                            Add Preparation Step</Button>
                         </div>
                       </FormGroup>
                       <FormGroup>
