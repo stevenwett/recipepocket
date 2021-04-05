@@ -25,12 +25,12 @@ class SignUp extends Component {
   }
   render() {
     const { auth } = this.props;
-    if (auth.uid ) return <Redirect to='/home' />
+    if (auth.uid ) return <Redirect to='/dashboard' />
 
     return (
       <Container className="view account-sign-up">
         <Row className="get-started">
-          <Col lg={6}>
+          <Col lg={6} md={10}>
             <h1 className="greetings-line">It's Easy to Get Started</h1>
             <ol>
               <li>

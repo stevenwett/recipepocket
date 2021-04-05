@@ -3,7 +3,6 @@
 
 	.container {
 		position: relative;
-		padding: 0.5rem 0.5rem;
 
 		&::before {
 			content: '';
@@ -63,15 +62,39 @@
 		position: relative;
 		z-index: 2;
 
-		.btn.nav-account {
-			position: relative;
-			padding-right: 3rem;
-			padding-left: 1rem;
-			margin-right: 0;
+		.btn {
 			background-color: $pure-white;
 			color: $primary;
 			border: 0;
-			// border-color: $gray-200;
+			padding: 0.75rem;
+			position: relative;
+			border-radius: 0;
+
+			&::before {
+				content: '';
+				height: 4px;
+				width: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+
+			&.active {
+				&::before {
+					background-color: $primary;
+				}
+			}
+
+			&:hover,
+			&:focus {
+				box-shadow: none;
+			}
+		}
+
+		.btn.nav-account {
+			margin-right: 0;
+			padding-left: 1rem;
+			padding-right: 3rem;
 
 			&:not(:disabled):hover,
 			&:not(:disabled):focus,
@@ -85,7 +108,7 @@
 				position: absolute;
 				height: 25px;
 				width: 25px;
-				top: 0.31rem;
+				top: 12px;
 				right: 0.75rem;
 			}
 

@@ -5,7 +5,7 @@ import { firestoreConnect } from 'react-redux-firebase';
 import { Redirect, Link } from 'react-router-dom';
 import { Container, Row, Col, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 
-import RecipeList from '../recipes/RecipeList';
+import RecipeList from './recipes/RecipeList';
 
 class Home extends Component {
   componentDidMount = () => {
@@ -35,8 +35,8 @@ class Home extends Component {
         </Row>
         <Row className="home-recipe-list justify-content-center">
           <Col sm={10} md={12} className="home-recipe-list-intro">
-            { profile.firstName ? <h1>{ profile.firstName }&rsquo;s Recipes</h1> : null }
-            { recipeCount ? <p>{recipeCount} saved</p> : null }
+            { profile.firstName ? <h1>{ profile.firstName }&rsquo;s Recipes</h1> : <div className="placeholder placeholder-recipes-title"></div> }
+            { recipeCount ? <p>{recipeCount} saved</p> : <div className="placeholder placeholder-recipes-saved"></div> }
           </Col>
         </Row>
         <RecipeList recipes={recipes} />

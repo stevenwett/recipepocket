@@ -1,7 +1,5 @@
 // App
 
-@import url('https://fonts.googleapis.com/css2?family=Arima+Madurai:wght@900&family=Signika:wght@300;400;600;700&display=swap');
-
 /* Variables */
 /* - Colors */
 
@@ -64,10 +62,11 @@ $border-radius: 20px;
 $spacer:        1rem;
 
 $border-radius-inner: 10px;
+$border-radius-input: $border-radius-inner;
 
 $font-weight-light:        300;
 $font-weight-normal:       400;
-$font-weight-bold:         600;
+$font-weight-bold:         700;
 $font-weight-bolder:       900;
 
 $font-family-sans-serif:  'Signika', sans-serif;
@@ -96,11 +95,16 @@ $input-bg:                $pure-white;
 $input-color:             $gray-700;
 $input-placeholder-color: $gray-400;
 $input-border-color:      $gray-200;
-$input-border-radius:     $border-radius-inner;
+$input-border-radius:     $border-radius-input;
+
+$input-group-addon-color:        $input-color;
+$input-group-addon-bg:           $primary;
+$input-group-addon-border-color: $input-border-color;
 
 $card-color:              $dark;
 $card-bg:                 $pure-white;
 $card-border-color:       false;
+$card-spacer-x:           1.5rem;
 
 $transition-base:         all .1s ease-in-out;
 

@@ -12,6 +12,9 @@ const RecipeSummary = ({recipe}) => {
       photoUrl = recipe.photos[0].source;
     }
   }
+  if ( '' === photoUrl ) {
+    photoUrl = '/images/recipe-placeholder.svg';
+  }
   return (
     <Col xs={12} sm={10} md={6} lg={4} key={recipe.id}>
       <Link to={'/recipes/' + recipe.id}>

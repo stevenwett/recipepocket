@@ -5,7 +5,8 @@ import moment from 'moment';
 
 import NavigationBar from './components/navigation/NavigationBar';
 import Welcome from './components/Welcome';
-import Home from './components/home/Home';
+import Demo from './components/recipes/RecipeDetails';
+import Dashboard from './components/Dashboard';
 import Recipes from './components/recipes/Recipes';
 import AddRecipe from './components/recipes/AddRecipe';
 import EditRecipe from './components/recipes/EditRecipe';
@@ -26,7 +27,8 @@ class App extends Component {
           <main className="main">
             <Switch>
               <Route exact path='/' component={Welcome} />
-              <Route path='/home' component={Home} />
+              <Route exact path='/demo' component={Demo} />
+              <Route path='/dashboard' component={Dashboard} />
               <Route exact path='/recipes' component={Recipes} />
               <Route exact path='/recipes/add' component={AddRecipe} />
               <Route exact path='/recipes/:id' component={RecipeDetails} />

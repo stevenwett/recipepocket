@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row, Col, Form, InputGroup, Input, Label, InputGroupAddon, Button } from 'reactstrap';
 import homeCard from '../images/home-card.svg';
 
 class Welcome extends Component {
@@ -10,14 +10,28 @@ class Welcome extends Component {
   render() {
     return (
       <Container className="view welcome">
+        {/*
         <img className="home-card-1" src={ homeCard } alt="" />
         <img className="home-card-2" src={ homeCard } alt="" />
+        */}
         <Row>
-          <Col sm={12} md={7} lg={5}>
-            <h1 className="greetings-line">Organize your favorite recipes all in one place</h1>
-            <p>Recipepocket is a super simple, centralized storage place for your most loved recipes.</p>
+          <Col sm={12} md={9} lg={7}>
+            <h1 className="greetings-line">Pocket your favorite recipes without all the fluff.</h1>
+            <p>Recipepocket is a super simple, centralized storage place for your most loved recipes. Save your favorite recipes from around the web or add your own.</p>
+            {/*
             <Link to="/signup" className="btn btn-primary">Get Started</Link>
             <Link to="/signin" className="btn btn-outline-primary">Sign In</Link>
+            */}
+            <div className="demo">
+              <InputGroup>
+                <Label for="firstName">Try it out</Label>
+                <Input type="text" placeholder="Paste a recipe URL" />
+                <InputGroupAddon addonType="prepend">
+                  <Button color="primary" block>Go</Button>
+                </InputGroupAddon>
+              </InputGroup>
+              <p><Link to="/demo" block>See a demo</Link></p>
+            </div>
           </Col>
         </Row>
         <Row>

@@ -21,7 +21,7 @@ const AccountSetting = (props) => {
   return (
     <Container className="view account-setting">
       <Breadcrumb className="breadcrumb-nav">
-        <BreadcrumbItem><a href="/home">Home</a></BreadcrumbItem>
+        <BreadcrumbItem><a href="/dashboard">Dashboard</a></BreadcrumbItem>
         <BreadcrumbItem><a href="/account">Account</a></BreadcrumbItem>
         <BreadcrumbItem active>{title}</BreadcrumbItem>
       </Breadcrumb>

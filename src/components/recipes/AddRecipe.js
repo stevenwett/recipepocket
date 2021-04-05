@@ -6,8 +6,8 @@ import {Link, Redirect} from 'react-router-dom';
 import {Card, CardHeader, CardFooter, Form, Container, Row, Col, Input, Label, FormGroup, FormText, Button, CardBody, Breadcrumb, BreadcrumbItem} from 'reactstrap';
 
 import IngredientsGroups from './add/IngredientsGroups';
-
 import PreparationStepsList from './PreparationStepsList';
+
 import {createRecipe} from '../../store/actions/recipeActions';
 
 class AddRecipe extends Component {
@@ -275,7 +275,7 @@ class AddRecipe extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.createRecipe(this.state);
-    this.props.history.push('/home');
+    this.props.history.push('/dashboard');
   }
 
   render() {
@@ -284,11 +284,11 @@ class AddRecipe extends Component {
     return (
       <Container className="view add-recipe">
         <Breadcrumb className="breadcrumb-nav">
-          <BreadcrumbItem><a href="/home">Home</a></BreadcrumbItem>
+          <BreadcrumbItem><a href="/dashboard">Dashboard</a></BreadcrumbItem>
           <BreadcrumbItem active>Add a Recipe</BreadcrumbItem>
         </Breadcrumb>
         <div className="view-card">
-          <Link to="/home" className="btn btn-card-cancel">Cancel</Link>
+          <Link to="/dashboard" className="btn btn-card-cancel">Cancel</Link>
           <article className="card">
             <CardBody>
               <Row className="justify-content-center">
@@ -413,7 +413,7 @@ class AddRecipe extends Component {
                       <div className="add-recipe-footer">
                         <Button color="primary" block>Save Recipe</Button>
                         <Link
-                          to="/home"
+                          to="/dashboard"
                           className="btn btn-outline-secondary">Don't Save and Cancel</Link>
                       </div>
 

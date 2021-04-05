@@ -35,11 +35,11 @@ class Account extends Component {
     return (
       <Container className="view account">
         <Breadcrumb className="breadcrumb-nav">
-          <BreadcrumbItem><a href="/home">Home</a></BreadcrumbItem>
+          <BreadcrumbItem><a href="/dashboard">Dashboard</a></BreadcrumbItem>
           <BreadcrumbItem active>Account</BreadcrumbItem>
         </Breadcrumb>
         <div className="view-card">
-          <Link to="/home" className="btn btn-outline-secondary btn-card-cancel">All Recipes</Link>
+          <Link to="/dashboard" className="btn btn-outline-secondary btn-card-cancel">Dashboard</Link>
           <article className="card">
             <CardBody>
               <Row>

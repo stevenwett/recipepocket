@@ -12,19 +12,7 @@ function IngredientsList({
     if(ingredient) {
       return (
         <Row className="no-gutters add-ingredients-item" key={ingredient.id}>
-          <Col xs={4} sm={3} className="quantity">
-            <Input
-              onChange={(e) => {
-                e.preventDefault();
-                updateIngredient(
-                  'quantity',
-                  ingredient.id,
-                  e.target.value,
-                  ingredientsGroupId
-                );
-            }}/>
-          </Col>
-          <Col xs={7} sm={8} className="text">
+          <Col xs={11} className="text">
             <Input
               onChange={(e) => {
                 e.preventDefault();
@@ -36,7 +24,7 @@ function IngredientsList({
                 );
             }}/>
           </Col>
-          <Col className="text-right">
+          <Col xs={1} className="text-right">
             <Button
               color="secondary"
               outline className="remove-ingredient"
@@ -52,11 +40,19 @@ function IngredientsList({
       return false;
     }
   });
-  return (
-    <div className="add-ingredients-list">
-      {ingredientsList}
-    </div>
-  )
+  if ( 0 === ingredientsList.length ) {
+    return (
+      <div className="add-ingredients-list">
+        <p>No ingredients.</p>
+      </div>
+    )
+  } else {
+    return (
+      <div className="add-ingredients-list">
+        {ingredientsList}
+      </div>
+    )
+  }
 }
 
 export default IngredientsList;

@@ -45,10 +45,7 @@ function IngredientsGroups({
             </Col>
           </Row>
           <Row className="no-gutters" className="add-ingredients-header">
-            <Col xs={4} sm={3}>
-              <p className="h4">Quantity</p>
-            </Col>
-            <Col xs={8} sm={9}>
+            <Col>
               <p className="h4">Ingredient</p>
             </Col>
           </Row>
@@ -81,7 +78,7 @@ function IngredientsGroups({
     return (
       <>
         <h3>Ingredients Groups</h3>
-        <p>There are currently no groups of ingredients. Please add one.</p>
+        <p>No ingredients groups.</p>
         <Button
           color="secondary"
           outline className="btn add-ingredients-group"

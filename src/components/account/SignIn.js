@@ -23,7 +23,7 @@ class SignIn extends Component {
   }
   render() {
     const { authError, auth } = this.props;
-    if (auth.uid) return <Redirect to='/home' />
+    if (auth.uid) return <Redirect to='/dashboard' />
 
     return (
       <Container className="view user-auth user-sign-in">
@@ -49,6 +49,12 @@ class SignIn extends Component {
                     <div className="authentication-error">
                       { authError ? <p className="text-red">{ authError }</p> : null }
                     </div>
+                  </article>
+                  <div class="divider or"></div>
+                  <article className="sign-in">
+                    <h1>Create an Account</h1>
+                    <p>Creating an account lets you save and revisit your favorite recipes that you’ve stored on Recipepocket.</p>
+                    <Link className="btn btn-outline-primary" to="/signup">Create an Account</Link>
                   </article>
                 </Col>
               </Row>

@@ -2,7 +2,7 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 
 const Recipes = () => {
-  return <Redirect to='/home' />;
+  return <Redirect to='/dashboard' />;
 }
 
 export default Recipes;

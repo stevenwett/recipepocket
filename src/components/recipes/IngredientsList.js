@@ -6,8 +6,7 @@ function IngredientsList({ingredients}) {
     return (
       <li className="ingredient" key={ingredient.id}>
         <Row>
-          <Col sm={1} className="quantity">{ingredient.quantity}</Col>
-          <Col sm={10} className="text">{ingredient.text}</Col>
+          <Col sm={11} className="text">{ingredient.text}</Col>
         </Row>
       </li>
     )

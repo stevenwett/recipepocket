@@ -33,7 +33,7 @@ class RecipeDetails extends Component {
   render() {
     const { auth, recipe, recipeId } = this.props;
     if ( recipe ) {
-      if ( recipe.disabled ) return <Redirect to='/home' />
+      if ( recipe.disabled ) return <Redirect to='/dashboard' />
       let photoUrl = '',
         photoAlt = '',
         photoCaption = '';
@@ -55,23 +55,27 @@ class RecipeDetails extends Component {
       return (
         <Container className="view recipe-details">
           <Breadcrumb className="breadcrumb-nav">
-            <BreadcrumbItem><a href="/home">Home</a></BreadcrumbItem>
+            <BreadcrumbItem><a href="/dashboard">Dashboard</a></BreadcrumbItem>
             <BreadcrumbItem active>{ recipe.title }</BreadcrumbItem>
           </Breadcrumb>
           <div className="view-card">
             <div className="text-right">
               <Link
-                to="/home"
+                to="/dashboard"
                 className="btn btn-card-cancel float-left">All Recipes</Link>
               <Link
                 to={ "/recipes/" + recipeId + "/edit" }
                 className="btn btn-recipe-edit">Edit</Link>
             </div>
             <article className="card">
-              <div className="recipe-image">
-                <CardImg top width="100%" src={ photoUrl } alt={photoAlt}/>
-               <div className="recipe-image-caption">{ photoCaption }</div>
-              </div>
+              { photoUrl &&
+                <div className="recipe-image">
+                  <CardImg top width="100%" src={ photoUrl } alt={photoAlt}/>
+                 { photoCaption &&
+                   <div className="recipe-image-caption">{ photoCaption }</div>
+                 }
+                </div>
+              }
               <CardBody>
                 <div className="recipe-intro">
                   <Row>
